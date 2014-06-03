@@ -215,6 +215,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = FISTE;
 				TargetAttributes = {
+					232312851937AA4600B34F7A = {
+						DevelopmentTeam = 4RQC6K9X2K;
+					};
 					232312B01937AA4600B34F7A = {
 						TestTargetID = 232312851937AA4600B34F7A;
 					};
@@ -407,6 +410,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cucho/Cucho-Prefix.pch";
 				INFOPLIST_FILE = "Cucho/Cucho-Info.plist";
@@ -421,6 +425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cucho/Cucho-Prefix.pch";
 				INFOPLIST_FILE = "Cucho/Cucho-Info.plist";
@@ -491,6 +496,7 @@
 				232312C41937AA4600B34F7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		232312C51937AA4600B34F7A /* Build configuration list for PBXNativeTarget "CuchoTests" */ = {
 			isa = XCConfigurationList;
@@ -499,6 +505,7 @@
 				232312C71937AA4600B34F7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
