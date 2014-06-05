@@ -7,13 +7,13 @@
 //
 
 #import "ueesViewController.h"
-#import "ueesMyScene.h"
+#import "Escena_menu.h"
 
 @implementation ueesViewController
 
-- (void)viewDidLoad
+- (void)viewDidLayoutSubviews
 {
-    [super viewDidLoad];
+    [super viewDidLayoutSubviews];
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
@@ -21,7 +21,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [ueesMyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [Escena_menu sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

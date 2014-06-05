@@ -1,5 +1,5 @@
 //
-//  ueesMyScene.h
+//  Escena_menu.h
 //  Cucho
 //
 
@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface ueesMyScene : SKScene
+@interface Escena_menu : SKScene
 
 @end
