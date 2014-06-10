@@ -8,6 +8,7 @@
 
 #import "ueesViewController.h"
 #import "Escena_menu.h"
+#import "gameCenterManager.h"
 
 @implementation ueesViewController
 
@@ -19,6 +20,8 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+    
+    [[gameCenterManager solicitarManager]autenticarJugador];
     
     // Create and configure the scene.
     SKScene * scene = [Escena_menu sceneWithSize:skView.bounds.size];
@@ -46,6 +49,10 @@
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+-(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController*)gameCenterViewController{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

@@ -24,6 +24,7 @@
 		232312B51937AA4600B34F7A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2323128D1937AA4600B34F7A /* UIKit.framework */; };
 		232312BD1937AA4600B34F7A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 232312BB1937AA4600B34F7A /* InfoPlist.strings */; };
 		232312BF1937AA4600B34F7A /* CuchoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 232312BE1937AA4600B34F7A /* CuchoTests.m */; };
+		85019FD81947A87E007DB79E /* gameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 85019FD71947A87E007DB79E /* gameCenterManager.m */; };
 		850B4B1D1941195E007C5C20 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 850B4B1C1941195E007C5C20 /* GameKit.framework */; };
 		8575DA961940E3C200392E73 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8575DA951940E3C200392E73 /* JSTileMap.m */; };
 		8575DA991940E3E000392E73 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8575DA981940E3E000392E73 /* LFCGzipUtility.m */; };
@@ -67,6 +68,8 @@
 		232312BA1937AA4600B34F7A /* Cucho RunTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cucho RunTests-Info.plist"; sourceTree = "<group>"; };
 		232312BC1937AA4600B34F7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		232312BE1937AA4600B34F7A /* CuchoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CuchoTests.m; sourceTree = "<group>"; };
+		85019FD61947A87E007DB79E /* gameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameCenterManager.h; sourceTree = "<group>"; };
+		85019FD71947A87E007DB79E /* gameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gameCenterManager.m; sourceTree = "<group>"; };
 		850B4B1C1941195E007C5C20 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		8575DA941940E3C200392E73 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
 		8575DA951940E3C200392E73 /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 		232312911937AA4600B34F7A /* Cucho */ = {
 			isa = PBXGroup;
 			children = (
+				85019FD21947A470007DB79E /* Game Center */,
 				8575DA9F1940E62900392E73 /* Jugador_Cucho */,
 				8575DA9E1940E61D00392E73 /* Disenos */,
 				8575DA9D1940E5FE00392E73 /* Sonidos */,
@@ -187,6 +191,15 @@
 				232312BB1937AA4600B34F7A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		85019FD21947A470007DB79E /* Game Center */ = {
+			isa = PBXGroup;
+			children = (
+				85019FD61947A87E007DB79E /* gameCenterManager.h */,
+				85019FD71947A87E007DB79E /* gameCenterManager.m */,
+			);
+			name = "Game Center";
 			sourceTree = "<group>";
 		};
 		8575DA8F1940E01200392E73 /* Imagenes */ = {
@@ -390,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2323129C1937AA4600B34F7A /* ueesAppDelegate.m in Sources */,
+				85019FD81947A87E007DB79E /* gameCenterManager.m in Sources */,
 				8575DA961940E3C200392E73 /* JSTileMap.m in Sources */,
 				232312981937AA4600B34F7A /* main.m in Sources */,
 				232312A81937AA4600B34F7A /* Escena_menu.m in Sources */,
