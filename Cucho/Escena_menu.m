@@ -16,6 +16,7 @@
     View_ajustes *ajustes;
     bool isPhone;
     UIView *mask;
+    BOOL desplegado;
 }
 
 @end
@@ -84,7 +85,7 @@
         }
         if([nodo.name isEqualToString:@"bt_ajustes"]){
             CGRect rect;
-            
+            NSLog(@"mostrar ajustes");
             if (isPhone == YES) {
                 
                 rect = CGRectMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame), 230, 150);
@@ -94,7 +95,7 @@
                 
                 rect = CGRectMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame), 364, 492);
             }
-            if (ajustes==nil) {
+            if (!desplegado) {
                 
                 ajustes = [[View_ajustes alloc] initWithFrame:rect];
                 ajustes.layer.anchorPoint = CGPointMake(1, 1);
@@ -115,6 +116,7 @@
                                      [mask setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.38]];
                                      [self.view addSubview:mask];
                                      [self.view sendSubviewToBack:mask];
+                                     desplegado=YES;
                                      
                                  }];
             }
@@ -133,6 +135,7 @@
 
                          mask.alpha=0.0f;
                          [mask removeFromSuperview];
+    desplegado=NO;
 
 }
 

@@ -56,6 +56,7 @@
     
     UIImageView* equis  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     equis.image = [UIImage imageNamed:@"ajustes_equis"];
+    equis.layer.anchorPoint = CGPointMake(1, 1);
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame=CGRectMake(0, 0, 50, 50);
     button.layer.anchorPoint = CGPointMake(1, 1);
@@ -74,7 +75,7 @@
                      animations:^{
                          [self setTransform:CGAffineTransformMakeScale(0.0, 0.0)];
                          self.alpha=0.0f;
-                         [self removeFromSuperview];
+                         //[self removeFromSuperview];
                          NSLog(@"si entra");
                      }
                      completion:^(BOOL finished){

@@ -9,6 +9,7 @@
 #import "ueesViewController.h"
 #import "Escena_menu.h"
 #import "gameCenterManager.h"
+#import "Escena_nivel.h"
 
 @interface ueesViewController(){
     SKView * skView;
@@ -19,13 +20,18 @@
 
 @implementation ueesViewController
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
+-(void)viewDidLoad{
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reload:)
                                                  name:@"anadir"
                                                object:nil];
+}
+
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
     // Configure the view.
     skView = (SKView *)self.view;
     skView.showsFPS = YES;
@@ -42,16 +48,16 @@
         
         [skView presentScene:scene];
     }
-    self.items = [NSMutableArray array];
+   /* self.items = [NSMutableArray array];
     for (int i = 1; i <=5; i++)
     {
         [_items addObject:@(i)];
     }
     self.carousel=[[iCarousel alloc]initWithFrame:scene.frame];
-    self.carousel.backgroundColor=[UIColor whiteColor];
+    self.carousel.backgroundColor=[UIColor blackColor];
     NSLog(@"frame view: %@",NSStringFromCGRect(skView.frame));
     self.carousel.dataSource=self;
-    self.carousel.delegate=self;
+    self.carousel.delegate=self;*/
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(mostrarGCController)
@@ -87,7 +93,15 @@
 -(void)reload:(NSNotification *)notification
 {
     NSLog(@"ANADIR");
-    
+    self.items = [NSMutableArray array];
+    for (int i = 1; i <=5; i++)
+    {
+        [_items addObject:@(i)];
+    }
+    self.carousel=[[iCarousel alloc]initWithFrame:skView.bounds];
+    self.carousel.backgroundColor=[UIColor whiteColor];
+    self.carousel.dataSource=self;
+    self.carousel.delegate=self;
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:1.25];
     self.carousel.type=iCarouselTypeCoverFlow2
@@ -172,6 +186,20 @@
         return 0.1f;
     }
     return value;
+}
+
+-(void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
+    NSLog(@"SI PASA DID SELECT %d",index);
+    //[UIView beginAnimations:nil context:NULL];
+    //[UIView setAnimationDuration:0.75];
+    [carousel removeFromSuperview];
+    //[UIView commitAnimations];
+    
+        SKTransition *reveal = [SKTransition crossFadeWithDuration:0.7];
+        SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size];
+        [skView presentScene:gameOverScene transition:reveal];
+    
+
 }
 
 @end
