@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Jugador</key>
+	<dict>
+		<key>Nombre</key>
+		<string>Cucho</string>
+		<key>Vidas</key>
+		<integer>3</integer>
+		<key>Salto_doble</key>
+		<true/>
+		<key>Gravedad</key>
+		<integer>-450</integer>
+		<key>Velocidad</key>
+		<string></string>
+		<key>Fuerza_salto</key>
+		<integer>310</integer>
+	</dict>
+</dict>
+</plist>

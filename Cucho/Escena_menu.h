@@ -7,7 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "gameCenterManager.h"
 
 @interface Escena_menu : SKScene
+
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc;
 
 @end
