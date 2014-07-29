@@ -14,6 +14,7 @@
 @interface ueesViewController(){
     SKView * skView;
     BOOL isPhone;
+    gameCenterManager *gc;
 }
 
 @end
@@ -24,6 +25,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(reload:)
                                                  name:@"anadir"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(borrarCarousel:)
+                                                 name:@"borrar"
                                                object:nil];
 }
 
@@ -37,7 +43,7 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
-    gameCenterManager *gc=[gameCenterManager solicitarManager];
+    gc=[gameCenterManager solicitarManager];
     [gc autenticarJugador];
     SKScene *scene;
     // Create and configure the scene.
@@ -99,7 +105,7 @@
         [_items addObject:@(i)];
     }
     self.carousel=[[iCarousel alloc]initWithFrame:skView.bounds];
-    self.carousel.backgroundColor=[UIColor whiteColor];
+    self.carousel.backgroundColor=[UIColor clearColor];
     self.carousel.dataSource=self;
     self.carousel.delegate=self;
     [UIView beginAnimations:nil context:NULL];
@@ -196,10 +202,16 @@
     //[UIView commitAnimations];
     
         SKTransition *reveal = [SKTransition crossFadeWithDuration:0.7];
-        SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size];
+    SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size conGameCenter:gc];
         [skView presentScene:gameOverScene transition:reveal];
     
 
+}
+
+-(void)borrarCarousel:(NSNotification *)notification
+{
+    [self.carousel removeFromSuperview];
+    
 }
 
 @end

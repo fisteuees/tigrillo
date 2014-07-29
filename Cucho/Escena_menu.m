@@ -17,6 +17,7 @@
     bool isPhone;
     UIView *mask;
     BOOL desplegado;
+    gameCenterManager *gc1;
 }
 
 @end
@@ -26,7 +27,7 @@
 -(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc{
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
-        
+        gc1=gc;
         self.backgroundColor = [SKColor whiteColor];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(cerrarVentanaAjustes:)
@@ -77,7 +78,7 @@
         }
         if([nodo.name isEqualToString:@"bt_jugar"]){
             SKTransition *reveal = [SKTransition doorwayWithDuration:1.5];
-            SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size];
+            SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size conGameCenter:gc1];
             [self.view presentScene:gameOverScene transition:reveal];
         }
         if([nodo.name isEqualToString:@"bt_comprar"]){

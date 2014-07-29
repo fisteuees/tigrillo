@@ -27,6 +27,14 @@
 		85019FD81947A87E007DB79E /* gameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 85019FD71947A87E007DB79E /* gameCenterManager.m */; };
 		850B4B1D1941195E007C5C20 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 850B4B1C1941195E007C5C20 /* GameKit.framework */; };
 		85151D59194A1591002E2FC5 /* Escena_mundos.m in Sources */ = {isa = PBXBuildFile; fileRef = 85151D58194A1591002E2FC5 /* Escena_mundos.m */; };
+		851EFF23198838A0009377CD /* Escena_juego.m in Sources */ = {isa = PBXBuildFile; fileRef = 851EFF22198838A0009377CD /* Escena_juego.m */; };
+		851EFF2519883E38009377CD /* bt_atras.png in Resources */ = {isa = PBXBuildFile; fileRef = 851EFF2419883E38009377CD /* bt_atras.png */; };
+		8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C619880496005BEC90 /* bt_nivel1.png */; };
+		8535D6CC19880496005BEC90 /* bt_nivel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C719880496005BEC90 /* bt_nivel2.png */; };
+		8535D6CD19880496005BEC90 /* bt_nivel3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C819880496005BEC90 /* bt_nivel3.png */; };
+		8535D6CE19880496005BEC90 /* bt_nivel4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C919880496005BEC90 /* bt_nivel4.png */; };
+		8535D6CF19880496005BEC90 /* bt_nivel5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6CA19880496005BEC90 /* bt_nivel5.png */; };
+		8535D6D719880AE2005BEC90 /* cuchoNiveles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6D619880AE2005BEC90 /* cuchoNiveles.atlas */; };
 		855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 855056AD19816B6F005EC6C2 /* mario_phone.jpg */; };
 		855056B019816B6F005EC6C2 /* mario.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 855056AE19816B6F005EC6C2 /* mario.jpg */; };
 		855EEE66196C5A2A00AF42AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855EEE65196C5A2A00AF42AF /* QuartzCore.framework */; };
@@ -85,6 +93,15 @@
 		850B4B1C1941195E007C5C20 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		85151D57194A1591002E2FC5 /* Escena_mundos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Escena_mundos.h; sourceTree = "<group>"; };
 		85151D58194A1591002E2FC5 /* Escena_mundos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Escena_mundos.m; sourceTree = "<group>"; };
+		851EFF21198838A0009377CD /* Escena_juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Escena_juego.h; sourceTree = "<group>"; };
+		851EFF22198838A0009377CD /* Escena_juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Escena_juego.m; sourceTree = "<group>"; };
+		851EFF2419883E38009377CD /* bt_atras.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_atras.png; sourceTree = "<group>"; };
+		8535D6C619880496005BEC90 /* bt_nivel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel1.png; sourceTree = "<group>"; };
+		8535D6C719880496005BEC90 /* bt_nivel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel2.png; sourceTree = "<group>"; };
+		8535D6C819880496005BEC90 /* bt_nivel3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel3.png; sourceTree = "<group>"; };
+		8535D6C919880496005BEC90 /* bt_nivel4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel4.png; sourceTree = "<group>"; };
+		8535D6CA19880496005BEC90 /* bt_nivel5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel5.png; sourceTree = "<group>"; };
+		8535D6D619880AE2005BEC90 /* cuchoNiveles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuchoNiveles.atlas; sourceTree = "<group>"; };
 		855056AD19816B6F005EC6C2 /* mario_phone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario_phone.jpg; sourceTree = "<group>"; };
 		855056AE19816B6F005EC6C2 /* mario.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario.jpg; sourceTree = "<group>"; };
 		855EEE65196C5A2A00AF42AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -247,6 +264,7 @@
 		8575DA8F1940E01200392E73 /* Imagenes */ = {
 			isa = PBXGroup;
 			children = (
+				85770F0E1988040900176CF6 /* Botones */,
 				855056AD19816B6F005EC6C2 /* mario_phone.jpg */,
 				855056AE19816B6F005EC6C2 /* mario.jpg */,
 				855EEE7A196CA31800AF42AF /* background.png */,
@@ -264,6 +282,8 @@
 				85151D58194A1591002E2FC5 /* Escena_mundos.m */,
 				855EEE73196C6F1000AF42AF /* Escena_nivel.h */,
 				855EEE74196C6F1000AF42AF /* Escena_nivel.m */,
+				851EFF21198838A0009377CD /* Escena_juego.h */,
+				851EFF22198838A0009377CD /* Escena_juego.m */,
 			);
 			name = Escenas;
 			sourceTree = "<group>";
@@ -343,6 +363,20 @@
 				8575DAA81940EE2900392E73 /* BTcomprar@2x.png */,
 				8575DAA61940EC3A00392E73 /* BTjugar@2x.png */,
 				8575DAA41940EC0200392E73 /* BTpuntajes@2x.png */,
+			);
+			name = Botones;
+			sourceTree = "<group>";
+		};
+		85770F0E1988040900176CF6 /* Botones */ = {
+			isa = PBXGroup;
+			children = (
+				851EFF2419883E38009377CD /* bt_atras.png */,
+				8535D6D619880AE2005BEC90 /* cuchoNiveles.atlas */,
+				8535D6C619880496005BEC90 /* bt_nivel1.png */,
+				8535D6C719880496005BEC90 /* bt_nivel2.png */,
+				8535D6C819880496005BEC90 /* bt_nivel3.png */,
+				8535D6C919880496005BEC90 /* bt_nivel4.png */,
+				8535D6CA19880496005BEC90 /* bt_nivel5.png */,
 			);
 			name = Botones;
 			sourceTree = "<group>";
@@ -452,16 +486,23 @@
 			files = (
 				855056B019816B6F005EC6C2 /* mario.jpg in Resources */,
 				855EEE7B196CA31800AF42AF /* background.png in Resources */,
+				8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */,
 				8575DAA51940EC0200392E73 /* BTpuntajes@2x.png in Resources */,
 				85A659D5196338380095D51A /* BTajustes@2x.png in Resources */,
+				851EFF2519883E38009377CD /* bt_atras.png in Resources */,
+				8535D6CC19880496005BEC90 /* bt_nivel2.png in Resources */,
 				8575DAA71940EC3A00392E73 /* BTjugar@2x.png in Resources */,
+				8535D6CE19880496005BEC90 /* bt_nivel4.png in Resources */,
 				232312AC1937AA4600B34F7A /* Images.xcassets in Resources */,
+				8535D6D719880AE2005BEC90 /* cuchoNiveles.atlas in Resources */,
 				85A659D119630E940095D51A /* configuracion_juego.plist in Resources */,
 				855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */,
 				8575DAA91940EE2900392E73 /* BTcomprar@2x.png in Resources */,
+				8535D6CD19880496005BEC90 /* bt_nivel3.png in Resources */,
 				232312A21937AA4600B34F7A /* Main_iPad.storyboard in Resources */,
 				2323129F1937AA4600B34F7A /* Main_iPhone.storyboard in Resources */,
 				232312961937AA4600B34F7A /* InfoPlist.strings in Resources */,
+				8535D6CF19880496005BEC90 /* bt_nivel5.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +532,7 @@
 				8575DA991940E3E000392E73 /* LFCGzipUtility.m in Sources */,
 				855EEE75196C6F1000AF42AF /* Escena_nivel.m in Sources */,
 				855EEE6C196C6CA200AF42AF /* iCarousel.m in Sources */,
+				851EFF23198838A0009377CD /* Escena_juego.m in Sources */,
 				85151D59194A1591002E2FC5 /* Escena_mundos.m in Sources */,
 				232312A51937AA4600B34F7A /* ueesViewController.m in Sources */,
 			);

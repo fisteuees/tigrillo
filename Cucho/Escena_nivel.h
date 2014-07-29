@@ -7,25 +7,12 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "JSTileMap.h"
-#import "EfectoParallax.h"
-#import "Jugador.h"
+#import "gameCenterManager.h"
 
 @interface Escena_nivel : SKScene
 
-@property (strong, nonatomic) JSTileMap *mapa;
-@property (strong, nonatomic) Jugador *jugador;
 
-@property (nonatomic, strong) TMXLayer *suelo;
-@property (nonatomic, strong) TMXLayer *rocas;
-@property (nonatomic, strong) TMXLayer *fondo;
-@property (nonatomic, strong) TMXLayer *monedas;
-@property (nonatomic, strong) TMXLayer *power_ups;
 
-@property (nonatomic, strong) EfectoParallax *fondo0;
-@property (nonatomic, strong) EfectoParallax *fondo1;
-
-@property (nonatomic, assign) NSTimeInterval tiempoAnterior;
-@property (nonatomic, assign) BOOL juegoTermino;
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc;
 
 @end

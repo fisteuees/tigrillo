@@ -7,23 +7,54 @@
 //
 
 #import "Escena_mundos.h"
+#import "Escena_menu.h"
+#import "Escena_nivel.h" 
+#import "gameCenterManager.h"
 
 @interface Escena_mundos(){
     bool isPhone;
+    gameCenterManager *gc1;
 }
 
 @end
 
 @implementation Escena_mundos
 
--(id)initWithSize:(CGSize)size{
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc{
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         self.backgroundColor = [SKColor whiteColor];
-            
+        gc1=gc;
+        
+        SKSpriteNode *bt_atras=[SKSpriteNode spriteNodeWithImageNamed:@"bt_atras"];
+        bt_atras.position=CGPointMake(CGRectGetMinX(self.frame)+60, CGRectGetMaxY(self.frame)-60);
+        bt_atras.name=@"atras";
+        [self addChild:bt_atras];
+        
         }
     return self;
 }
+
+
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    /* Called when a touch begins */
+    
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
+        SKNode *nodo=[self nodeAtPoint:location];
+        if([nodo.name isEqualToString:@"atras"]){
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"borrar" object:self];
+            SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.5];
+            SKScene * gameOverScene = [[Escena_menu alloc] initWithSize:self.size conGameCenter:gc1];
+            [self.view presentScene:gameOverScene transition:reveal];
+            
+        }
+    }
+}
+
+
 
 
 @end
