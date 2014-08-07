@@ -11,6 +11,7 @@
 #import "gameCenterManager.h"
 #import "Escena_nivel.h"
 #import "View_ajustes.h"
+#import "conexionBase.h"
 
 @interface ueesViewController(){
     SKView * skView;
@@ -43,6 +44,16 @@
                                              selector:@selector(mostrarAjustes:)
                                                  name:@"mostrarAjustes"
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(insertBase:)
+                                                 name:@"insertBase"
+                                               object:nil];
+    //base de datos
+    conexionBase *cb = [[conexionBase alloc]init];
+    [cb abrirBD];
+    [cb crearTabla:@"prueba" conCampo1:@"id" conCampo2:@"nombre" conCampo3:@"puntaje" conCampo4:@"tema"];
+    
+    
 }
 
 
@@ -299,6 +310,10 @@
     [mask removeFromSuperview];
     desplegado=NO;
     [skView.scene setUserInteractionEnabled:YES];
+    
+}
+
+-(void)insertBase:(NSNotification *)notification{
     
 }
 

@@ -10,4 +10,15 @@
 
 @interface Jugador : SKSpriteNode
 
+@property (nonatomic, assign) CGPoint velocity;
+@property (nonatomic, assign) CGPoint posicionDeseada;
+@property (nonatomic, assign) BOOL enPiso;
+@property (nonatomic, assign) BOOL puede_moverse;
+@property (nonatomic, assign) BOOL puede_saltar;
+@property (nonatomic, assign) BOOL modo;
+@property (nonatomic, assign) BOOL salto_doble;
+
+- (void)update:(NSTimeInterval)delta;
+-(CGRect)rectanguloColision;
+
 @end

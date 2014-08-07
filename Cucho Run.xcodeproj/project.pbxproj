@@ -37,6 +37,20 @@
 		8535D6D719880AE2005BEC90 /* cuchoNiveles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6D619880AE2005BEC90 /* cuchoNiveles.atlas */; };
 		855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 855056AD19816B6F005EC6C2 /* mario_phone.jpg */; };
 		855056B019816B6F005EC6C2 /* mario.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 855056AE19816B6F005EC6C2 /* mario.jpg */; };
+		8554795F199405C2008BBAF9 /* bt_recargar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8554795E199405C2008BBAF9 /* bt_recargar@2x.png */; };
+		85547962199405D7008BBAF9 /* bt_salir@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85547960199405D7008BBAF9 /* bt_salir@2x.png */; };
+		85547963199405D7008BBAF9 /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = 85547961199405D7008BBAF9 /* images.png */; };
+		85547966199405EC008BBAF9 /* corazon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85547964199405EC008BBAF9 /* corazon@2x.png */; };
+		85547967199405EC008BBAF9 /* orange-round-play-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 85547965199405EC008BBAF9 /* orange-round-play-button.png */; };
+		8554797A19940731008BBAF9 /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554796A19940731008BBAF9 /* SKAction+SKTExtras.m */; };
+		8554797B19940731008BBAF9 /* SKAction+SKTSpecialEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554796C19940731008BBAF9 /* SKAction+SKTSpecialEffects.m */; };
+		8554797C19940731008BBAF9 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554796E19940731008BBAF9 /* SKEmitterNode+SKTExtras.m */; };
+		8554797D19940731008BBAF9 /* SKNode+SKTDebugDraw.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554797019940731008BBAF9 /* SKNode+SKTDebugDraw.m */; };
+		8554797E19940731008BBAF9 /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554797219940731008BBAF9 /* SKNode+SKTExtras.m */; };
+		8554797F19940731008BBAF9 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554797419940731008BBAF9 /* SKTAudio.m */; };
+		8554798019940731008BBAF9 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554797619940731008BBAF9 /* SKTEffects.m */; };
+		8554798119940731008BBAF9 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554797819940731008BBAF9 /* SKTTimingFunctions.m */; };
+		8554798519941092008BBAF9 /* conexionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554798419941092008BBAF9 /* conexionBase.m */; };
 		855EEE66196C5A2A00AF42AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855EEE65196C5A2A00AF42AF /* QuartzCore.framework */; };
 		855EEE6C196C6CA200AF42AF /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EEE6B196C6CA200AF42AF /* iCarousel.m */; };
 		855EEE75196C6F1000AF42AF /* Escena_nivel.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EEE74196C6F1000AF42AF /* Escena_nivel.m */; };
@@ -105,6 +119,30 @@
 		8535D6D619880AE2005BEC90 /* cuchoNiveles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuchoNiveles.atlas; sourceTree = "<group>"; };
 		855056AD19816B6F005EC6C2 /* mario_phone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario_phone.jpg; sourceTree = "<group>"; };
 		855056AE19816B6F005EC6C2 /* mario.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario.jpg; sourceTree = "<group>"; };
+		8554795E199405C2008BBAF9 /* bt_recargar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_recargar@2x.png"; sourceTree = "<group>"; };
+		85547960199405D7008BBAF9 /* bt_salir@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_salir@2x.png"; sourceTree = "<group>"; };
+		85547961199405D7008BBAF9 /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
+		85547964199405EC008BBAF9 /* corazon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "corazon@2x.png"; sourceTree = "<group>"; };
+		85547965199405EC008BBAF9 /* orange-round-play-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orange-round-play-button.png"; sourceTree = "<group>"; };
+		8554796919940731008BBAF9 /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
+		8554796A19940731008BBAF9 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
+		8554796B19940731008BBAF9 /* SKAction+SKTSpecialEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTSpecialEffects.h"; sourceTree = "<group>"; };
+		8554796C19940731008BBAF9 /* SKAction+SKTSpecialEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTSpecialEffects.m"; sourceTree = "<group>"; };
+		8554796D19940731008BBAF9 /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
+		8554796E19940731008BBAF9 /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
+		8554796F19940731008BBAF9 /* SKNode+SKTDebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTDebugDraw.h"; sourceTree = "<group>"; };
+		8554797019940731008BBAF9 /* SKNode+SKTDebugDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTDebugDraw.m"; sourceTree = "<group>"; };
+		8554797119940731008BBAF9 /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
+		8554797219940731008BBAF9 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
+		8554797319940731008BBAF9 /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
+		8554797419940731008BBAF9 /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
+		8554797519940731008BBAF9 /* SKTEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTEffects.h; sourceTree = "<group>"; };
+		8554797619940731008BBAF9 /* SKTEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTEffects.m; sourceTree = "<group>"; };
+		8554797719940731008BBAF9 /* SKTTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTTimingFunctions.h; sourceTree = "<group>"; };
+		8554797819940731008BBAF9 /* SKTTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTTimingFunctions.m; sourceTree = "<group>"; };
+		8554797919940731008BBAF9 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		8554798319941092008BBAF9 /* conexionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conexionBase.h; sourceTree = "<group>"; };
+		8554798419941092008BBAF9 /* conexionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = conexionBase.m; sourceTree = "<group>"; };
 		855EEE65196C5A2A00AF42AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		855EEE6A196C6CA200AF42AF /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		855EEE6B196C6CA200AF42AF /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -202,6 +240,7 @@
 				8575DA9D1940E5FE00392E73 /* Sonidos */,
 				8575DA9C1940E45600392E73 /* Particulas */,
 				8575DA911940E0F100392E73 /* Mapa */,
+				8554796819940731008BBAF9 /* SKTUtils */,
 				8575DA901940E01D00392E73 /* Escenas */,
 				8575DA8F1940E01200392E73 /* Imagenes */,
 				2323129A1937AA4600B34F7A /* ueesAppDelegate.h */,
@@ -210,6 +249,7 @@
 				232312A01937AA4600B34F7A /* Main_iPad.storyboard */,
 				232312A31937AA4600B34F7A /* ueesViewController.h */,
 				232312A41937AA4600B34F7A /* ueesViewController.m */,
+				8554798219941070008BBAF9 /* Base_datos */,
 				232312AB1937AA4600B34F7A /* Images.xcassets */,
 				232312921937AA4600B34F7A /* Supporting Files */,
 			);
@@ -254,6 +294,52 @@
 			name = "Game Center";
 			sourceTree = "<group>";
 		};
+		8554795D199405AD008BBAF9 /* Botones_Juego */ = {
+			isa = PBXGroup;
+			children = (
+				85547964199405EC008BBAF9 /* corazon@2x.png */,
+				85547965199405EC008BBAF9 /* orange-round-play-button.png */,
+				85547960199405D7008BBAF9 /* bt_salir@2x.png */,
+				85547961199405D7008BBAF9 /* images.png */,
+				8554795E199405C2008BBAF9 /* bt_recargar@2x.png */,
+			);
+			name = Botones_Juego;
+			sourceTree = "<group>";
+		};
+		8554796819940731008BBAF9 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				8554796919940731008BBAF9 /* SKAction+SKTExtras.h */,
+				8554796A19940731008BBAF9 /* SKAction+SKTExtras.m */,
+				8554796B19940731008BBAF9 /* SKAction+SKTSpecialEffects.h */,
+				8554796C19940731008BBAF9 /* SKAction+SKTSpecialEffects.m */,
+				8554796D19940731008BBAF9 /* SKEmitterNode+SKTExtras.h */,
+				8554796E19940731008BBAF9 /* SKEmitterNode+SKTExtras.m */,
+				8554796F19940731008BBAF9 /* SKNode+SKTDebugDraw.h */,
+				8554797019940731008BBAF9 /* SKNode+SKTDebugDraw.m */,
+				8554797119940731008BBAF9 /* SKNode+SKTExtras.h */,
+				8554797219940731008BBAF9 /* SKNode+SKTExtras.m */,
+				8554797319940731008BBAF9 /* SKTAudio.h */,
+				8554797419940731008BBAF9 /* SKTAudio.m */,
+				8554797519940731008BBAF9 /* SKTEffects.h */,
+				8554797619940731008BBAF9 /* SKTEffects.m */,
+				8554797719940731008BBAF9 /* SKTTimingFunctions.h */,
+				8554797819940731008BBAF9 /* SKTTimingFunctions.m */,
+				8554797919940731008BBAF9 /* SKTUtils.h */,
+			);
+			name = SKTUtils;
+			path = ../SKTUtils;
+			sourceTree = "<group>";
+		};
+		8554798219941070008BBAF9 /* Base_datos */ = {
+			isa = PBXGroup;
+			children = (
+				8554798319941092008BBAF9 /* conexionBase.h */,
+				8554798419941092008BBAF9 /* conexionBase.m */,
+			);
+			name = Base_datos;
+			sourceTree = "<group>";
+		};
 		855EEE69196C680000AF42AF /* CoverFlow 3D */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +352,7 @@
 		8575DA8F1940E01200392E73 /* Imagenes */ = {
 			isa = PBXGroup;
 			children = (
+				8554795D199405AD008BBAF9 /* Botones_Juego */,
 				85770F0E1988040900176CF6 /* Botones */,
 				855056AD19816B6F005EC6C2 /* mario_phone.jpg */,
 				855056AE19816B6F005EC6C2 /* mario.jpg */,
@@ -494,16 +581,21 @@
 				85A659D5196338380095D51A /* BTajustes@2x.png in Resources */,
 				851EFF2519883E38009377CD /* bt_atras.png in Resources */,
 				8535D6CC19880496005BEC90 /* bt_nivel2.png in Resources */,
+				85547966199405EC008BBAF9 /* corazon@2x.png in Resources */,
 				8575DAA71940EC3A00392E73 /* BTjugar@2x.png in Resources */,
 				8535D6CE19880496005BEC90 /* bt_nivel4.png in Resources */,
 				232312AC1937AA4600B34F7A /* Images.xcassets in Resources */,
 				8560EB4F1993E936000A57F7 /* ajustes_view.xib in Resources */,
 				8535D6D719880AE2005BEC90 /* cuchoNiveles.atlas in Resources */,
+				85547967199405EC008BBAF9 /* orange-round-play-button.png in Resources */,
 				85A659D119630E940095D51A /* configuracion_juego.plist in Resources */,
 				855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */,
 				8575DAA91940EE2900392E73 /* BTcomprar@2x.png in Resources */,
 				8535D6CD19880496005BEC90 /* bt_nivel3.png in Resources */,
+				85547962199405D7008BBAF9 /* bt_salir@2x.png in Resources */,
+				85547963199405D7008BBAF9 /* images.png in Resources */,
 				232312A21937AA4600B34F7A /* Main_iPad.storyboard in Resources */,
+				8554795F199405C2008BBAF9 /* bt_recargar@2x.png in Resources */,
 				2323129F1937AA4600B34F7A /* Main_iPhone.storyboard in Resources */,
 				232312961937AA4600B34F7A /* InfoPlist.strings in Resources */,
 				8535D6CF19880496005BEC90 /* bt_nivel5.png in Resources */,
@@ -525,18 +617,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8554797D19940731008BBAF9 /* SKNode+SKTDebugDraw.m in Sources */,
 				2323129C1937AA4600B34F7A /* ueesAppDelegate.m in Sources */,
+				8554798519941092008BBAF9 /* conexionBase.m in Sources */,
+				8554798019940731008BBAF9 /* SKTEffects.m in Sources */,
+				8554797C19940731008BBAF9 /* SKEmitterNode+SKTExtras.m in Sources */,
+				8554797B19940731008BBAF9 /* SKAction+SKTSpecialEffects.m in Sources */,
 				85019FD81947A87E007DB79E /* gameCenterManager.m in Sources */,
 				8575DA961940E3C200392E73 /* JSTileMap.m in Sources */,
 				232312981937AA4600B34F7A /* main.m in Sources */,
 				85A659CF196307C90095D51A /* EfectoParallax.m in Sources */,
 				85A659D9196339320095D51A /* View_ajustes.m in Sources */,
+				8554797F19940731008BBAF9 /* SKTAudio.m in Sources */,
 				85A659CB196307930095D51A /* Jugador.m in Sources */,
 				232312A81937AA4600B34F7A /* Escena_menu.m in Sources */,
 				8575DA991940E3E000392E73 /* LFCGzipUtility.m in Sources */,
+				8554797E19940731008BBAF9 /* SKNode+SKTExtras.m in Sources */,
 				855EEE75196C6F1000AF42AF /* Escena_nivel.m in Sources */,
+				8554798119940731008BBAF9 /* SKTTimingFunctions.m in Sources */,
 				855EEE6C196C6CA200AF42AF /* iCarousel.m in Sources */,
 				851EFF23198838A0009377CD /* Escena_juego.m in Sources */,
+				8554797A19940731008BBAF9 /* SKAction+SKTExtras.m in Sources */,
 				85151D59194A1591002E2FC5 /* Escena_mundos.m in Sources */,
 				232312A51937AA4600B34F7A /* ueesViewController.m in Sources */,
 			);
