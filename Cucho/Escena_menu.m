@@ -13,10 +13,10 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface Escena_menu(){
-    View_ajustes *ajustes;
+    
     bool isPhone;
-    UIView *mask;
-    BOOL desplegado;
+    
+    
     gameCenterManager *gc1;
 }
 
@@ -29,10 +29,7 @@
         /* Setup your scene here */
         gc1=gc;
         self.backgroundColor = [SKColor whiteColor];
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(cerrarVentanaAjustes:)
-                                                     name:@"cerrar"
-                                                   object:nil];
+        
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             
             isPhone = YES;
@@ -77,7 +74,7 @@
              postNotificationName:@"mostrarGCController" object:self];
         }
         if([nodo.name isEqualToString:@"bt_jugar"]){
-            SKTransition *reveal = [SKTransition doorwayWithDuration:1.5];
+            SKTransition *reveal = [SKTransition doorwayWithDuration:1.0];
             SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size conGameCenter:gc1];
             [self.view presentScene:gameOverScene transition:reveal];
         }
@@ -94,33 +91,13 @@
                 
             } else {
                 
-                rect = CGRectMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame), 364, 492);
-            }
-            if (!desplegado) {
                 
-                ajustes = [[View_ajustes alloc] initWithFrame:rect];
-                ajustes.layer.anchorPoint = CGPointMake(1, 1);
-                ajustes.alpha=0.0f;
-                [ajustes setTransform:CGAffineTransformMakeScale(0.1, 0.1)];
-                [self.view addSubview:ajustes];
-                //ajustes.center = CGPointMake(ajustes.frame.size.width / 2, ajustes.frame.size.height / 2);
-                [UIView animateWithDuration:0.5
-                                      delay: 0.0
-                                    options: UIViewAnimationOptionCurveEaseInOut
-                                 animations:^{
-                                     [ajustes setTransform:CGAffineTransformMakeScale(1.0, 1.0)];
-                                     ajustes.alpha=1.0f;
-                                     
-                                 }
-                                 completion:^(BOOL finished){
-                                     mask = [[UIView alloc] initWithFrame:self.frame];
-                                     [mask setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.38]];
-                                     [self.view addSubview:mask];
-                                     [self.view sendSubviewToBack:mask];
-                                     desplegado=YES;
-                                     
-                                 }];
             }
+            //if (!desplegado) {
+                [self setUserInteractionEnabled:NO];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarAjustes" object:self];
+                
+            //}
             
             
             /*[UIView animateWithDuration:1.25 animations:^{
@@ -129,15 +106,6 @@
             
         }
     }
-}
-
--(void)cerrarVentanaAjustes:(NSNotification *)notification{
-    
-
-                         mask.alpha=0.0f;
-                         [mask removeFromSuperview];
-    desplegado=NO;
-
 }
 
 

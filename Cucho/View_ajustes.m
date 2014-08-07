@@ -24,6 +24,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    
     if (self) {
         NSLog(@" Option Screen is Open");
         
@@ -48,12 +49,16 @@
 -(void) setBackground {
     
     CGRect theFrame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    UIImageView* background  = [[UIImageView alloc] initWithFrame:theFrame];
+    /*UIImageView* background  = [[UIImageView alloc] initWithFrame:theFrame];
     background.image = [UIImage imageNamed:@"fondo_ajustes"];
     
     
     [self addSubview:background]; //as long as this method runs before everything else, this will go at an index of 0
-    
+    */
+    NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"ajustes_view" owner:self options:nil];
+    UIView *mainView = [subviewArray objectAtIndex:0];
+    mainView.frame=theFrame;
+    [self addSubview:mainView];
     UIImageView* equis  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     equis.image = [UIImage imageNamed:@"ajustes_equis"];
     equis.layer.anchorPoint = CGPointMake(1, 1);
@@ -75,13 +80,13 @@
                      animations:^{
                          [self setTransform:CGAffineTransformMakeScale(0.0, 0.0)];
                          self.alpha=0.0f;
-                         //[self removeFromSuperview];
+                         [self removeFromSuperview];
                          NSLog(@"si entra");
                      }
                      completion:^(BOOL finished){
-
+[[NSNotificationCenter defaultCenter] postNotificationName:@"cerrar" object:nil];
                          
                      }];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"cerrar" object:nil];//revsar esta notificacion, parece que hay un error haciendo los notifications en los uiviews
+    //revsar esta notificacion, parece que hay un error haciendo los notifications en los uiviews
 }
 @end

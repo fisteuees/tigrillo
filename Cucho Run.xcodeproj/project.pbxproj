@@ -41,6 +41,7 @@
 		855EEE6C196C6CA200AF42AF /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EEE6B196C6CA200AF42AF /* iCarousel.m */; };
 		855EEE75196C6F1000AF42AF /* Escena_nivel.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EEE74196C6F1000AF42AF /* Escena_nivel.m */; };
 		855EEE7B196CA31800AF42AF /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 855EEE7A196CA31800AF42AF /* background.png */; };
+		8560EB4F1993E936000A57F7 /* ajustes_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8560EB4E1993E936000A57F7 /* ajustes_view.xib */; };
 		8575DA961940E3C200392E73 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8575DA951940E3C200392E73 /* JSTileMap.m */; };
 		8575DA991940E3E000392E73 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8575DA981940E3E000392E73 /* LFCGzipUtility.m */; };
 		8575DA9B1940E42B00392E73 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575DA9A1940E42B00392E73 /* libz.dylib */; };
@@ -110,6 +111,7 @@
 		855EEE73196C6F1000AF42AF /* Escena_nivel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Escena_nivel.h; sourceTree = "<group>"; };
 		855EEE74196C6F1000AF42AF /* Escena_nivel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Escena_nivel.m; sourceTree = "<group>"; };
 		855EEE7A196CA31800AF42AF /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		8560EB4E1993E936000A57F7 /* ajustes_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ajustes_view.xib; sourceTree = "<group>"; };
 		8575DA941940E3C200392E73 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
 		8575DA951940E3C200392E73 /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
 		8575DA971940E3E000392E73 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			children = (
 				85A659D7196339320095D51A /* View_ajustes.h */,
 				85A659D8196339320095D51A /* View_ajustes.m */,
+				8560EB4E1993E936000A57F7 /* ajustes_view.xib */,
 			);
 			name = PopViews;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				8575DAA71940EC3A00392E73 /* BTjugar@2x.png in Resources */,
 				8535D6CE19880496005BEC90 /* bt_nivel4.png in Resources */,
 				232312AC1937AA4600B34F7A /* Images.xcassets in Resources */,
+				8560EB4F1993E936000A57F7 /* ajustes_view.xib in Resources */,
 				8535D6D719880AE2005BEC90 /* cuchoNiveles.atlas in Resources */,
 				85A659D119630E940095D51A /* configuracion_juego.plist in Resources */,
 				855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */,

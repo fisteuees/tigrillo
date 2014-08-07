@@ -46,7 +46,7 @@
         if([nodo.name isEqualToString:@"atras"]){
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"borrar" object:self];
-            SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.5];
+            SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.0];
             SKScene * gameOverScene = [[Escena_menu alloc] initWithSize:self.size conGameCenter:gc1];
             [self.view presentScene:gameOverScene transition:reveal];
             

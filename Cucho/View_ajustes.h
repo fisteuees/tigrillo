@@ -10,4 +10,6 @@
 
 @interface View_ajustes : UIView
 
+@property (nonatomic, retain) IBOutlet UIView *ajustes;
+
 @end
