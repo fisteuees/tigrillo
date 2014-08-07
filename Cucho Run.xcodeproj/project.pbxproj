@@ -51,6 +51,7 @@
 		8554798019940731008BBAF9 /* SKTEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554797619940731008BBAF9 /* SKTEffects.m */; };
 		8554798119940731008BBAF9 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554797819940731008BBAF9 /* SKTTimingFunctions.m */; };
 		8554798519941092008BBAF9 /* conexionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554798419941092008BBAF9 /* conexionBase.m */; };
+		8554798719942556008BBAF9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8554798619942556008BBAF9 /* libsqlite3.dylib */; };
 		855EEE66196C5A2A00AF42AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855EEE65196C5A2A00AF42AF /* QuartzCore.framework */; };
 		855EEE6C196C6CA200AF42AF /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EEE6B196C6CA200AF42AF /* iCarousel.m */; };
 		855EEE75196C6F1000AF42AF /* Escena_nivel.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EEE74196C6F1000AF42AF /* Escena_nivel.m */; };
@@ -143,6 +144,7 @@
 		8554797919940731008BBAF9 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
 		8554798319941092008BBAF9 /* conexionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conexionBase.h; sourceTree = "<group>"; };
 		8554798419941092008BBAF9 /* conexionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = conexionBase.m; sourceTree = "<group>"; };
+		8554798619942556008BBAF9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		855EEE65196C5A2A00AF42AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		855EEE6A196C6CA200AF42AF /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		855EEE6B196C6CA200AF42AF /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8554798719942556008BBAF9 /* libsqlite3.dylib in Frameworks */,
 				855EEE66196C5A2A00AF42AF /* QuartzCore.framework in Frameworks */,
 				8575DA9B1940E42B00392E73 /* libz.dylib in Frameworks */,
 				2323128C1937AA4600B34F7A /* CoreGraphics.framework in Frameworks */,
@@ -218,6 +221,7 @@
 		232312881937AA4600B34F7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8554798619942556008BBAF9 /* libsqlite3.dylib */,
 				855EEE65196C5A2A00AF42AF /* QuartzCore.framework */,
 				850B4B1C1941195E007C5C20 /* GameKit.framework */,
 				8575DA9A1940E42B00392E73 /* libz.dylib */,
