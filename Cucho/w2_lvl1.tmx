@@ -52,19 +52,19 @@
    eJztktdNADEQRO++CCL0QRChH0IfBBH6IIjQB0GEPggiFMF8mq/zrtc+Id6T5uvGntlbdx0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA1GJD2pS2pO1xq/xizF6ts0vyxvhPUZl/6T/nsCftG88cSIfSkXQ84N2Rdg05Vr+3V3QHb7Z3Xm+e9WzJPryZ0fe0elO5OanvTDo3drqQLqUr6XrAeyKdGnKsfm+v6A7ebO+8JbPW3F9EZvQ9rd5Ubk7qu5PujZ0epEfpSXoe8N5It4Ycq9/bK7qDN9s7b8msNfcXkRl9T6s3lZuT+t6kd2OnD+lT+pK+B7wv0qshx+r39oru4M32zlsya839RWRG39PqTeXmpL6pvuume1unGflnpTlpfuDshL5P9vk5Vr+3V3QHb7Z33pJZa+6vRt/Se1q9qdyc1LckLRs7rci/Kq1J6wNnF/R90ZBj9Xt7RXfwZnvnLZm15v5q9C29p9Wbys1JfQAAAAAAAPA/+AFrs9EO
   </data>
  </layer>
- <layer name="PowerUp" width="224" height="24">
+ <layer name="Iman" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt0zESQDAURdEwk2QJ2Ar2vww2gVq6NLqoOGfmtn9+80IAAAAAAAAAAAAAAAAAAAAAeHak2lm6Utu9LYawx3d+g68bcm0sTbntXlf22zduGP5izrWltDbuDwAA4AZe/wid
+   eJztzsEJgDAUBcGnkKQntf8ytBW92YGf4AzsfRMAAAAAAAAAAAAAAAAAAACAb5wtuVr1BfzT0pO1V1/AHLbxtj8do/oIAACY3Q0HkAMf
   </data>
  </layer>
  <layer name="Monedas" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt190NgjAUhuETDNVV0DH0Eh3DGXUKB9BER7EEm2jCzxF6UNL3Sc4NlK9a2gIiAAAAAAAAAAAAAAAAAAAAAAAAgL1TLnLO55NrnQ0EU8yzq8+/GfRhlWud3WaXTdtfCmLNb6t1MsU8uyxEStdce18HZ9v/HIT7W7jPWvvaMD6DxZrfv9iP/0Eq8y/c3/e9Kaw/6PU9p5rOa4/FymnLtrhe674UefjaZnUVbnim5W+Oka3tsxoDTduuNql9x/Y9p5rOa4/FymnL1rSt9uVvrtfKViILX8esrrD+hmSO/c/W2do+u8Zam5fqexPGKV/rj+9DAAAAIA1Pf3ts7Q==
+   eJzt1UsOgjAUBdDGBPbiPhyq69W16GKUgSP5NPAeRDlnQtLPbRNe21IAAAAAAAAAAAAAAAAg360p5d78Tm52NnysUWePd/4zYY2s3OzsIafDuuvtQVR9Z52TLeqMb97bHFH17Zz8N/83xtQ91tdf2xaVM5SdMX+pOZmZe47Irl3z2NaNHRuzt3d16h7r669ti8oZys6Yv9SczMw9R2TXrnlu68aOjfGuMkdXe53L+3ttt90LAACQ7wWpPGLJ
   </data>
  </layer>
  <layer name="Obstaculos" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt2GFOwkAQxfEt4FEET6Kx39SrqFdRr6KoB9AzgHoAvIKvKSWbzaZgM7Oa9P9LXiAkPJrsTAmEAAAAAAAAAAAAAAAAAAAAAAAAAPh6m7Z5z8Sjc2hv2pn2w9f8gCyix/h5Tm5GhrDqKd3d2UzbfGdi2WnNuz8Wn4N1p0e3lXi3zg9It2912L9/6YwM5T1rmwLz1bisQriq7PqWyrPyorza1e5cVO01l1LqHP7avu+4sTmb+X/Gteb4Rrk1nOe18qF8Kl92tTse19zntMA5jNFK97S1wX3NqqdUb+xOM3yvPBjO8kRdU2WmHDnsiMc19ylxDmNU6b42Mbi3WfWU6o09aoaflKXhLB+ra64slBOHHfG45j4lzuG/aX7T1dt06u3rIfNa97uvTt5bBwC/le5ZrNmp7v+VdNfYN8Bf7vsRAABvP9RsahE=
+   eJzt08tNw0AUBdAxNqWQ0ArUA7QCtEJCSuFXCTeKgryIEhaewSjnSHdhy74aad4rBQAAAAAAAAAAAAAAAACA/+Q12fz1IWDm7rpS7pOHbrrO9+Qj+Uy+pqv9UePMtPfWZ1b6+fS06h17zAw/Jc8TzvJFuvpkSC4r7EiNMx/T4h7OUTdkVob59LTqHXvJDK+S9YSzfJWuRbJMrivsSI0zH9PiHubm5sC72xP/LH/xDXDaof3b2+7Youz2bf88DlDXdj/tGwCtfQOJQhuR
   </data>
  </layer>
  <layer name="Suelo" width="224" height="24">

@@ -124,6 +124,9 @@
         self.suelo = [self.mapa layerNamed:@"Suelo"]; //revisar nombre de capas
         self.rocas = [self.mapa layerNamed:@"Obstaculos"]; //y pide x20
         self.monedas = [self.mapa layerNamed:@"Monedas"];
+        self.iman = [self.mapa layerNamed:(@"Iman")];
+        self.multiplicador = [self.mapa layerNamed:(@"Multiplicador")];
+        self.escudo = [self.mapa layerNamed:(@"Escudo")];
         
         self.jugador = [[Jugador alloc] initWithImageNamed:@"cucho01-01.png"]; //cambiar por cucho
         self.jugador.position = CGPointMake(50, 200);

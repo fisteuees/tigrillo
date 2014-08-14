@@ -21,6 +21,9 @@
 @property (nonatomic, strong) TMXLayer *rocas;
 @property (nonatomic, strong) TMXLayer *fondo;
 @property (nonatomic, strong) TMXLayer *monedas;
+@property (nonatomic, strong) TMXLayer *iman;
+@property (nonatomic, strong) TMXLayer *escudo;
+@property (nonatomic, strong) TMXLayer *multiplicador;
 @property (nonatomic, strong) EfectoParallax *fondo0;
 @property (nonatomic, strong) EfectoParallax *fondo1;
 @property (nonatomic, assign) BOOL juegoTermino;

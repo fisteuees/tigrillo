@@ -83,7 +83,7 @@
 		85A659D119630E940095D51A /* configuracion_juego.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85A659D019630E940095D51A /* configuracion_juego.plist */; };
 		85A659D5196338380095D51A /* BTajustes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85A659D4196338380095D51A /* BTajustes@2x.png */; };
 		85A659D9196339320095D51A /* View_ajustes.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659D8196339320095D51A /* View_ajustes.m */; };
-		85FAC17D199A8081001A7DB1 /* w2_lvl1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 85FAC17C199A8081001A7DB1 /* w2_lvl1.tmx */; };
+		85D24AB9199D26CC00886F1E /* w2_lvl1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 85D24AB8199D26CC00886F1E /* w2_lvl1.tmx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,7 +199,7 @@
 		85A659D4196338380095D51A /* BTajustes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTajustes@2x.png"; sourceTree = "<group>"; };
 		85A659D7196339320095D51A /* View_ajustes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View_ajustes.h; sourceTree = "<group>"; };
 		85A659D8196339320095D51A /* View_ajustes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View_ajustes.m; sourceTree = "<group>"; };
-		85FAC17C199A8081001A7DB1 /* w2_lvl1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w2_lvl1.tmx; sourceTree = "<group>"; };
+		85D24AB8199D26CC00886F1E /* w2_lvl1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w2_lvl1.tmx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,7 +345,7 @@
 		850EC3D0199437660044959B /* Level Files */ = {
 			isa = PBXGroup;
 			children = (
-				85FAC17C199A8081001A7DB1 /* w2_lvl1.tmx */,
+				85D24AB8199D26CC00886F1E /* w2_lvl1.tmx */,
 			);
 			name = "Level Files";
 			sourceTree = "<group>";
@@ -669,7 +669,6 @@
 				857985F6199D1D38001352E6 /* cucho03.png in Resources */,
 				850EC3E3199438490044959B /* Snowflakes.png in Resources */,
 				850EC3DB199437F10044959B /* escudo.png in Resources */,
-				85FAC17D199A8081001A7DB1 /* w2_lvl1.tmx in Resources */,
 				8575DAA51940EC0200392E73 /* BTpuntajes@2x.png in Resources */,
 				857985F7199D1D38001352E6 /* cucho04.png in Resources */,
 				85A659D5196338380095D51A /* BTajustes@2x.png in Resources */,
@@ -698,6 +697,7 @@
 				857985F8199D1D38001352E6 /* cucho05.png in Resources */,
 				2323129F1937AA4600B34F7A /* Main_iPhone.storyboard in Resources */,
 				232312961937AA4600B34F7A /* InfoPlist.strings in Resources */,
+				85D24AB9199D26CC00886F1E /* w2_lvl1.tmx in Resources */,
 				8535D6CF19880496005BEC90 /* bt_nivel5.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
