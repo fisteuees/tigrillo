@@ -71,13 +71,7 @@
 		8575DAA51940EC0200392E73 /* BTpuntajes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8575DAA41940EC0200392E73 /* BTpuntajes@2x.png */; };
 		8575DAA71940EC3A00392E73 /* BTjugar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8575DAA61940EC3A00392E73 /* BTjugar@2x.png */; };
 		8575DAA91940EE2900392E73 /* BTcomprar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8575DAA81940EE2900392E73 /* BTcomprar@2x.png */; };
-		857985F4199D1D38001352E6 /* cucho01.png in Resources */ = {isa = PBXBuildFile; fileRef = 857985ED199D1D38001352E6 /* cucho01.png */; };
-		857985F5199D1D38001352E6 /* cucho02.png in Resources */ = {isa = PBXBuildFile; fileRef = 857985EE199D1D38001352E6 /* cucho02.png */; };
-		857985F6199D1D38001352E6 /* cucho03.png in Resources */ = {isa = PBXBuildFile; fileRef = 857985EF199D1D38001352E6 /* cucho03.png */; };
-		857985F7199D1D38001352E6 /* cucho04.png in Resources */ = {isa = PBXBuildFile; fileRef = 857985F0199D1D38001352E6 /* cucho04.png */; };
-		857985F8199D1D38001352E6 /* cucho05.png in Resources */ = {isa = PBXBuildFile; fileRef = 857985F1199D1D38001352E6 /* cucho05.png */; };
-		857985F9199D1D38001352E6 /* cucho06.png in Resources */ = {isa = PBXBuildFile; fileRef = 857985F2199D1D38001352E6 /* cucho06.png */; };
-		857985FA199D1D38001352E6 /* cucho07.png in Resources */ = {isa = PBXBuildFile; fileRef = 857985F3199D1D38001352E6 /* cucho07.png */; };
+		857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 857985FD199D29CE001352E6 /* cuchoAnimacion.atlas */; };
 		85A659CB196307930095D51A /* Jugador.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659CA196307930095D51A /* Jugador.m */; };
 		85A659CF196307C90095D51A /* EfectoParallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659CE196307C90095D51A /* EfectoParallax.m */; };
 		85A659D119630E940095D51A /* configuracion_juego.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85A659D019630E940095D51A /* configuracion_juego.plist */; };
@@ -184,13 +178,7 @@
 		8575DAA41940EC0200392E73 /* BTpuntajes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTpuntajes@2x.png"; sourceTree = "<group>"; };
 		8575DAA61940EC3A00392E73 /* BTjugar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTjugar@2x.png"; sourceTree = "<group>"; };
 		8575DAA81940EE2900392E73 /* BTcomprar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTcomprar@2x.png"; sourceTree = "<group>"; };
-		857985ED199D1D38001352E6 /* cucho01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucho01.png; sourceTree = "<group>"; };
-		857985EE199D1D38001352E6 /* cucho02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucho02.png; sourceTree = "<group>"; };
-		857985EF199D1D38001352E6 /* cucho03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucho03.png; sourceTree = "<group>"; };
-		857985F0199D1D38001352E6 /* cucho04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucho04.png; sourceTree = "<group>"; };
-		857985F1199D1D38001352E6 /* cucho05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucho05.png; sourceTree = "<group>"; };
-		857985F2199D1D38001352E6 /* cucho06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucho06.png; sourceTree = "<group>"; };
-		857985F3199D1D38001352E6 /* cucho07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cucho07.png; sourceTree = "<group>"; };
+		857985FD199D29CE001352E6 /* cuchoAnimacion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuchoAnimacion.atlas; sourceTree = "<group>"; };
 		85A659C9196307930095D51A /* Jugador.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jugador.h; sourceTree = "<group>"; };
 		85A659CA196307930095D51A /* Jugador.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jugador.m; sourceTree = "<group>"; };
 		85A659CD196307C90095D51A /* EfectoParallax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EfectoParallax.h; sourceTree = "<group>"; };
@@ -363,13 +351,7 @@
 		850EC3E419943B230044959B /* Cucho */ = {
 			isa = PBXGroup;
 			children = (
-				857985ED199D1D38001352E6 /* cucho01.png */,
-				857985EE199D1D38001352E6 /* cucho02.png */,
-				857985EF199D1D38001352E6 /* cucho03.png */,
-				857985F0199D1D38001352E6 /* cucho04.png */,
-				857985F1199D1D38001352E6 /* cucho05.png */,
-				857985F2199D1D38001352E6 /* cucho06.png */,
-				857985F3199D1D38001352E6 /* cucho07.png */,
+				857985FD199D29CE001352E6 /* cuchoAnimacion.atlas */,
 			);
 			name = Cucho;
 			sourceTree = "<group>";
@@ -660,27 +642,22 @@
 			files = (
 				855056B019816B6F005EC6C2 /* mario.jpg in Resources */,
 				855EEE7B196CA31800AF42AF /* background.png in Resources */,
-				857985F5199D1D38001352E6 /* cucho02.png in Resources */,
 				850EC3DC199437F10044959B /* listos-separados.png in Resources */,
-				857985FA199D1D38001352E6 /* cucho07.png in Resources */,
 				8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */,
 				850EC3DD199437F10044959B /* MAS-GRANDES.png in Resources */,
 				850EC3DA199437F10044959B /* 12.png in Resources */,
-				857985F6199D1D38001352E6 /* cucho03.png in Resources */,
 				850EC3E3199438490044959B /* Snowflakes.png in Resources */,
 				850EC3DB199437F10044959B /* escudo.png in Resources */,
 				8575DAA51940EC0200392E73 /* BTpuntajes@2x.png in Resources */,
-				857985F7199D1D38001352E6 /* cucho04.png in Resources */,
+				857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */,
 				85A659D5196338380095D51A /* BTajustes@2x.png in Resources */,
 				850EC3DE199437F10044959B /* moneda por 2.png in Resources */,
-				857985F4199D1D38001352E6 /* cucho01.png in Resources */,
 				851EFF2519883E38009377CD /* bt_atras.png in Resources */,
 				850EC3E2199438490044959B /* snow.sks in Resources */,
 				8535D6CC19880496005BEC90 /* bt_nivel2.png in Resources */,
 				85547966199405EC008BBAF9 /* corazon@2x.png in Resources */,
 				8575DAA71940EC3A00392E73 /* BTjugar@2x.png in Resources */,
 				8535D6CE19880496005BEC90 /* bt_nivel4.png in Resources */,
-				857985F9199D1D38001352E6 /* cucho06.png in Resources */,
 				232312AC1937AA4600B34F7A /* Images.xcassets in Resources */,
 				8560EB4F1993E936000A57F7 /* ajustes_view.xib in Resources */,
 				8535D6D719880AE2005BEC90 /* cuchoNiveles.atlas in Resources */,
@@ -694,7 +671,6 @@
 				85547963199405D7008BBAF9 /* images.png in Resources */,
 				232312A21937AA4600B34F7A /* Main_iPad.storyboard in Resources */,
 				8554795F199405C2008BBAF9 /* bt_recargar@2x.png in Resources */,
-				857985F8199D1D38001352E6 /* cucho05.png in Resources */,
 				2323129F1937AA4600B34F7A /* Main_iPhone.storyboard in Resources */,
 				232312961937AA4600B34F7A /* InfoPlist.strings in Resources */,
 				85D24AB9199D26CC00886F1E /* w2_lvl1.tmx in Resources */,

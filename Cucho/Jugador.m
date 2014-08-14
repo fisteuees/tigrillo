@@ -21,7 +21,7 @@
 - (void)update:(NSTimeInterval)delta {
     //3
     if (self.modo==0) {
-        CGPoint gravity = CGPointMake(0.0, -450.0);
+        CGPoint gravity = CGPointMake(0.0, -650.0);
         //4
         CGPoint gravityStep = CGPointMultiplyScalar(gravity, delta);
         CGPoint moverX = CGPointMake(800.0, 0.0);
@@ -29,7 +29,7 @@
         //5
         self.velocity = CGPointAdd(self.velocity, gravityStep);
         self.velocity = CGPointMake(self.velocity.x * 0.9, self.velocity.y);
-        CGPoint jumpForce = CGPointMake(0.0, 310.0);
+        CGPoint jumpForce = CGPointMake(0.0, 500.0);
         float corteVelocidad = 150.0;
         
         if (self.puede_moverse) {
@@ -49,7 +49,7 @@
         self.posicionDeseada = CGPointAdd(self.position, velocityStep);
     }
     else if (self.modo==1) {
-        CGPoint gravity = CGPointMake(0.0, -1050.0);
+        CGPoint gravity = CGPointMake(0.0, -650.0);
         //4
         CGPoint gravityStep = CGPointMultiplyScalar(gravity, delta);
         CGPoint moverX = CGPointMake(800.0, 0.0);
@@ -57,7 +57,7 @@
         //5
         self.velocity = CGPointAdd(self.velocity, gravityStep);
         self.velocity = CGPointMake(self.velocity.x * 0.9, self.velocity.y);
-        CGPoint jumpForce = CGPointMake(0.0, 450.0);
+        CGPoint jumpForce = CGPointMake(0.0, 500.0);
         
         if (self.puede_moverse) {
             self.velocity = CGPointAdd(self.velocity, moverXcon);
@@ -76,7 +76,7 @@
 }
 
 -(CGRect)rectanguloColision{
-    CGRect boundingBox= CGRectInset(self.frame, 2, 0);
+    CGRect boundingBox= CGRectInset(self.frame, 10, 10);
     CGPoint diferencia = CGPointSubtract(self.posicionDeseada, self.position);
     return CGRectOffset(boundingBox, diferencia.x, diferencia.y);
 }

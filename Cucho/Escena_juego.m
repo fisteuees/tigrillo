@@ -43,6 +43,7 @@
     NSTimer *tiempo_reanudar;
     NSString *strTiempo;
     NSNumber *cont_tiempo;
+    NSArray *cuchoCaminando;
     
 }
 @end
@@ -128,12 +129,26 @@
         self.multiplicador = [self.mapa layerNamed:(@"Multiplicador")];
         self.escudo = [self.mapa layerNamed:(@"Escudo")];
         
-        self.jugador = [[Jugador alloc] initWithImageNamed:@"cucho01-01.png"]; //cambiar por cucho
-        self.jugador.position = CGPointMake(50, 200);
+        SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"cuchoAnimacion"];
+        SKTexture *f1 = [atlas textureNamed:@"cucho01.png"];
+        SKTexture *f2 = [atlas textureNamed:@"cucho02.png"];
+        SKTexture *f3 = [atlas textureNamed:@"cucho03.png"];
+        SKTexture *f4 = [atlas textureNamed:@"cucho04.png"];
+        SKTexture *f5 = [atlas textureNamed:@"cucho05.png"];
+        SKTexture *f6 = [atlas textureNamed:@"cucho06.png"];
+        SKTexture *f7 = [atlas textureNamed:@"cucho07.png"];
+        cuchoCaminando = @[f1,f2,f3,f4,f5,f6,f7];
+        
+        self.jugador = [[Jugador alloc] initWithImageNamed:@"cucho01.png"];
+        self.jugador.position = CGPointMake(50, 230);
         self.jugador.zPosition = 100;
         self.jugador.modo=1;
         self.jugador.puede_moverse=NO;
         [self.mapa addChild:self.jugador];
+        
+        SKAction *walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
+        [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
+
         
         //BOTON DE PAUSA
         menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
@@ -549,6 +564,7 @@
     [self.tiempo invalidate];
     pausa.hidden = YES;
     termino = 1;
+    [self.jugador removeAllActions];
     //
     self.juegoTermino=YES;
     SKLabelNode *mensaje=[SKLabelNode labelNodeWithFontNamed:@"Arial"];
