@@ -568,6 +568,12 @@
         //Para base
         //conexionBase *cb;// = [[conexionBase alloc] init];
         //[con insert:contar_monedas];
+        ///-----------------------------Nuevo en base de datos
+        NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+        [userInfo setObject:[NSNumber numberWithInt:contar_monedas] forKey:@"total"];
+        NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+        [nc postNotificationName:@"insertBase" object:self userInfo:userInfo];
+        //------------------------
         contar_monedas = 0;
         contador_vidas = 2;
         //Fin para base

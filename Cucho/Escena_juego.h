@@ -25,7 +25,7 @@
 @property (nonatomic, strong) EfectoParallax *fondo1;
 @property (nonatomic, assign) BOOL juegoTermino;
 //
--(id)initWithSize:(CGSize)size withBase:(conexionBase *)cb;
+//-(id)initWithSize:(CGSize)size withBase:(conexionBase *)cb;
 -(void)pausar;
 
 //

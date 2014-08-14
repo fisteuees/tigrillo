@@ -20,6 +20,7 @@
     UIView *mask;
     View_ajustes *ajustes;
     BOOL desplegado;
+    conexionBase *cb;
 }
 
 @end
@@ -49,7 +50,7 @@
                                                  name:@"insertBase"
                                                object:nil];
     //base de datos
-    conexionBase *cb = [[conexionBase alloc]init];
+    cb = [[conexionBase alloc]init];
     [cb abrirBD];
     [cb crearTabla:@"prueba" conCampo1:@"id" conCampo2:@"nombre" conCampo3:@"puntaje" conCampo4:@"tema"];
     
@@ -314,7 +315,12 @@
 }
 
 -(void)insertBase:(NSNotification *)notification{
-    
+    //------------------Nuevo para base de datos
+    NSDictionary* userInfo = notification.userInfo;
+    int monedas = [[userInfo objectForKey:@"total"] intValue];
+    [cb insert:monedas];
+    NSLog (@"Successfully received test notification! %i", monedas);
+    //----------------Nuevo para base de datos
 }
 
 
