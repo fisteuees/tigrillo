@@ -83,13 +83,14 @@
          object:nil];
         //FIN DE NOTIFICACIONES
         self.userInteractionEnabled = YES;
-        
+        /*
         self.fondo0=[[EfectoParallax alloc]initWithBackground:@"fondo0" size:size speed:1.0];
         self.fondo0.zPosition=-3;
         [self addChild:self.fondo0];
         self.fondo1=[[EfectoParallax alloc]initWithBackground:@"fondo1" size:size speed:1.5];
         self.fondo1.zPosition=-2;
         [self addChild:self.fondo1];
+         */
         
         con_monedas = [[SKLabelNode alloc] initWithFontNamed:@"Verdana"];
         [con_monedas setFontSize:20];
@@ -116,18 +117,20 @@
         //FIN PARA VIDAS
         
         
-        self.mapa = [JSTileMap mapNamed:@"MapaRun.tmx"]; //cambiar aquí nombre de mapa
+        
+        self.mapa = [JSTileMap mapNamed:@"w2_lvl1.tmx"]; //cambiar aquí nombre de mapa
         self.mapa.zPosition=99;
         [self addChild:self.mapa];
         self.suelo = [self.mapa layerNamed:@"Suelo"]; //revisar nombre de capas
-        self.rocas = [self.mapa layerNamed:@"Rocas"]; //y pide x20
+        self.rocas = [self.mapa layerNamed:@"Obstaculos"]; //y pide x20
         self.monedas = [self.mapa layerNamed:@"Monedas"];
         
-        self.jugador = [[Jugador alloc] initWithImageNamed:@"koalio_stand"]; //cambiar por cucho
-        self.jugador.position = CGPointMake(50, 50);
+        self.jugador = [[Jugador alloc] initWithImageNamed:@"cucho01-01.png"]; //cambiar por cucho
+        self.jugador.position = CGPointMake(50, 200);
         self.jugador.zPosition = 100;
         self.jugador.modo=1;
         self.jugador.puede_moverse=NO;
+        [self.mapa addChild:self.jugador];
         
         //BOTON DE PAUSA
         menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
@@ -158,7 +161,7 @@
          [self.jugador addChild:particula];*/
         
         
-        [self.mapa addChild:self.jugador];
+        
         
         
         
@@ -210,7 +213,7 @@
         [self comprobarColisionesTrampas:self.jugador porCapas:self.rocas];
     }
     [self comprobarColisionesMonedas:self.jugador porCapas:self.monedas];
-    //
+    
     
     
 }
@@ -388,7 +391,7 @@
             //1
             if (CGRectIntersectsRect(areaJugador, areaTile)) {
                 [self.monedas removeTileAtCoord:posiTile];
-                [self runAction:[SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO]];
+                //[self runAction:[SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO]];
                 contar_monedas++;
                 con_monedas.text = [NSString stringWithFormat:@"%i",contar_monedas];
             }

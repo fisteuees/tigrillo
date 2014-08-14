@@ -90,9 +90,9 @@
         if([nodo.name isEqualToString:@"nivel2"]){
             SKAction *walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
             [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
-            [cucho runAction:[SKAction moveTo:location duration:2.5]completion:^{
+            [cucho runAction:[SKAction moveTo:location duration:2.0]completion:^{
                 [cucho removeAllActions];
-                SKTransition *reveal = [SKTransition doorsOpenVerticalWithDuration:1.0];
+                SKTransition *reveal = [SKTransition doorsOpenVerticalWithDuration:0.1];
                 SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size];
                 [self.view presentScene:gameOverScene transition:reveal];
             
