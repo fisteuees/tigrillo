@@ -19,6 +19,11 @@
 @property (nonatomic, assign) NSTimeInterval tiempoAnterior;
 @property (nonatomic, strong) TMXLayer *suelo;
 @property (nonatomic, strong) TMXLayer *rocas;
+@property (nonatomic, strong) TMXLayer *decoracion1;
+@property (nonatomic, strong) TMXLayer *decoracion2;
+@property (nonatomic, strong) TMXLayer *decoracion3;
+@property (nonatomic, strong) TMXLayer *decoracion4;
+@property (nonatomic, strong) TMXLayer *decoracion5;
 @property (nonatomic, strong) TMXLayer *fondo;
 @property (nonatomic, strong) TMXLayer *monedas;
 @property (nonatomic, strong) TMXLayer *iman;

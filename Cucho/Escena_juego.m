@@ -149,10 +149,14 @@ const float CannonCollisionSpeed = 100.0f;
         self.suelo = [self.mapa layerNamed:@"Suelo"]; //revisar nombre de capas
         self.rocas = [self.mapa layerNamed:@"Obstaculos"]; //y pide x20
         self.monedas = [self.mapa layerNamed:@"Monedas"];
+        self.monedas.zPosition=2;
         
         self.iman = [self.mapa layerNamed:(@"Iman")];
         self.multiplicador = [self.mapa layerNamed:(@"Multiplicador")];
+        self.multiplicador.zPosition=2;
         self.escudo = [self.mapa layerNamed:(@"Escudo")];
+        self.decoracion1 = [self.mapa layerNamed:(@"Decoracion 1")];
+        self.decoracion1.zPosition=2;
         
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"cuchoAnimacion"];
         SKTexture *f1 = [atlas textureNamed:@"cucho01.png"];
@@ -327,7 +331,7 @@ const float CannonCollisionSpeed = 100.0f;
 }
 
 -(void)willMoveFromView:(SKView *)view{
-    slider.removeFromSuperview;
+    [slider removeFromSuperview];
 }
 
 - (void)saltoDoble{
@@ -383,8 +387,9 @@ const float CannonCollisionSpeed = 100.0f;
     if (espacio_movimiento!=4) {
     }else{
         [self comprobarColisionesTrampas:self.jugador porCapas:self.rocas];
+        [self comprobarColisionesMonedas:self.jugador porCapas:self.monedas];
     }
-    [self comprobarColisionesMonedas:self.jugador porCapas:self.monedas];
+    
     
     
     
@@ -608,16 +613,16 @@ const float CannonCollisionSpeed = 100.0f;
                     contador = [NSNumber numberWithInt:0];
                     [self.tiempo invalidate];
                     self.tiempo = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(chocar) userInfo:nil repeats:YES];
+                    SKAction *fadeOut=[SKAction fadeAlphaTo:0.30 duration:0.2];
+                    SKAction *fadeIn=[SKAction fadeAlphaTo:1.0 duration:0.2];
+                    [self.jugador runAction:[SKAction repeatActionForever:[SKAction sequence:@[fadeOut,fadeIn]]]withKey:@"fade"];
                     espacio_movimiento = 2;
                     
                 }else{
                     [corazon1 setHidden:YES];
                     [self juegoTerminado:0];
                 }
-                
-                
-                
-                
+   
             }
         }
     }
@@ -638,6 +643,8 @@ const float CannonCollisionSpeed = 100.0f;
         //self.mapa.position = CGPointMake(self.mapa.position.x-4, self.mapa.position.y);
         //self.jugador.position= CGPointMake(self.jugador.position.x+4, self.jugador.position.y);
         espacio_movimiento = 4;
+        [self.jugador removeActionForKey:@"fade"];
+        self.jugador.alpha=1.0f;
         
     }
     // Your Code
@@ -788,7 +795,7 @@ const float CannonCollisionSpeed = 100.0f;
 }
 
 
-#pragma mark Anadir Slider
+#pragma mark Slider
 
 -(void)anadirSlider{
     CGRect frame = CGRectMake(100.0, 30.0, 824.0, 10.0);
@@ -799,6 +806,13 @@ const float CannonCollisionSpeed = 100.0f;
     slider.continuous = YES;
     slider.value = 0.0;
     slider.userInteractionEnabled=NO;
+    UIImage *cuchito=[UIImage imageNamed:@"cucho04.png"];
+    UIImage *scaledImage =
+    [UIImage imageWithCGImage:[cuchito CGImage]
+                        scale:(cuchito.scale * 2.0)
+                  orientation:(cuchito.imageOrientation)];
+    
+    [slider setThumbImage:scaledImage forState:UIControlStateNormal];
     [self.view addSubview:slider];
 }
 
