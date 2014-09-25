@@ -103,14 +103,14 @@ const float CannonCollisionSpeed = 100.0f;
          object:nil];
         //FIN DE NOTIFICACIONES
         self.userInteractionEnabled = YES;
-        /*
-        self.fondo0=[[EfectoParallax alloc]initWithBackground:@"fondo0" size:size speed:1.0];
+        
+        self.fondo0=[[EfectoParallax alloc]initWithBackground:@"fondo_hielo_1" size:size speed:1.0];
         self.fondo0.zPosition=-3;
         [self addChild:self.fondo0];
-        self.fondo1=[[EfectoParallax alloc]initWithBackground:@"fondo1" size:size speed:1.5];
+        self.fondo1=[[EfectoParallax alloc]initWithBackground:@"fondo_hielo_2" size:size speed:1.5];
         self.fondo1.zPosition=-2;
         [self addChild:self.fondo1];
-         */
+        
         
         con_monedas = [[SKLabelNode alloc] initWithFontNamed:@"Verdana"];
         [con_monedas setFontSize:20];

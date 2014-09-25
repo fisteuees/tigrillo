@@ -163,8 +163,8 @@
     UILabel *label = nil;
     
     //create new view if no view is availab le for recycling
-    if (view == nil)
-    {
+    //if (view == nil)
+    //{
         NSLog(@"de entrar entra" );
         //don't do anything specific to the index within
         //this `if (view == nil) {...}` statement because the view will be
@@ -219,13 +219,8 @@
         label.font = [label.font fontWithSize:50];
         label.tag = 1;
         [view addSubview:label];
-    }
-    else
-    {
-        //get a reference to the label in the recycled view
-        label = (UILabel *)[view viewWithTag:1];
-    }
-    
+  //  }
+
     //set item label
     //remember to always set any properties of your carousel item
     //views outside of the `if (view == nil) {...}` check otherwise
