@@ -1,85 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="224" height="24" tilewidth="32" tileheight="32" backgroundcolor="#a7a7a7">
- <tileset firstgid="1" name="MAS-GRANDES" tilewidth="32" tileheight="32">
-  <image source="MAS-GRANDES.png" width="1136" height="640"/>
+<map version="1.0" orientation="orthogonal" width="224" height="24" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Ice_Level_Tileset" tilewidth="32" tileheight="32">
+  <image source="Ice_Level_Tileset.png" width="1136" height="640"/>
+  <terraintypes>
+   <terrain name="New Terrain" tile="-1"/>
+  </terraintypes>
  </tileset>
- <tileset firstgid="701" name="12" tilewidth="32" tileheight="32">
-  <image source="12.png" width="1136" height="640"/>
+ <tileset firstgid="701" name="Coins_PowerUP" tilewidth="32" tileheight="32">
+  <image source="Coins_PowerUP.png" width="1136" height="640"/>
  </tileset>
- <tileset firstgid="1401" name="tiles-grandes" tilewidth="32" tileheight="32">
-  <image source="tiles-grandes.png" width="1136" height="640"/>
- </tileset>
- <tileset firstgid="2101" name="moneda" tilewidth="32" tileheight="32">
-  <image source="moneda.png" width="65" height="64"/>
- </tileset>
- <layer name="Decoracion 8" width="224" height="24" opacity="0.15">
+ <layer name="Decoracion 5" width="224" height="24" opacity="0.19">
   <data encoding="base64" compression="zlib">
-   eJztzsENQFAURNFfElpBK2gFzXpNvJjFOckkdznTGGOuLbVJt3bKD53Ta22r7bq9U37onD5qZ+3S7Z3yQ+f0XXtqr27vlB86pwEAAAAAAAAAAAAAAAAAAAAA+McHIpdjSA==
+   eJzt0NcNglEMg9H7MwdlFMoolH0oo1BGoYxCecArICXBiO9Ifnbi1gAAAAAAAAAAAAAAAAAAAAAA37LuWtsoW2XX/W6H2w3ZfQ6bVon+1Wm7vfoPylE5Jd1S0eF2Q3afw6ZVon912u6s/otyVW5Jt1R0uN2Q3eewaZXoX522u6v/oTyVV9ItFR1uN2T3OWxaJfpXp+36vdYGylAZ9X63w+2G7D6HTatE/+q03Vj9E2WqzJJuqehwuyG7z2HTKtG/Om03V/9CWSqrpFsqOtxuyO5z2LRK9K//tB0AAAAA4HNvLf1s4w==
   </data>
  </layer>
- <layer name="Decoracion 7" width="224" height="24" opacity="0.54">
+ <layer name="Decoracion 4" width="224" height="24" opacity="0.48">
   <data encoding="base64" compression="zlib">
-   eJzt01tqwzAQhWGtsUmblSS9PM0O8ppLu9eeYAwiSB50bMjL/8GA0Wis0RiXUsqbYqfYK94VH4rDFKHn0FooF9oT2hul0qvNckvv7tW11p3es3uNnD/fx52FO/ut5rfmHLePrM7Nud8t67VldH+trns4Kk6KT8WX4lvxM0XoObQWyoX2xPHp/+vVZrmld/fqWutO79m9Rs6f7+POwp39VvNbc47bR1bn5tzvlvXaMrq/Vtc9XBRXxU1xV/wq/qYIPYfWQrnQnrg8/X+92iy39O5eXWvd6T2718j5833cWbiz32p+a85x+8jq3Jz73bJeW0b31+o6AAAAAAAAAAAAAAAAAACwzvnVDQAAAAAAAAAAAAAAAGDYP3Z+agQ=
+   eJztkTdOBUEQRGdWwt0Bk+IOi0lxd8CkfOAOmBR3B0xAxStNb3fvROg9qaLu6inVlAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEOeklnIqnUnn0kW1ZwfSoXQkHdf2Xe+e19PKmXmnt8/q0DPP5Jm6Gb0X2Z/zFxGvp7dI/kxnvTOMudXeQrqT7qWHas8upSvpWrox3vDueT2tnJl3evusDj3zTJ6pm9F7kf05fxHxenqL5M901jvDmFftvUnv0of0We3Zo/QkPUsvxhvePa+nlTPzTm+f1aFnnskzdTN6L7I/5y8iXk9vkfyZznpnGLM0lLIsrUir0tpgz75091v6kX6NN7x7Xk8rZ+ad3j6rQ888k2fqZvReZH/OX0S8nt4i+TOd9c4wZlv3dqRdaU/aH+zZurQhbUpbRhbvntfTypl5p7fP6tAzz+SZuhm9F9mf8xcRr6e3SP5MZ70zAAAAAAAAwP/lDyoLPYE=
   </data>
  </layer>
- <layer name="Decoracion 6" width="224" height="24" opacity="0.77">
+ <layer name="Decoracion 3" width="224" height="24" opacity="0.75">
   <data encoding="base64" compression="zlib">
-   eJzt0ktugzAUBVDWSH8rafoZvWU0abvXXoVJJoCwDBn0HOlK2MYX2WIchuEheUyekufkZUrluTJXWau8U2OSpWHsuGdr19z83j09z9zrDD3vtaXriG+vrS11tvbu/Y/djl+z/5S8Je/JR/I5pfJcmaus1Wl693qunnu2ds3N791zxD3d815buo749traUmdr797/2O34K/vPySX5Tn6S3ymV58pcZa3O07vXc/Xcs7Vrbn7vniPu6Z732tJ1xLfX1pY6W3v3/sduxwMAAAAAAAAAAAAAAAAAAAAAAMA/8weTVLXU
+   eJztkjVOQEEURT8k2B6wEtsDVmJ7wEpsJViJ7QErsT1gJbYHLOH2/J/Me3mPhnOS00xm7h2rKgAAAAAAAAAAAAAAAAAAAAAAAAAAAADwsNdSVfvyQB7Ko5bfczY1tiW35Y7crZnzV7meHmufJbOUiLNa92jtzLhLT7anI+rNsv56Exeaeymv5LW8qVl7rLETeSrP5HlBflaup8faZ8ksJeKs1j1aOzPu0pPt6Yh6s6y/3sST5j7LF/kq32rW3mrsTt7LB/lYkJ+V6+mx9lkyS4k4q3WP1s6Mu/Rkezqi3izrrzfR1lpV7bJDdsqu1t9z3pX3IT/ll/wuyM/K9fRY+yyZpUSc1bpHa2fGXXqyPR1Rb5b115sY0NxBOSSH5UjN2m6N9che2Sf7C/Kzcj091j5LZikRZ7Xu0dqZcZeebE9H1Jtl/fUmpjR3Ws7IWTlXs3ZUY2NyXE7IyYL8rFxPj7XPkllKxFmte7R2ZtylJ9vTEfVmWX+9iRXNXZVrcl1u1Kyd19iCXJRLcrkgPyvX02Pts2SWEnFW6x6tnRl36cn2dES9WdZfBwAAAAAAgP/FD3DbLbQ=
   </data>
  </layer>
- <layer name="Decoracion 5" width="224" height="24" opacity="0.37">
+ <layer name="Decoracion 2" width="224" height="24" opacity="0.46">
   <data encoding="base64" compression="zlib">
-   eJzt1FdOA0EQhOHxE0GEexBEuA/hHgQtcA+CCPcgiHAPggiHoJ5XCM22u2fH9v9J9ebx1EC3UwIAAAAAAAAAAAAAAAAAAAAAAAAAAKNkT9lXDpTDwDOTYEvZVnaU3TG+c1genUfx3X85Vc6Uc+Ui8EyOWvba2qNRjpRj5cS/Vm93es96k4bv7PEd/yk1i7fKnXKvPASeyVHLXlt7XCpXyrVy062iWYk7m+Q76x6do98dNYttr8qb8q58BJ7JUcteW3s8Kk/Ks/LSraJZiTu9Z92jc/S7o2axbWqQ0rQyo8wO4s7kqGWvrT0+lS/lW/np2NGqxJ3es+7ROfrdUbPYtqT9WVZWlNXMXbKcyVHLXlt7zOmz88qCsujYv+87vWfdo3P0u6NmsWa17LW1x5o+u65sKJuF/mcl7vSedY/O0e+OmsVJxN9yOH38royTXys2jLM=
+   eJzt0llqwzAUBVAtLF2LOy3kkU4rSadV5kJiyI9NIRVW4By4YCy9K2E8tdbuk4fkMXlKnpNdcnd6rryrrFX2VPbWlGSpTQuza2sj9s6za+e2Tt2j3nurbz3i/9Gzd5+8JK/JW/KefFzM5LnyrrJW2VPZW/tz79LsrfXOs2vntk7do957q2894v/Rs/eQfCZfyXfyk/xezOS58q6yVtlT2VuHc+/S7K31zrNr57ZO3aPee6tvPeL/0bN3yTzz30bs7XWnv3SPeu9e5/b8HtecO1ovAAAAAAAAAAAAAAAAAAAAAAB9HQE2BZvu
   </data>
  </layer>
- <layer name="Decoracion 4" width="224" height="24" opacity="0.45">
+ <layer name="Decoracion 1" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJztlktOHEEMhns2MwHlsYLAFXgojxUkHCZ3yV1YAeEUIazI4xR5rEjIGkdg4Vi2q8rVM0Oi/5N+tbrotqvt3zUMAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwPI5mt7omHRCekc6neZi9KpmD9ZzLLlmPZf5tnkxVs2iGvbWP9ur2nf4qtdPgr+V9mrtawyPj4WuyUWj9y1dJGTltGbqTSG/jvGZ9OU2x0fSJ7EW5fPisTh/afZrvZ6pWU1Ne/KMNZuZ+FEu2UOOpXur1y2PWzmye/LOhxK6JpfO99S8K2NYKnlaz4zMz3orZq+np4tSrde9mmXl5W6JUTObx8b36j5n4o/RUzlTlsetHL17srwdnVe6Jmuzm+tP0i/SFen31J4/r65/YljyzioW33NOmZ91KGa/p6eLUq3XvZpl5eVuiSHPzMhfnre5z1H83nMgEufXtbByt/arlFN621rn53VN9m6v66SnpA3S5syeP6+ue45473q2WXzPOWV+1rmY/Z6eLkq1XvdqlpWXuyWGPDMjf3ne5j5H8WvPgYw4v66Flbu1X6Wc0tvWOj/v1Waf9Ir0mnTgzF/ru7x3Pdssvuf3ZAzWDxGrp6eLUq3Xdc1Yek0/p+/56uXWz7MfdE/WZ3+fmZG/PG/rmPracg5kxPlr+tDar1JO6W1rvTQLLXwlfSN9H+7mI5pXz2vyXvJwMgyPSI9JTybx7N836W9dncS1fE86I30Y7n7rM7X36qzPOr56c13jL/293rfra8kH2jfZ2keeY9X0Tta75Ry11kuz0II1H2O+/4zWnpNekF4m4ve8v0XPb5N2SLuJ3K0xas8yplQ7r8feTOiYNf6K/keymFHcB6SVSfk8aqGlzllPZL3eOyMRy5yP/43WPs2jdvPuxxhn2rLI1gYe/zdAn4DHNeJ/N2I=
+   eJzt0sENAiEQBdCpbLUVtRW1FbVLOexeNiyBgHh5L5nkSwYc0CUiTqnOqRZZlqfmS6prqpssy9PzPdUj1bMzx249KnpG9ef2ltZzPaXvarnjjPXWOf81W64nKvaW5h8xW835PTPs90Ymbz2vVO/185Y/Bzkq+o96evpHnVlzr577zjxz1DvUnNmaW/8/v3iTUe826rcrvQkAAAAAAAAAAAAAAAAAAAAAAPN9AXKEYv4=
   </data>
  </layer>
- <layer name="Decoracion 3" width="224" height="24" opacity="0.23">
+ <layer name="Multiplicador" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJztWNFy00AMzJPzBYX2T4DyyQX6Jy3NnwDNM/Y0GqvLSqezYyiZ3RmNxzi2pL3V3pXdThAEQRAEQRAEQRAEQRAEQRAEQRAEQRAEQRCEtbgbdrsvY3wd49sY98O/ruhyMXHtQ7xvi7fAMavh3q3/2hqj70tPrzHx9ACxtT7egv6WYq1P+XfPyUPVQ9mzpzEOw6yFx5W1sXcPLpb2F81zVNvf1BnyX1kP4/sHxJK6K5qMODycrv7f1vYc9btkHf27PR7Vqo19pwr8ZuSfLV4m7p/HOCZ99e5b7BtHF73I+lmi+97ao/4j/lmwemz2rvavo7fHbG2zvswPj6fr05B7ZKa5rF+W+zvki/JiLvSojI/WuYJ5XWvv8t+urgfLUV1Dv05V2B7qOb7Zz9HS+hqd957j2G9Y74fhz7XwuXAPw4jWf5q3DxA9fbL6jXPvdZEnVv2K1dTqN/PzX8Ps+5k3+1yVGWP1VWasMhuV/Rv1w6LlWVm+Sn1Tzz+B48/7OdhcZf316Dw7w1XPY96XI41iLbiHYZgmzZeW7mlZf1a3cY5eV9Ev+qafA+Q467eyP7X88Q5yZTMWaYDlynyh4n3IEQbzbh8tz8ryVTx54urdGO/HuD7teZ/GuIX5q/aXeQnbs1hE2qvMAKsP9Yd7GIbNoPlSdX9DLphusv27xTVqAH3TwOYt67d6Xonm3Wr2uZhms7O7X188d0RzVPF45AjDezeLzKNb+Sp7z8TVR5g5Nn/V/iIf8X+zRF7keWXaq8wAqw/1h/0eXf3PwzyD5kvVfRy5YLrBe89Fi2vUAPqmgc0b9uz7rZ5Xonm3mn0uptns3O7X13OEXujnqHKWQY4w7Fvs2U3Do1v5WrW1dOlR7S/yEdR49rtIe5UZYPWx3ozf6+Dq36nwyLhgusF7z0WL69ZMGTKfYf1Wz+XRvPuZt5xMs/bMZi9aX88ReqGfo8pZBjnAsG+xZ1F4jrN8rdpaM+dRfT/yEabxKCLt9fqJ1Zetw21wrXDd4oLpBu89F71cZ2uFv7U8rN/quTzLz7THOJ9qeCDz7tcXOYq+1cNJxAv+P8f/hIq/ZFqPoqr3tTo9Z9/VPQrvPRdb1pdxcQ7eerRgs8d88lyzJlw+es88wgvwrIpnp4gvfEcQonnbYl+7FGT7s/gShG0ReVYvfgOj/A3c
-  </data>
- </layer>
- <layer name="Decoracion 2" width="224" height="24" opacity="0.7">
-  <data encoding="base64" compression="zlib">
-   eJztlFdOBDEQRD1fBBHuQRDhPoR7EDTAPQgi3IMgwj0IIhyC+hy11uMOZrRa6kn14+6d6rXLTokQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEELIOLEFbUM70K6hRsgoPJkZh5zJGfahA+iw8Lu9TG9uXdJCR9AxdGKoedDONAlEMmXZJ6/PX51Fm+yZ8fymNnKGM+gcuij87jTTm1uXXEJX0DV0Y6h50M5UQpO5Wm+qNqeyr03+TFn2yesjPWrdR01mpFckZ5a5+3rlDHfQPfRQ+OZtpje3LnmEnqBn6MVQ86CdqUSbypnT9OTonpP2Lsi+SKYs++T1kR613kZNZqRXJGeWuft65Qxv0Dv0Ufjma6Y3ty75hL6gb+jHUPOgnamEJnOR/HfPSXsXZF8kU5Z98vpIj1pvoyYz0iuSM8vcfb1yhukmpRlotun/5lQzuje3LplDbR5agBYbfc2DdqYSmsxF8t89J+1dkH2RTFn2yesjPWq9jZrMSK9Izixz9/XKGZahFWi1MM9Spje3LllDbR3agDYbfc2DdqYSmsxF8t89J+1dkH2RTFn2yesjPWq9jZrMSK9Izixz9/XWzvoko8lcJP/dc9LeBdk31HnW8qn1Ng7tZfnWkP9xktFkLpJLnhMhhBBC/iO/YYQRvA==
-  </data>
- </layer>
- <layer name="Decoracion 1" width="224" height="24" opacity="0.76">
-  <data encoding="base64" compression="zlib">
-   eJztktdNADEQRO++CCL0QRChH0IfBBH6IIjQB0GEPggiFMF8mq/zrtc+Id6T5uvGntlbdx0AAAAAAAAAAAAAAAAAAAAAAAAAAAAA1GJD2pS2pO1xq/xizF6ts0vyxvhPUZl/6T/nsCftG88cSIfSkXQ84N2Rdg05Vr+3V3QHb7Z3Xm+e9WzJPryZ0fe0elO5OanvTDo3drqQLqUr6XrAeyKdGnKsfm+v6A7ebO+8JbPW3F9EZvQ9rd5Ubk7qu5PujZ0epEfpSXoe8N5It4Ycq9/bK7qDN9s7b8msNfcXkRl9T6s3lZuT+t6kd2OnD+lT+pK+B7wv0qshx+r39oru4M32zlsya839RWRG39PqTeXmpL6pvuume1unGflnpTlpfuDshL5P9vk5Vr+3V3QHb7Z33pJZa+6vRt/Se1q9qdyc1LckLRs7rci/Kq1J6wNnF/R90ZBj9Xt7RXfwZnvnLZm15v5q9C29p9Wbys1JfQAAAAAAAPA/+AFrs9EO
-  </data>
- </layer>
- <layer name="Iman" width="224" height="24">
-  <data encoding="base64" compression="zlib">
-   eJztzsEJgDAUBcGnkKQntf8ytBW92YGf4AzsfRMAAAAAAAAAAAAAAAAAAACAb5wtuVr1BfzT0pO1V1/AHLbxtj8do/oIAACY3Q0HkAMf
+   eJztzoENABAQBLALg7D/jCTGeKGdoAkAAAAAAAAAAAAAAAAAAABwg9WS3aoX8KfRk9mrFwAAAMCrDn96AkM=
   </data>
  </layer>
  <layer name="Monedas" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt1UsOgjAUBdDGBPbiPhyq69W16GKUgSP5NPAeRDlnQtLPbRNe21IAAAAAAAAAAAAAAAAg360p5d78Tm52NnysUWePd/4zYY2s3OzsIafDuuvtQVR9Z52TLeqMb97bHFH17Zz8N/83xtQ91tdf2xaVM5SdMX+pOZmZe47Irl3z2NaNHRuzt3d16h7r669ti8oZys6Yv9SczMw9R2TXrnlu68aOjfGuMkdXe53L+3ttt90LAACQ7wWpPGLJ
+   eJzt1rEVwjAMBUAXGQdmgf2ngTJNbNmSQ8Fdl8RfshN4T60BAAAAAAAAAAAAAAAAZ4+jtefx610Qlf1eq/mK30mmRiS7u/6OGq/v+vdkZraP/3idle9Vkc/2zdaIZHfXv6PGjj537Qsg6zwvjGaHq7WRGtXzWvRe73n07Cvz6Oi6l599txWZyB6z54r2+CfneWE0O1ytjdSontei93rPo2dfmUdH17387LutyET2mD1XtAcAAABU+QCSMipJ
   </data>
  </layer>
  <layer name="Obstaculos" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt08tNw0AUBdAxNqWQ0ArUA7QCtEJCSuFXCTeKgryIEhaewSjnSHdhy74aad4rBQAAAAAAAAAAAAAAAACA/+Q12fz1IWDm7rpS7pOHbrrO9+Qj+Uy+pqv9UePMtPfWZ1b6+fS06h17zAw/Jc8TzvJFuvpkSC4r7EiNMx/T4h7OUTdkVob59LTqHXvJDK+S9YSzfJWuRbJMrivsSI0zH9PiHubm5sC72xP/LH/xDXDaof3b2+7Youz2bf88DlDXdj/tGwCtfQOJQhuR
+   eJzt0dsNwjAQBECnBagFKoFaoBEepRAohUcpwCEKSIwd8pEZaaX8nPfspAQAAAAAAAAAAAAAAAAAwJTtIvvIIXIceReYmlOkjZwjl5F3oZ9Vk9K6+f/8LGbmBb0l3X37hz6/S27/NXKL3COPAXtq3I2vTbzjtuAtf51fxMyy8B+W7N6nf+jzu+T2PyOvz0fMNBlzuT017gYAAAC1vAEbghar
+  </data>
+ </layer>
+ <layer name="Correccion" width="224" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztxTEBACAMA7DtxAte8G8AHVyzUJ7kSRUAAAAAAAAAAAAAAAAAAAAAAD9d2/HHatvpx27b6cdp2+kfYNSeRA==
   </data>
  </layer>
  <layer name="Suelo" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJztxcENACAMxLDrvDALrEy36ANbipIAAAAAAAAAAAAAAAAAAAAAADBhVbLL3Sd+uuvuIweAHz02KNyB
+   eJztxbENACAMBLFPBfvPCHuQLVJgS6dLAAAAAAAAAAAAAAAAAAAAAACYcLrr7iNflexy94kDwI8e04zPYQ==
   </data>
  </layer>
  <layer name="Base" width="224" height="24">
   <data encoding="base64" compression="zlib">
-   eJztzkENACAMBMHiXw1oAT+ggrQwk1z2exEAAAAAAAAAAAAAAAAAAAAAAAAAd/QWMVqtZvjwejN8+KHzbBVrhg+vN8OHH7oBIipXDg==
-  </data>
- </layer>
- <layer name="Correcion" width="224" height="24">
-  <data encoding="base64" compression="zlib">
-   eJzt2FEKgkAUBVDf5nQtBbUSg1pJQa2ltpOgA31oH2mj4jlwucN8yMyAP68ogLmV0abqAuSzizb7LtWIlAP7QL862py67EdkN7AP9LtGm1uX04jUA/vAd5//4K8Z+gYAAPxbmoUC+aVZKJBfbfYJs7mafQIAAAAAAACwIYcoimNorXN2cm7Wl9Ba5+zk3qwfsY5ewhmmvMtSM/fbbKGTZ7N+xTp6CWeY8i5Lzdxvs4V+A18yazY=
+   eJztxUENACAMBMGrHdAC/uVQFfQzk2w2AQAAAAAAAAAAAAAAAAAAAAAAAPhjVbLL3Sd+uuvuI39Az2rB
   </data>
  </layer>
 </map>

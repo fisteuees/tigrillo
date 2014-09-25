@@ -12,7 +12,7 @@
     
     UISwitch* voiceFXSwitch;
     UISwitch* soundFXSwitch;
-    bool isPhone;
+    BOOL isPhone;
 
     
 }
@@ -39,7 +39,7 @@
             
         }
         
-        self.backgroundColor = [UIColor blackColor]; //clearColor is an option along with many other preset colors.
+        self.backgroundColor = [UIColor clearColor]; //clearColor is an option along with many other preset colors.
         [self setBackground];
         
     }

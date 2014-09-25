@@ -6,7 +6,12 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "pre_mundo_nieve.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
     },
     {
       "idiom" : "ipad",

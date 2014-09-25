@@ -15,6 +15,15 @@
 #import "conexionBase.h"
 #import "Escena_menu.h"
 
+const float maxVelocidad = 400.0f;
+const float maxAceleracion = 400.0f;
+const float BorderCollisionDamping = 0.5f;
+const float CannonCollisionSpeed = 100.0f;
+
+@import CoreMotion;
+
+
+
 @interface Escena_juego ()
 {
     NSTimeInterval delta;
@@ -36,6 +45,7 @@
     int lugar_anterior;
     int transmision;
     BOOL pausado;
+    BOOL volando;
     int termino;
     UIView *oscuro;
     UIView *vpausa;
@@ -45,20 +55,29 @@
     NSNumber *cont_tiempo;
     NSArray *cuchoCaminando;
     
+
+    //datosAcelerometro
+    CGSize tamanoPantalla;
+    UIAccelerationValue _aceX;
+    UIAccelerationValue _aceY;
+    CMMotionManager *_motionManager;
+    float _aceleracionX;
+    float _aceleracionY;
+    float _velociX;
+    float _velociY;
+    float _radioJugador;
+    float _NaveSpin;
+    
+    
+    //slider
+    UISlider *slider;
+    
 }
 @end
 
 @implementation Escena_juego
 @synthesize tiempo;
 
-/*-(id)initWithSize:(CGSize)size{
-    if (self = [super initWithSize:size]) {
-        self.backgroundColor = [SKColor whiteColor];
-        
-    }
-    return self;
-}*/
-//-(id)initWithSize:(CGSize)size withBase:(conexionBase *)cb{
 -(id)initWithSize:(CGSize)size{
     //con = cb; pendiente para base de datos
     if (self = [super initWithSize:size]) {
@@ -117,6 +136,11 @@
         [self addChild:pausa];
         //FIN PARA VIDAS
         
+        //Particulas
+        NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"snow" ofType:@"sks"];
+        SKEmitterNode *myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
+        myParticle.particlePosition = CGPointMake(CGRectGetMidX(self.frame),780);
+        [self addChild:myParticle];
         
         
         self.mapa = [JSTileMap mapNamed:@"w2_lvl1.tmx"]; //cambiar aquí nombre de mapa
@@ -125,6 +149,7 @@
         self.suelo = [self.mapa layerNamed:@"Suelo"]; //revisar nombre de capas
         self.rocas = [self.mapa layerNamed:@"Obstaculos"]; //y pide x20
         self.monedas = [self.mapa layerNamed:@"Monedas"];
+        
         self.iman = [self.mapa layerNamed:(@"Iman")];
         self.multiplicador = [self.mapa layerNamed:(@"Multiplicador")];
         self.escudo = [self.mapa layerNamed:(@"Escudo")];
@@ -140,10 +165,11 @@
         cuchoCaminando = @[f1,f2,f3,f4,f5,f6,f7];
         
         self.jugador = [[Jugador alloc] initWithImageNamed:@"cucho01.png"];
-        self.jugador.position = CGPointMake(50, 230);
+        self.jugador.position = CGPointMake(50, 150);
         self.jugador.zPosition = 100;
         self.jugador.modo=1;
         self.jugador.puede_moverse=NO;
+        self.jugador.physicsBody.dynamic=YES;
         [self.mapa addChild:self.jugador];
         
         SKAction *walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
@@ -157,14 +183,6 @@
         menu_pausa.zPosition = 101;
         menu_pausa.name = @"reanuda";
         [self addChild:menu_pausa];
-        //FIN BOTON DE PAUSA
-        
-        //RETORNO PAUSA
-        
-        
-        
-        
-        //FIN RETORNO PAUSA
         
         action = [SKAction runBlock:^{
             [menu_pausa setHidden:NO];
@@ -181,10 +199,122 @@
         
         
         
-        
-        
+        //iniciar datos de acelerometro
+        volando=NO;
+        tamanoPantalla=self.frame.size;
+        _radioJugador=20.0f;
+        _motionManager=[[CMMotionManager alloc]init];
+        [self startMonitoringAcceleration];
     }
     return self;
+}
+
+#pragma mark metodos acelerometro
+
+- (void)dealloc
+{
+    [self stopMonitoringAcceleration];
+    _motionManager = nil;
+}
+
+- (void)startMonitoringAcceleration
+{
+    if (_motionManager.accelerometerAvailable) {
+        [_motionManager startAccelerometerUpdates];
+        NSLog(@"accelerometer updates on...");
+    }
+}
+
+
+- (void)stopMonitoringAcceleration
+{
+    if (_motionManager.accelerometerAvailable && _motionManager.accelerometerActive) {
+        [_motionManager stopAccelerometerUpdates];
+        NSLog(@"accelerometer updates off...");
+    }
+}
+
+- (void)updatePlayerAccelerationFromMotionManager
+{
+    
+    CMAcceleration acceleration = _motionManager.accelerometerData.acceleration;
+    _aceX=acceleration.y;
+    _aceY=acceleration.x;
+    if (_aceX<0.30 || _aceX>0.0){
+        _aceleracionX=-_aceX*1200;
+    }
+    else if (_aceX>-0.30 || _aceX<0.0){
+        _aceleracionX=_aceX*1200;
+    }
+    if (_aceX >= 0.30)
+    {
+        _aceleracionX = -maxAceleracion;
+    }
+    else if (_aceX <= -0.30)
+    {
+        _aceleracionX = maxAceleracion;
+    }
+    
+    if (_aceY<0.30 || _aceY>0.0){
+        _aceleracionY=_aceY*1200;
+    }
+    else if (_aceY>-0.30 || _aceY<0.0){
+        _aceleracionY=-_aceY*1200;
+    }
+    if (_aceY >= 0.30)
+    {
+        _aceleracionY = maxAceleracion;
+    }
+    else if (_aceY <= -0.30)
+    {
+        _aceleracionY = -maxAceleracion;
+    }
+    
+}
+
+
+-(void)actualizarJugador:(CFTimeInterval)delta1{
+    _velociX += _aceleracionX*delta1;
+    _velociY += _aceleracionY*delta1;
+    
+    // 2
+    _velociX = fmaxf(fminf(_velociX, maxVelocidad), -maxVelocidad);
+    _velociY = fmaxf(fminf(_velociY, maxVelocidad), -maxVelocidad);
+    
+    float newY = self.jugador.position.y + _velociY*delta1;
+
+    BOOL collidedWithVerticalBorder = NO;
+    BOOL collidedWithHorizontalBorder = NO;
+    
+    
+    if (newY < 130.0f)
+    {
+        newY = 130.0f;
+        collidedWithHorizontalBorder = YES;
+    }
+    else if (newY > tamanoPantalla.height-100)
+    {
+        newY = tamanoPantalla.height-100;
+        collidedWithHorizontalBorder = YES;
+    }
+    if (collidedWithVerticalBorder)
+    {
+        _aceleracionX = -_aceleracionX * BorderCollisionDamping;
+        _velociX = -_velociX * BorderCollisionDamping;
+        _aceleracionY= _aceleracionY * BorderCollisionDamping;
+        _velociY = _velociY * BorderCollisionDamping;
+    }
+    
+    if (collidedWithHorizontalBorder)
+    {
+        _aceleracionX = _aceleracionX * BorderCollisionDamping;
+        _velociX = _velociX * BorderCollisionDamping;
+        _aceleracionY = -_aceleracionY * BorderCollisionDamping;
+        _velociY = -_velociY * BorderCollisionDamping;
+    }
+
+    self.jugador.position = CGPointMake(self.jugador.position.x, newY);
+
 }
 
 -(void)didMoveToView:(SKView *)view{
@@ -192,6 +322,12 @@
     doubleTap.numberOfTapsRequired = 2;
     
     [self.view addGestureRecognizer:doubleTap];
+    
+    [self anadirSlider];
+}
+
+-(void)willMoveFromView:(SKView *)view{
+    slider.removeFromSuperview;
 }
 
 - (void)saltoDoble{
@@ -208,7 +344,7 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     if (self.juegoTermino) return;
-    if (self.mapa.position.x<-6500) {
+    if (self.mapa.position.x<-6110) {
         [self juegoTerminado:1];
     }
     delta = currentTime - self.tiempoAnterior;
@@ -218,15 +354,33 @@
     }
     //4
     self.tiempoAnterior = currentTime;
+    
+    
+    
     //5
     [self setViewpointCenter:CGPointMake(0, CGRectGetMidY(self.frame))];
-    [self.jugador update:delta];
+     [self updatePlayerAccelerationFromMotionManager];
+    if (volando) {
+       
+        [self actualizarJugador:delta];
+        [self.jugador update:delta];
+    }
+    else{
+         [self.jugador update:delta];
+        [self comprobarColisiones:self.jugador porCapas:self.suelo];
+    }
+    
+   //volando=YES;
+    //se lo pone cuando coga el powerup de volar!
+    
+    
+
+    
     [self.fondo0 update:delta];
     [self.fondo1 update:delta];
     
-    [self comprobarColisiones:self.jugador porCapas:self.suelo];
+    
     if (espacio_movimiento!=4) {
-        //NSLog(@"No se comprueban colisiones v:%f",tiempo_movimiento);
     }else{
         [self comprobarColisionesTrampas:self.jugador porCapas:self.rocas];
     }
@@ -398,20 +552,30 @@
         //4
         NSInteger tileColumn = indice % 3;
         NSInteger tileRow = indice / 3;
+        //Para borrar monedas
+        int x;
+        int y;
+        //int par;
+        x=-1;
+        y=1;
         CGPoint posiTile = CGPointMake(posiJugador.x + (tileColumn - 1), posiJugador.y + (tileRow - 1));
-        //5
         NSInteger gid = [self tileGIDAtTileCoord:posiTile forLayer:capa];
-        //6
         if (gid) {
-            
-            //7
             CGRect areaTile = [self tileRectFromTileCoords:posiTile];
-            //1
             if (CGRectIntersectsRect(areaJugador, areaTile)) {
-                [self.monedas removeTileAtCoord:posiTile];
-                //[self runAction:[SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO]];
-                contar_monedas++;
-                con_monedas.text = [NSString stringWithFormat:@"%i",contar_monedas];
+                for (x=-1; x<2; x++) {
+                    for (y=-1; y<2; y++) {
+                        CGPoint posiTile1 = CGPointMake(posiJugador.x + (tileColumn - 1) + x, posiJugador.y + (tileRow - 1) + y);
+                        NSInteger gid1 = [self tileGIDAtTileCoord:posiTile1 forLayer:capa];
+                        if (gid1) {
+                            [self.monedas removeTileAtCoord:posiTile1];
+                            //[self runAction:[SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO]];
+                            contar_monedas++;
+                            con_monedas.text = [NSString stringWithFormat:@"%i",contar_monedas];
+                            //}
+                        }
+                    }
+                }
             }
         }
     }
@@ -439,11 +603,7 @@
             CGRect areaTile = [self tileRectFromTileCoords:posiTile];
             //1
             if (CGRectIntersectsRect(areaJugador, areaTile)) {
-                //[self.rocas removeTileAtCoord:posiTile];
-                //  para terminar el juego
-                //[self juegoTerminado:0];
-                //
-                //NSLog(@"%d",contador_vidas);
+
                 if (contador_vidas > 0) {
                     contador = [NSNumber numberWithInt:0];
                     [self.tiempo invalidate];
@@ -601,24 +761,19 @@
         mensaje.text=@"Perdiste";
         contador_vidas = 2;
     }
-    [self addChild:mensaje];
-    [self addChild:bt_salir];
-    [self addChild:bt_recargar];
+    //[self addChild:mensaje];
+    //[self addChild:bt_salir];
+    //[self addChild:bt_recargar];
     
-    [mensaje runAction:[SKAction repeatActionForever:[SKAction sequence:@[[SKAction scaleTo:1.5 duration:1.0],[SKAction scaleTo:0.5 duration:1.0]]]]];
+    [self setUserInteractionEnabled:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarTerminado" object:self];
+
 }
 
 - (void)setViewpointCenter:(CGPoint)position {
-    //v=e/t;
-    //e=6400 px
-    //self.suelo.position = CGPointMake(self.suelo.position.x-4, self.suelo.position.y);
-    //self.rocas.position = CGPointMake(self.rocas.position.x-4, self.rocas.position.y);
-    //self.fondo.position = CGPointMake(self.fondo.position.x-1, self.fondo.position.y);
     lugar_anterior = lugar_actual;
     lugar_actual = espacio_movimiento;
-    //NSLog(@"ac: %i an: %i",lugar_anterior,lugar_actual);
     if (lugar_actual == 2 && lugar_anterior==4) {
-        //NSLog(@"%d",contador_vidas);
         if (contador_vidas == 2) {
             [corazon3 setHidden:YES];
         }
@@ -628,11 +783,27 @@
     }
     self.mapa.position = CGPointMake(self.mapa.position.x-espacio_movimiento, self.mapa.position.y);
     self.jugador.position= CGPointMake(self.jugador.position.x+espacio_movimiento, self.jugador.position.y);
-    
-    //NSLog(@"posicion mapa %.f",self.mapa.position.x);
-    //NSLog(@"posicion jugador %.f",self.jugador.position.x);
-    
-    
+    slider.value=slider.value+4;
+
 }
+
+
+#pragma mark Anadir Slider
+
+-(void)anadirSlider{
+    CGRect frame = CGRectMake(100.0, 30.0, 824.0, 10.0);
+    slider = [[UISlider alloc] initWithFrame:frame];
+    [slider setBackgroundColor:[UIColor clearColor]];
+    slider.minimumValue = 0.0;
+    slider.maximumValue = 6110;
+    slider.continuous = YES;
+    slider.value = 0.0;
+    slider.userInteractionEnabled=NO;
+    [self.view addSubview:slider];
+}
+
+
+
+
 
 @end

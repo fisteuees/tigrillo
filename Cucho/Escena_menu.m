@@ -76,6 +76,7 @@
         if([nodo.name isEqualToString:@"bt_jugar"]){
             SKTransition *reveal = [SKTransition doorwayWithDuration:1.0];
             SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size conGameCenter:gc1];
+            NSLog(@"size: %@",NSStringFromCGSize(self.size));
             [self.view presentScene:gameOverScene transition:reveal];
         }
         if([nodo.name isEqualToString:@"bt_comprar"]){

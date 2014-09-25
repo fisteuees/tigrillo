@@ -6,7 +6,12 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "pre_mundo_montana-1.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
     },
     {
       "idiom" : "ipad",

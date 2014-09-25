@@ -10,7 +10,9 @@
 #import "Escena_menu.h"
 #import "gameCenterManager.h"
 #import "Escena_nivel.h"
+#import "Escena_juego.h"
 #import "View_ajustes.h"
+#import "View_terminado.h"
 #import "conexionBase.h"
 
 @interface ueesViewController(){
@@ -18,8 +20,12 @@
     BOOL isPhone;
     gameCenterManager *gc;
     UIView *mask;
+    UIView *mask_terminado;
     View_ajustes *ajustes;
+    
+    View_terminado *terminado;
     BOOL desplegado;
+    BOOL desplegado_terminado;
     conexionBase *cb;
 }
 
@@ -46,6 +52,22 @@
                                                  name:@"mostrarAjustes"
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(jugarDeNuevo:)
+                                                 name:@"jugardenuevo"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(mostrarMenu:)
+                                                 name:@"mostrarmenu"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(siguienteNivel:)
+                                                 name:@"siguientenivel"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(mostrarTerminado:)
+                                                 name:@"mostrarTerminado"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(insertBase:)
                                                  name:@"insertBase"
                                                object:nil];
@@ -70,7 +92,6 @@
     gc=[gameCenterManager solicitarManager];
     [gc autenticarJugador];
     SKScene *scene;
-    // Create and configure the scene.
     if ( !skView.scene ) {
         
         scene = [[Escena_menu alloc]initWithSize:skView.bounds.size conGameCenter:gc];
@@ -78,22 +99,12 @@
         
         [skView presentScene:scene];
     }
-   /* self.items = [NSMutableArray array];
-    for (int i = 1; i <=5; i++)
-    {
-        [_items addObject:@(i)];
-    }
-    self.carousel=[[iCarousel alloc]initWithFrame:scene.frame];
-    self.carousel.backgroundColor=[UIColor blackColor];
-    NSLog(@"frame view: %@",NSStringFromCGRect(skView.frame));
-    self.carousel.dataSource=self;
-    self.carousel.delegate=self;*/
+
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(mostrarGCController)
      name:@"mostrarGCController"
      object:nil];
-    // Present the scene.
 }
 
 
@@ -122,7 +133,6 @@
 
 -(void)reload:(NSNotification *)notification
 {
-    NSLog(@"ANADIR");
     self.items = [NSMutableArray array];
     for (int i = 1; i <=5; i++)
     {
@@ -138,22 +148,12 @@
     ;
     [self.view addSubview:self.carousel];
     [UIView commitAnimations];
-    /*[UIView animateWithDuration:1.25 animations:^{
-     [self.view addSubview:self.carousel];
-     }];*/
+
     [self.carousel reloadData];
-    NSLog(@"frame view: %@",NSStringFromCGRect(skView.frame));
-    NSLog(@"frame scena 2: %@",NSStringFromCGRect(skView.scene.frame));
-    //NSLog(@"frame scena 2: %@",NSStringFromCGRect(skView.));
-    
-    
-    
 }
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
-    //return the total number of items in the carousel
-    NSLog(@"datasource items : %d",_items.count);
     return [_items count];
 }
 
@@ -271,6 +271,8 @@
     
 }
 
+#pragma mark View ajustes
+
 -(void)mostrarAjustes:(NSNotification *)notification{
     
     CGRect rect = CGRectMake(CGRectGetMidX(skView.bounds),CGRectGetMidY(skView.bounds), 364, 492);
@@ -302,8 +304,6 @@
 }
 
 
-
-
 -(void)cerrarVentanaAjustes:(NSNotification *)notification{
     
     
@@ -311,6 +311,84 @@
     [mask removeFromSuperview];
     desplegado=NO;
     [skView.scene setUserInteractionEnabled:YES];
+    
+}
+
+#pragma mark View terminado
+
+-(void)mostrarTerminado:(NSNotification *)notification{
+    
+    CGRect rect = CGRectMake(CGRectGetMidX(skView.bounds),CGRectGetMidY(skView.bounds), 350, 450);
+    terminado = [[View_terminado alloc] initWithFrame:rect];
+    terminado.layer.anchorPoint = CGPointMake(1, 1);
+    terminado.alpha=0.0f;
+    [terminado setTransform:CGAffineTransformMakeScale(0.1, 0.1)];
+    [self.view addSubview:terminado];
+    //ajustes.center = CGPointMake(ajustes.frame.size.width / 2, ajustes.frame.size.height / 2);
+    [UIView animateWithDuration:0.5
+                          delay: 0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [terminado setTransform:CGAffineTransformMakeScale(1.0, 1.0)];
+                         terminado.alpha=1.0f;
+                         
+                         
+                     }
+                     completion:^(BOOL finished){
+                         mask_terminado = [[UIView alloc] initWithFrame:skView.bounds];
+                         [mask_terminado setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.38]];
+                         [self.view addSubview:mask_terminado];
+                         [self.view sendSubviewToBack:mask_terminado];
+                         desplegado_terminado=YES;
+                         
+                         
+                     }];
+    
+}
+
+-(void)siguienteNivel:(NSNotification *)notification{
+    
+    mask_terminado.alpha=0.0f;
+    [mask_terminado removeFromSuperview];
+    desplegado_terminado=NO;
+    [skView.scene setUserInteractionEnabled:YES];
+    
+    /*SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size]; //withBase: cb
+    [skView presentScene:gameOverScene transition: reveal];
+    */
+    NSLog(@"siguiente nivel");
+    
+}
+
+
+-(void)jugarDeNuevo:(NSNotification *)notification{
+    
+    mask_terminado.alpha=0.0f;
+    [mask_terminado removeFromSuperview];
+    desplegado_terminado=NO;
+    [skView.scene setUserInteractionEnabled:YES];
+    
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size]; //withBase: cb
+    [skView presentScene:gameOverScene transition: reveal];
+    
+    NSLog(@"jugar de nuevo");
+    
+}
+
+-(void)mostrarMenu:(NSNotification *)notification{
+    
+    mask_terminado.alpha=0.0f;
+    [mask_terminado removeFromSuperview];
+    desplegado_terminado=NO;
+    [skView.scene setUserInteractionEnabled:YES];
+    
+    SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_menu alloc] initWithSize:skView.bounds.size conGameCenter:gc]; //withBase: cb
+    [skView presentScene:gameOverScene transition: reveal];
+    
+    NSLog(@"mostrar menu");
     
 }
 
