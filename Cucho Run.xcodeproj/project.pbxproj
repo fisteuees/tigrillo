@@ -31,11 +31,11 @@
 		85151D59194A1591002E2FC5 /* Escena_mundos.m in Sources */ = {isa = PBXBuildFile; fileRef = 85151D58194A1591002E2FC5 /* Escena_mundos.m */; };
 		851EFF23198838A0009377CD /* Escena_juego.m in Sources */ = {isa = PBXBuildFile; fileRef = 851EFF22198838A0009377CD /* Escena_juego.m */; };
 		851EFF2519883E38009377CD /* bt_atras.png in Resources */ = {isa = PBXBuildFile; fileRef = 851EFF2419883E38009377CD /* bt_atras.png */; };
-		8528E9A219D485230098375C /* w2_lvl1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A119D485230098375C /* w2_lvl1.tmx */; };
 		8528E9A719D4852F0098375C /* Coins_PowerUP.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A319D4852F0098375C /* Coins_PowerUP.png */; };
 		8528E9A819D4852F0098375C /* Coins_PowerUP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */; };
 		8528E9A919D4852F0098375C /* Ice_Level_Tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A519D4852F0098375C /* Ice_Level_Tileset.png */; };
 		8528E9AA19D4852F0098375C /* Ice_Level_Tileset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A619D4852F0098375C /* Ice_Level_Tileset@2x.png */; };
+		852FB50F19DB4E0300F5BA25 /* w2_lvl1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 852FB50E19DB4E0300F5BA25 /* w2_lvl1.tmx */; };
 		8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C619880496005BEC90 /* bt_nivel1.png */; };
 		8535D6CC19880496005BEC90 /* bt_nivel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C719880496005BEC90 /* bt_nivel2.png */; };
 		8535D6CD19880496005BEC90 /* bt_nivel3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C819880496005BEC90 /* bt_nivel3.png */; };
@@ -71,22 +71,6 @@
 		8575DAA71940EC3A00392E73 /* BTjugar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8575DAA61940EC3A00392E73 /* BTjugar@2x.png */; };
 		8575DAA91940EE2900392E73 /* BTcomprar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8575DAA81940EE2900392E73 /* BTcomprar@2x.png */; };
 		857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 857985FD199D29CE001352E6 /* cuchoAnimacion.atlas */; };
-		8584B2A019D2192F00B851DC /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29019D2192F00B851DC /* 12.png */; };
-		8584B2A119D2192F00B851DC /* coin copia.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29119D2192F00B851DC /* coin copia.png */; };
-		8584B2A219D2192F00B851DC /* dondo-hielo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29219D2192F00B851DC /* dondo-hielo.png */; };
-		8584B2A319D2192F00B851DC /* escudo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29319D2192F00B851DC /* escudo.png */; };
-		8584B2A419D2192F00B851DC /* listos-separados.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29419D2192F00B851DC /* listos-separados.png */; };
-		8584B2A519D2192F00B851DC /* MAS-GRANDES.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29519D2192F00B851DC /* MAS-GRANDES.png */; };
-		8584B2A619D2192F00B851DC /* moneda por 2 cor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29619D2192F00B851DC /* moneda por 2 cor.png */; };
-		8584B2A719D2192F00B851DC /* moneda por 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29719D2192F00B851DC /* moneda por 2.png */; };
-		8584B2A819D2192F00B851DC /* moneda.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29819D2192F00B851DC /* moneda.png */; };
-		8584B2A919D2192F00B851DC /* mundo de nieve con guias.ai in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29919D2192F00B851DC /* mundo de nieve con guias.ai */; };
-		8584B2AA19D2192F00B851DC /* mundo nieve.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29A19D2192F00B851DC /* mundo nieve.jpg */; };
-		8584B2AB19D2192F00B851DC /* objetos del mundo de nieve.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29B19D2192F00B851DC /* objetos del mundo de nieve.png */; };
-		8584B2AC19D2192F00B851DC /* objetos en el mundo de nieve 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29C19D2192F00B851DC /* objetos en el mundo de nieve 1.png */; };
-		8584B2AD19D2192F00B851DC /* sets.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29D19D2192F00B851DC /* sets.png */; };
-		8584B2AE19D2192F00B851DC /* tiles-grandes.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29E19D2192F00B851DC /* tiles-grandes.png */; };
-		8584B2AF19D2192F00B851DC /* Untitled-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8584B29F19D2192F00B851DC /* Untitled-2.png */; };
 		8584B2B319D21C6300B851DC /* pausa_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8584B2B219D21C6300B851DC /* pausa_view.xib */; };
 		8584B2B519D21C7500B851DC /* terminado_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8584B2B419D21C7500B851DC /* terminado_view.xib */; };
 		8584B2B819D21D9500B851DC /* View_terminado.m in Sources */ = {isa = PBXBuildFile; fileRef = 8584B2B719D21D9500B851DC /* View_terminado.m */; };
@@ -141,11 +125,11 @@
 		851EFF21198838A0009377CD /* Escena_juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Escena_juego.h; sourceTree = "<group>"; };
 		851EFF22198838A0009377CD /* Escena_juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Escena_juego.m; sourceTree = "<group>"; };
 		851EFF2419883E38009377CD /* bt_atras.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_atras.png; sourceTree = "<group>"; };
-		8528E9A119D485230098375C /* w2_lvl1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w2_lvl1.tmx; sourceTree = "<group>"; };
 		8528E9A319D4852F0098375C /* Coins_PowerUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coins_PowerUP.png; sourceTree = "<group>"; };
 		8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Coins_PowerUP@2x.png"; sourceTree = "<group>"; };
 		8528E9A519D4852F0098375C /* Ice_Level_Tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ice_Level_Tileset.png; sourceTree = "<group>"; };
 		8528E9A619D4852F0098375C /* Ice_Level_Tileset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ice_Level_Tileset@2x.png"; sourceTree = "<group>"; };
+		852FB50E19DB4E0300F5BA25 /* w2_lvl1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w2_lvl1.tmx; sourceTree = "<group>"; };
 		8535D6C619880496005BEC90 /* bt_nivel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel1.png; sourceTree = "<group>"; };
 		8535D6C719880496005BEC90 /* bt_nivel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel2.png; sourceTree = "<group>"; };
 		8535D6C819880496005BEC90 /* bt_nivel3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel3.png; sourceTree = "<group>"; };
@@ -195,22 +179,6 @@
 		8575DAA61940EC3A00392E73 /* BTjugar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTjugar@2x.png"; sourceTree = "<group>"; };
 		8575DAA81940EE2900392E73 /* BTcomprar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTcomprar@2x.png"; sourceTree = "<group>"; };
 		857985FD199D29CE001352E6 /* cuchoAnimacion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuchoAnimacion.atlas; sourceTree = "<group>"; };
-		8584B29019D2192F00B851DC /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
-		8584B29119D2192F00B851DC /* coin copia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin copia.png"; sourceTree = "<group>"; };
-		8584B29219D2192F00B851DC /* dondo-hielo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dondo-hielo.png"; sourceTree = "<group>"; };
-		8584B29319D2192F00B851DC /* escudo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = escudo.png; sourceTree = "<group>"; };
-		8584B29419D2192F00B851DC /* listos-separados.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listos-separados.png"; sourceTree = "<group>"; };
-		8584B29519D2192F00B851DC /* MAS-GRANDES.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MAS-GRANDES.png"; sourceTree = "<group>"; };
-		8584B29619D2192F00B851DC /* moneda por 2 cor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moneda por 2 cor.png"; sourceTree = "<group>"; };
-		8584B29719D2192F00B851DC /* moneda por 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moneda por 2.png"; sourceTree = "<group>"; };
-		8584B29819D2192F00B851DC /* moneda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moneda.png; sourceTree = "<group>"; };
-		8584B29919D2192F00B851DC /* mundo de nieve con guias.ai */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mundo de nieve con guias.ai"; sourceTree = "<group>"; };
-		8584B29A19D2192F00B851DC /* mundo nieve.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mundo nieve.jpg"; sourceTree = "<group>"; };
-		8584B29B19D2192F00B851DC /* objetos del mundo de nieve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objetos del mundo de nieve.png"; sourceTree = "<group>"; };
-		8584B29C19D2192F00B851DC /* objetos en el mundo de nieve 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objetos en el mundo de nieve 1.png"; sourceTree = "<group>"; };
-		8584B29D19D2192F00B851DC /* sets.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sets.png; sourceTree = "<group>"; };
-		8584B29E19D2192F00B851DC /* tiles-grandes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiles-grandes.png"; sourceTree = "<group>"; };
-		8584B29F19D2192F00B851DC /* Untitled-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Untitled-2.png"; sourceTree = "<group>"; };
 		8584B2B219D21C6300B851DC /* pausa_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pausa_view.xib; sourceTree = "<group>"; };
 		8584B2B419D21C7500B851DC /* terminado_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = terminado_view.xib; sourceTree = "<group>"; };
 		8584B2B619D21D9500B851DC /* View_terminado.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View_terminado.h; sourceTree = "<group>"; };
@@ -359,22 +327,6 @@
 				8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */,
 				8528E9A519D4852F0098375C /* Ice_Level_Tileset.png */,
 				8528E9A619D4852F0098375C /* Ice_Level_Tileset@2x.png */,
-				8584B29019D2192F00B851DC /* 12.png */,
-				8584B29119D2192F00B851DC /* coin copia.png */,
-				8584B29219D2192F00B851DC /* dondo-hielo.png */,
-				8584B29319D2192F00B851DC /* escudo.png */,
-				8584B29419D2192F00B851DC /* listos-separados.png */,
-				8584B29519D2192F00B851DC /* MAS-GRANDES.png */,
-				8584B29619D2192F00B851DC /* moneda por 2 cor.png */,
-				8584B29719D2192F00B851DC /* moneda por 2.png */,
-				8584B29819D2192F00B851DC /* moneda.png */,
-				8584B29919D2192F00B851DC /* mundo de nieve con guias.ai */,
-				8584B29A19D2192F00B851DC /* mundo nieve.jpg */,
-				8584B29B19D2192F00B851DC /* objetos del mundo de nieve.png */,
-				8584B29C19D2192F00B851DC /* objetos en el mundo de nieve 1.png */,
-				8584B29D19D2192F00B851DC /* sets.png */,
-				8584B29E19D2192F00B851DC /* tiles-grandes.png */,
-				8584B29F19D2192F00B851DC /* Untitled-2.png */,
 			);
 			name = Tiles;
 			sourceTree = "<group>";
@@ -382,7 +334,7 @@
 		850EC3D0199437660044959B /* Level Files */ = {
 			isa = PBXGroup;
 			children = (
-				8528E9A119D485230098375C /* w2_lvl1.tmx */,
+				852FB50E19DB4E0300F5BA25 /* w2_lvl1.tmx */,
 			);
 			name = "Level Files";
 			sourceTree = "<group>";
@@ -693,40 +645,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8584B2A319D2192F00B851DC /* escudo.png in Resources */,
 				855056B019816B6F005EC6C2 /* mario.jpg in Resources */,
 				855EEE7B196CA31800AF42AF /* background.png in Resources */,
-				8584B2A919D2192F00B851DC /* mundo de nieve con guias.ai in Resources */,
-				8584B2AA19D2192F00B851DC /* mundo nieve.jpg in Resources */,
+				852FB50F19DB4E0300F5BA25 /* w2_lvl1.tmx in Resources */,
 				8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */,
 				850EC3E3199438490044959B /* Snowflakes.png in Resources */,
 				8575DAA51940EC0200392E73 /* BTpuntajes@2x.png in Resources */,
-				8528E9A219D485230098375C /* w2_lvl1.tmx in Resources */,
-				8584B2AD19D2192F00B851DC /* sets.png in Resources */,
-				8584B2AF19D2192F00B851DC /* Untitled-2.png in Resources */,
-				8584B2A019D2192F00B851DC /* 12.png in Resources */,
 				857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */,
 				85A659D5196338380095D51A /* BTajustes@2x.png in Resources */,
 				851EFF2519883E38009377CD /* bt_atras.png in Resources */,
 				850EC3E2199438490044959B /* snow.sks in Resources */,
-				8584B2A619D2192F00B851DC /* moneda por 2 cor.png in Resources */,
 				8528E9A919D4852F0098375C /* Ice_Level_Tileset.png in Resources */,
 				8528E9A719D4852F0098375C /* Coins_PowerUP.png in Resources */,
 				8535D6CC19880496005BEC90 /* bt_nivel2.png in Resources */,
-				8584B2AB19D2192F00B851DC /* objetos del mundo de nieve.png in Resources */,
 				85547966199405EC008BBAF9 /* corazon@2x.png in Resources */,
 				8528E9AA19D4852F0098375C /* Ice_Level_Tileset@2x.png in Resources */,
-				8584B2A419D2192F00B851DC /* listos-separados.png in Resources */,
-				8584B2A219D2192F00B851DC /* dondo-hielo.png in Resources */,
 				8575DAA71940EC3A00392E73 /* BTjugar@2x.png in Resources */,
 				8535D6CE19880496005BEC90 /* bt_nivel4.png in Resources */,
-				8584B2A719D2192F00B851DC /* moneda por 2.png in Resources */,
 				232312AC1937AA4600B34F7A /* Images.xcassets in Resources */,
-				8584B2A519D2192F00B851DC /* MAS-GRANDES.png in Resources */,
 				8584B2B319D21C6300B851DC /* pausa_view.xib in Resources */,
 				8560EB4F1993E936000A57F7 /* ajustes_view.xib in Resources */,
 				8528E9A819D4852F0098375C /* Coins_PowerUP@2x.png in Resources */,
-				8584B2A119D2192F00B851DC /* coin copia.png in Resources */,
 				8535D6D719880AE2005BEC90 /* cuchoNiveles.atlas in Resources */,
 				85547967199405EC008BBAF9 /* orange-round-play-button.png in Resources */,
 				85A659D119630E940095D51A /* configuracion_juego.plist in Resources */,
@@ -736,12 +675,9 @@
 				8535D6CD19880496005BEC90 /* bt_nivel3.png in Resources */,
 				85547962199405D7008BBAF9 /* bt_salir@2x.png in Resources */,
 				85547963199405D7008BBAF9 /* images.png in Resources */,
-				8584B2AE19D2192F00B851DC /* tiles-grandes.png in Resources */,
 				232312A21937AA4600B34F7A /* Main_iPad.storyboard in Resources */,
 				8554795F199405C2008BBAF9 /* bt_recargar@2x.png in Resources */,
 				2323129F1937AA4600B34F7A /* Main_iPhone.storyboard in Resources */,
-				8584B2A819D2192F00B851DC /* moneda.png in Resources */,
-				8584B2AC19D2192F00B851DC /* objetos en el mundo de nieve 1.png in Resources */,
 				232312961937AA4600B34F7A /* InfoPlist.strings in Resources */,
 				8535D6CF19880496005BEC90 /* bt_nivel5.png in Resources */,
 			);
@@ -925,7 +861,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cucho/Cucho Run-Prefix.pch";
 				INFOPLIST_FILE = "Cucho/Cucho Run-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Cucho Run";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
@@ -943,7 +879,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cucho/Cucho Run-Prefix.pch";
 				INFOPLIST_FILE = "Cucho/Cucho Run-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Cucho Run";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;

@@ -112,6 +112,7 @@ const float CannonCollisionSpeed = 100.0f;
         [self addChild:self.fondo1];
         
         
+        
         con_monedas = [[SKLabelNode alloc] initWithFontNamed:@"Verdana"];
         [con_monedas setFontSize:20];
         con_monedas.position = CGPointMake(CGRectGetMaxX(self.frame)-50, CGRectGetMaxY(self.frame)-35);
@@ -140,6 +141,9 @@ const float CannonCollisionSpeed = 100.0f;
         NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"snow" ofType:@"sks"];
         SKEmitterNode *myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
         myParticle.particlePosition = CGPointMake(CGRectGetMidX(self.frame),780);
+        myParticle.particleRotation = -0.5;
+        //myParticle.particleScale = 0.5;
+        //myParticle.position=CGPointMake(-100, -230);
         [self addChild:myParticle];
         
         
@@ -149,14 +153,11 @@ const float CannonCollisionSpeed = 100.0f;
         self.suelo = [self.mapa layerNamed:@"Suelo"]; //revisar nombre de capas
         self.rocas = [self.mapa layerNamed:@"Obstaculos"]; //y pide x20
         self.monedas = [self.mapa layerNamed:@"Monedas"];
-        self.monedas.zPosition=2;
-        
+                
         self.iman = [self.mapa layerNamed:(@"Iman")];
         self.multiplicador = [self.mapa layerNamed:(@"Multiplicador")];
         self.multiplicador.zPosition=2;
         self.escudo = [self.mapa layerNamed:(@"Escudo")];
-        self.decoracion1 = [self.mapa layerNamed:(@"Decoracion 1")];
-        self.decoracion1.zPosition=2;
         
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"cuchoAnimacion"];
         SKTexture *f1 = [atlas textureNamed:@"cucho01.png"];

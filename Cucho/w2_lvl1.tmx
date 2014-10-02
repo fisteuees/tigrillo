@@ -9,16 +9,6 @@
  <tileset firstgid="701" name="Coins_PowerUP" tilewidth="32" tileheight="32">
   <image source="Coins_PowerUP.png" width="1136" height="640"/>
  </tileset>
- <layer name="Decoracion 5" width="224" height="24" opacity="0.19">
-  <data encoding="base64" compression="zlib">
-   eJzt0NcNglEMg9H7MwdlFMoolH0oo1BGoYxCecArICXBiO9Ifnbi1gAAAAAAAAAAAAAAAAAAAAAA37LuWtsoW2XX/W6H2w3ZfQ6bVon+1Wm7vfoPylE5Jd1S0eF2Q3afw6ZVon912u6s/otyVW5Jt1R0uN2Q3eewaZXoX522u6v/oTyVV9ItFR1uN2T3OWxaJfpXp+36vdYGylAZ9X63w+2G7D6HTatE/+q03Vj9E2WqzJJuqehwuyG7z2HTKtG/Om03V/9CWSqrpFsqOtxuyO5z2LRK9K//tB0AAAAA4HNvLf1s4w==
-  </data>
- </layer>
- <layer name="Decoracion 4" width="224" height="24" opacity="0.48">
-  <data encoding="base64" compression="zlib">
-   eJztkTdOBUEQRGdWwt0Bk+IOi0lxd8CkfOAOmBR3B0xAxStNb3fvROg9qaLu6inVlAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEOeklnIqnUnn0kW1ZwfSoXQkHdf2Xe+e19PKmXmnt8/q0DPP5Jm6Gb0X2Z/zFxGvp7dI/kxnvTOMudXeQrqT7qWHas8upSvpWrox3vDueT2tnJl3evusDj3zTJ6pm9F7kf05fxHxenqL5M901jvDmFftvUnv0of0We3Zo/QkPUsvxhvePa+nlTPzTm+f1aFnnskzdTN6L7I/5y8iXk9vkfyZznpnGLM0lLIsrUir0tpgz75091v6kX6NN7x7Xk8rZ+ad3j6rQ888k2fqZvReZH/OX0S8nt4i+TOd9c4wZlv3dqRdaU/aH+zZurQhbUpbRhbvntfTypl5p7fP6tAzz+SZuhm9F9mf8xcRr6e3SP5MZ70zAAAAAAAAwP/lDyoLPYE=
-  </data>
- </layer>
  <layer name="Decoracion 3" width="224" height="24" opacity="0.75">
   <data encoding="base64" compression="zlib">
    eJztkjVOQEEURT8k2B6wEtsDVmJ7wEpsJViJ7QErsT1gJbYHLOH2/J/Me3mPhnOS00xm7h2rKgAAAAAAAAAAAAAAAAAAAAAAAAAAAADwsNdSVfvyQB7Ko5bfczY1tiW35Y7crZnzV7meHmufJbOUiLNa92jtzLhLT7anI+rNsv56Exeaeymv5LW8qVl7rLETeSrP5HlBflaup8faZ8ksJeKs1j1aOzPu0pPt6Yh6s6y/3sST5j7LF/kq32rW3mrsTt7LB/lYkJ+V6+mx9lkyS4k4q3WP1s6Mu/Rkezqi3izrrzfR1lpV7bJDdsqu1t9z3pX3IT/ll/wuyM/K9fRY+yyZpUSc1bpHa2fGXXqyPR1Rb5b115sY0NxBOSSH5UjN2m6N9che2Sf7C/Kzcj091j5LZikRZ7Xu0dqZcZeebE9H1Jtl/fUmpjR3Ws7IWTlXs3ZUY2NyXE7IyYL8rFxPj7XPkllKxFmte7R2ZtylJ9vTEfVmWX+9iRXNXZVrcl1u1Kyd19iCXJRLcrkgPyvX02Pts2SWEnFW6x6tnRl36cn2dES9WdZfBwAAAAAAgP/FD3DbLbQ=
