@@ -41,8 +41,8 @@ const float CannonCollisionSpeed = 100.0f;
     SKSpriteNode *menu_pausa;
     SKAction *action;
     SKAction *accion_reanudar;
-    int lugar_actual;
-    int lugar_anterior;
+    int velocidad_actual;
+    int velocidad_anterior;
     int transmision;
     BOOL pausado;
     BOOL volando;
@@ -72,6 +72,20 @@ const float CannonCollisionSpeed = 100.0f;
     //slider
     UISlider *slider;
     
+    //power up
+    BOOL multiplica;
+    int suma_x2;
+    NSTimer *multi;
+    NSNumber *int_mult;
+    
+    
+    NSTimer *volar1;
+    int timVolar;
+    //para mapa
+    NSString *nomMapa;
+    BOOL colisiones;
+    int vidas;
+    
 }
 @end
 
@@ -82,12 +96,18 @@ const float CannonCollisionSpeed = 100.0f;
     //con = cb; pendiente para base de datos
     if (self = [super initWithSize:size]) {
         //
-        espacio_movimiento = 4;
+        espacio_movimiento = 5;
         contador_vidas = 2;
-        lugar_anterior = 0;
+        velocidad_anterior = 0;
         pausado = NO;
-        lugar_actual = espacio_movimiento;
+        velocidad_actual = espacio_movimiento;
         termino = 0;
+        //PARA Power Up
+        suma_x2 = 1;
+        int_mult = 0;
+        colisiones = YES;
+        //nomMapa = mapa;
+        vidas = 3;
         //
         //NOTIFICACIONES PARA IR Y VOLVER DE PAUSA
         [[NSNotificationCenter defaultCenter]
@@ -134,6 +154,7 @@ const float CannonCollisionSpeed = 100.0f;
         pausa = [[SKSpriteNode alloc] initWithImageNamed:@"images.png"];
         pausa.position = CGPointMake(CGRectGetMinX(self.frame)+80, CGRectGetMaxY(self.frame)-35);
         pausa.name = @"pausa";
+        pausa.zPosition = 120;
         [self addChild:pausa];
         //FIN PARA VIDAS
         
@@ -153,11 +174,24 @@ const float CannonCollisionSpeed = 100.0f;
         self.suelo = [self.mapa layerNamed:@"Suelo"]; //revisar nombre de capas
         self.rocas = [self.mapa layerNamed:@"Obstaculos"]; //y pide x20
         self.monedas = [self.mapa layerNamed:@"Monedas"];
-                
-        self.iman = [self.mapa layerNamed:(@"Iman")];
+        self.monedas.zPosition=80;
+        self.rocas.zPosition=90;
+        
+        //self.Decoracion1 = [self.mapa layerNamed: @"Decoracion 1"];
+        //self.Decoracion2 = [self.mapa layerNamed:@"Decoracion 2"];
+        //self.Decoracion1.zPosition = 1;
+        //self.Decoracion2.zPosition = 1;
+        
+        self.volar = [self.mapa layerNamed:(@"Volar")];
+        self.volar.zPosition = 110;
         self.multiplicador = [self.mapa layerNamed:(@"Multiplicador")];
-        self.multiplicador.zPosition=2;
+        self.multiplicador.zPosition = 110;
         self.escudo = [self.mapa layerNamed:(@"Escudo")];
+        self.monedasVolar = [self.mapa layerNamed:(@"MonedasVolar")];
+        self.monedasVolar.zPosition = 110;
+        self.correccion =[self.mapa layerNamed:@"Correccion"];
+        self.correccion.zPosition = 110;
+
         
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"cuchoAnimacion"];
         SKTexture *f1 = [atlas textureNamed:@"cucho01.png"];
@@ -170,7 +204,7 @@ const float CannonCollisionSpeed = 100.0f;
         cuchoCaminando = @[f1,f2,f3,f4,f5,f6,f7];
         
         self.jugador = [[Jugador alloc] initWithImageNamed:@"cucho01.png"];
-        self.jugador.position = CGPointMake(50, 150);
+        self.jugador.position = CGPointMake(140, 150);
         self.jugador.zPosition = 100;
         self.jugador.modo=1;
         self.jugador.puede_moverse=NO;
@@ -185,7 +219,7 @@ const float CannonCollisionSpeed = 100.0f;
         menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
         menu_pausa.position = CGPointMake(100, 100);
         menu_pausa.hidden = YES;
-        menu_pausa.zPosition = 101;
+        menu_pausa.zPosition = 120;
         menu_pausa.name = @"reanuda";
         [self addChild:menu_pausa];
         
@@ -385,10 +419,16 @@ const float CannonCollisionSpeed = 100.0f;
     [self.fondo1 update:delta];
     
     
-    if (espacio_movimiento!=4) {
+    if (espacio_movimiento!=5) {
     }else{
-        [self comprobarColisionesTrampas:self.jugador porCapas:self.rocas];
-        [self comprobarColisionesMonedas:self.jugador porCapas:self.monedas];
+        if (colisiones) {
+            [self comprobarColisionesTrampas:self.jugador porCapas:self.rocas];
+            [self comprobarColisionesMonedas:self.jugador porCapas:self.monedas];
+            [self comprobarColisionesPU:self.jugador porCapas:self.multiplicador];
+            [self comprobarColisionesPU:self.jugador porCapas:self.volar];
+        }else{
+            [self comprobarColisionesMonedas:self.jugador porCapas:self.monedasVolar];
+        }
     }
     
     
@@ -561,7 +601,6 @@ const float CannonCollisionSpeed = 100.0f;
         //Para borrar monedas
         int x;
         int y;
-        //int par;
         x=-1;
         y=1;
         CGPoint posiTile = CGPointMake(posiJugador.x + (tileColumn - 1), posiJugador.y + (tileRow - 1));
@@ -569,15 +608,16 @@ const float CannonCollisionSpeed = 100.0f;
         if (gid) {
             CGRect areaTile = [self tileRectFromTileCoords:posiTile];
             if (CGRectIntersectsRect(areaJugador, areaTile)) {
+                contar_monedas = contar_monedas + suma_x2;
+                con_monedas.text = [NSString stringWithFormat:@"%i",contar_monedas];
                 for (x=-1; x<2; x++) {
                     for (y=-1; y<2; y++) {
                         CGPoint posiTile1 = CGPointMake(posiJugador.x + (tileColumn - 1) + x, posiJugador.y + (tileRow - 1) + y);
                         NSInteger gid1 = [self tileGIDAtTileCoord:posiTile1 forLayer:capa];
                         if (gid1) {
-                            [self.monedas removeTileAtCoord:posiTile1];
-                            //[self runAction:[SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO]];
-                            contar_monedas++;
-                            con_monedas.text = [NSString stringWithFormat:@"%i",contar_monedas];
+                            [capa removeTileAtCoord:posiTile1];
+                            //[self runAction:[SKAction playSoundFileNamed:@"MONEDAS.mp3" waitForCompletion:NO]];
+                            
                             //}
                         }
                     }
@@ -621,11 +661,98 @@ const float CannonCollisionSpeed = 100.0f;
                     
                 }else{
                     [corazon1 setHidden:YES];
+                    vidas--;
                     [self juegoTerminado:0];
                 }
    
             }
         }
+    }
+}
+
+- (void)comprobarColisionesPU:(Jugador *)jugador porCapas:(TMXLayer *)capa {
+    NSInteger indices[8] = {7, 1, 3, 5, 0, 2, 6, 8};
+    for (NSUInteger i = 0; i < 8; i++) {
+        NSInteger indice = indices[i];
+        
+        //2
+        CGRect areaJugador = [jugador rectanguloColision];
+        //3
+        CGPoint posiJugador = [capa coordForPoint:jugador.posicionDeseada];
+        //4
+        NSInteger tileColumn = indice % 3;
+        NSInteger tileRow = indice / 3;
+        //Para borrar power ups
+        int x;
+        int y;
+        x=-1;
+        y=1;
+        CGPoint posiTile = CGPointMake(posiJugador.x + (tileColumn - 1), posiJugador.y + (tileRow - 1));
+        NSInteger gid = [self tileGIDAtTileCoord:posiTile forLayer:capa];
+        if (gid) {
+            CGRect areaTile = [self tileRectFromTileCoords:posiTile];
+            if (CGRectIntersectsRect(areaJugador, areaTile)) {
+                if (capa == self.multiplicador) {
+                    //Aquí hacer la notificación del multiplicador
+                    suma_x2 = 2;
+                    int_mult = [NSNumber numberWithInt:0];
+                    [multi invalidate];
+                    multi = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(mult) userInfo:nil repeats:YES];
+                }else if (capa == self.volar){
+                    timVolar = 0;
+                    NSLog(@"se llama");
+                    [self.rocas setHidden:YES];
+                    [self.monedas setHidden:YES];
+                    [self.correccion setHidden:YES];
+                    [self.monedasVolar setHidden:NO];
+                    [self.multiplicador setHidden:YES];
+                    [volar1 invalidate];
+                    volar1 = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(metVolar) userInfo:nil repeats:YES];
+                    volando = YES;
+                    colisiones = NO;
+                }
+                for (x=-1; x<2; x++) {
+                    for (y=-1; y<2; y++) {
+                        CGPoint posiTile1 = CGPointMake(posiJugador.x + (tileColumn - 1) + x, posiJugador.y + (tileRow - 1) + y);
+                        NSInteger gid1 = [self tileGIDAtTileCoord:posiTile1 forLayer:capa];
+                        if (gid1) {
+                            [capa removeTileAtCoord:posiTile1];
+                            //[self runAction:[SKAction playSoundFileNamed:@"coin.mp3" waitForCompletion:NO]];
+                            //contar_monedas++;
+                            //con_monedas.text = [NSString stringWithFormat:@"%i",contar_monedas];
+                            //}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+-(void)mult{
+    if (int_mult.intValue < 3) {
+        int_mult = [NSNumber numberWithInt:[int_mult intValue]+1];
+        suma_x2 = 2;
+        NSLog(@"Multiplicador cogido");
+    }else{
+        suma_x2 = 1;
+    }
+}
+
+-(void)metVolar{
+    if (timVolar < 13) {
+        timVolar++;
+        NSLog(@"Se cogió la pluma");
+        
+    }else{
+        volando = NO;
+        colisiones = YES;
+        [self.correccion setHidden:NO];
+        [self.multiplicador setHidden:NO];
+        [self.monedas setHidden:NO];
+        [self.rocas setHidden:NO];
+        [self.monedasVolar setHidden:YES];
+        [volar1 invalidate];
     }
 }
 
@@ -643,7 +770,7 @@ const float CannonCollisionSpeed = 100.0f;
     }else{
         //self.mapa.position = CGPointMake(self.mapa.position.x-4, self.mapa.position.y);
         //self.jugador.position= CGPointMake(self.jugador.position.x+4, self.jugador.position.y);
-        espacio_movimiento = 4;
+        espacio_movimiento = 5;
         [self.jugador removeActionForKey:@"fade"];
         self.jugador.alpha=1.0f;
         
@@ -761,7 +888,7 @@ const float CannonCollisionSpeed = 100.0f;
         NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
         [nc postNotificationName:@"insertBase" object:self userInfo:userInfo];
         //------------------------
-        contar_monedas = 0;
+        //contar_monedas = 0;
         contador_vidas = 2;
         //Fin para base
     }else{
@@ -774,19 +901,26 @@ const float CannonCollisionSpeed = 100.0f;
     //[self addChild:bt_recargar];
     
     [self setUserInteractionEnabled:NO];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarTerminado" object:self];
+    NSMutableDictionary *puntajes = [NSMutableDictionary dictionary];
+    NSNumber *puntuacion;
+    puntuacion=[NSNumber numberWithInt:contar_monedas+(vidas*20)];//*20);
+    NSLog(@"%i",contar_monedas);
+    [puntajes setObject:puntuacion forKey:@"monedas"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarTerminado" object:self userInfo:puntajes];
 
 }
 
 - (void)setViewpointCenter:(CGPoint)position {
-    lugar_anterior = lugar_actual;
-    lugar_actual = espacio_movimiento;
-    if (lugar_actual == 2 && lugar_anterior==4) {
+    velocidad_anterior = velocidad_actual;
+    velocidad_actual = espacio_movimiento;
+    if (velocidad_actual == 2 && velocidad_anterior==5) {
         if (contador_vidas == 2) {
             [corazon3 setHidden:YES];
+            vidas--;
         }
         if (contador_vidas == 1) {
             [corazon2 setHidden:YES];
+            vidas--;
         }
     }
     self.mapa.position = CGPointMake(self.mapa.position.x-espacio_movimiento, self.mapa.position.y);

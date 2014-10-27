@@ -13,16 +13,19 @@
     UISwitch* voiceFXSwitch;
     UISwitch* soundFXSwitch;
     BOOL isPhone;
-    
+    NSString *puntuacion;
     
 }
 
 @end
 
 @implementation View_terminado
+@synthesize score;
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame withPuntaje:(NSString *)puntaje
 {
+    puntuacion = puntaje;
+    NSLog(@"%@",puntaje);
     self = [super initWithFrame:frame];
     
     if (self) {
@@ -57,6 +60,13 @@
     NSArray *subviewArray = [[NSBundle mainBundle] loadNibNamed:@"terminado_view" owner:self options:nil];
     UIView *mainView = [subviewArray objectAtIndex:0];
     mainView.frame=theFrame;
+    //
+    UILabel *lbl1 = [[UILabel alloc] init];
+    lbl1.frame = CGRectMake(116, 104, 118, 21);
+    lbl1.text = puntuacion;
+    [mainView addSubview:lbl1];
+    NSLog(@"Se añade");
+    //
     [self addSubview:mainView];
     
 }

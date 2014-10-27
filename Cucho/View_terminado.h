@@ -11,5 +11,8 @@
 @interface View_terminado : UIView
 
 @property (nonatomic, retain) IBOutlet UIView *terminado;
+@property (weak, nonatomic) IBOutlet UILabel *score;
+
+-(id)initWithFrame:(CGRect)frame withPuntaje: (NSString *)puntaje;
 
 @end

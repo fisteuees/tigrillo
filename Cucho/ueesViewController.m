@@ -27,6 +27,7 @@
     BOOL desplegado;
     BOOL desplegado_terminado;
     conexionBase *cb;
+    NSString *mapa;
 }
 
 @end
@@ -70,6 +71,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(insertBase:)
                                                  name:@"insertBase"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(nombreMapa:)
+                                                 name:@"nombreMapa"
                                                object:nil];
     //base de datos
     cb = [[conexionBase alloc]init];
@@ -312,9 +317,14 @@
 #pragma mark View terminado
 
 -(void)mostrarTerminado:(NSNotification *)notification{
+    NSDictionary *puntajes = notification.userInfo;
+    NSNumber *monedas = [puntajes objectForKey:@"monedas"];
+    NSString *puntaje = [NSString stringWithFormat:@"%i",monedas.intValue];
+    
     
     CGRect rect = CGRectMake(CGRectGetMidX(skView.bounds),CGRectGetMidY(skView.bounds), 350, 450);
-    terminado = [[View_terminado alloc] initWithFrame:rect];
+    terminado = [[View_terminado alloc] initWithFrame:rect withPuntaje:[NSString stringWithFormat:@"Puntaje = %@",puntaje]];
+    //[terminado.score setText:[NSString stringWithFormat:@"Puntaje= %@",puntaje]];
     terminado.layer.anchorPoint = CGPointMake(1, 1);
     terminado.alpha=0.0f;
     [terminado setTransform:CGAffineTransformMakeScale(0.1, 0.1)];
@@ -396,5 +406,10 @@
     //----------------Nuevo para base de datos
 }
 
+-(void)nombreMapa:(NSNotification *)notification{
+    NSDictionary* userInfo = notification.userInfo;
+    mapa = [userInfo objectForKey:@"mapa"];
+    NSLog(@"%@",mapa);
+}
 
 @end
