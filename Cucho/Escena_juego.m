@@ -190,7 +190,7 @@ const float CannonCollisionSpeed = 100.0f;
         //FIN PARA VIDAS
         
         //Particulas
-        NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"bosque" ofType:@"sks"];
+        NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Particulas_%i",mundo.intValue] ofType:@"sks"];
         SKEmitterNode *myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
         myParticle.position=CGPointMake(1024, 450);
         [self addChild:myParticle];

@@ -62,7 +62,7 @@
 		855684ED1A0C5FE4001DCDFB /* w1_lvl5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 855684E81A0C5FE4001DCDFB /* w1_lvl5.tmx */; };
 		855684F01A0C5FEF001DCDFB /* Forest_level.png in Resources */ = {isa = PBXBuildFile; fileRef = 855684EE1A0C5FEF001DCDFB /* Forest_level.png */; };
 		855684F11A0C5FEF001DCDFB /* Forest_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 855684EF1A0C5FEF001DCDFB /* Forest_level@2x.png */; };
-		855684F41A0C5FF8001DCDFB /* bosque.sks in Resources */ = {isa = PBXBuildFile; fileRef = 855684F21A0C5FF8001DCDFB /* bosque.sks */; };
+		855684F41A0C5FF8001DCDFB /* Particulas_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 855684F21A0C5FF8001DCDFB /* Particulas_1.sks */; };
 		855684F51A0C5FF8001DCDFB /* particula-mariposa.png in Resources */ = {isa = PBXBuildFile; fileRef = 855684F31A0C5FF8001DCDFB /* particula-mariposa.png */; };
 		855684F81A0C626A001DCDFB /* manotouch.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 855684F61A0C626A001DCDFB /* manotouch.atlas */; };
 		855684F91A0C626A001DCDFB /* manotouch2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 855684F71A0C626A001DCDFB /* manotouch2.atlas */; };
@@ -93,7 +93,7 @@
 		85BA4E8C1A1BC6D600FA8C22 /* w2_lvl3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 85BA4E871A1BC6D600FA8C22 /* w2_lvl3.tmx */; };
 		85BA4E8D1A1BC6D600FA8C22 /* w2_lvl4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 85BA4E881A1BC6D600FA8C22 /* w2_lvl4.tmx */; };
 		85BA4E8E1A1BC6D600FA8C22 /* w2_lvl5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 85BA4E891A1BC6D600FA8C22 /* w2_lvl5.tmx */; };
-		85BA4E911A1BC6E300FA8C22 /* snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85BA4E8F1A1BC6E300FA8C22 /* snow.sks */; };
+		85BA4E911A1BC6E300FA8C22 /* Particulas_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 85BA4E8F1A1BC6E300FA8C22 /* Particulas_2.sks */; };
 		85BA4E921A1BC6E300FA8C22 /* Snowflakes.png in Resources */ = {isa = PBXBuildFile; fileRef = 85BA4E901A1BC6E300FA8C22 /* Snowflakes.png */; };
 		85BA4E981A1BC74700FA8C22 /* w5_lvl1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 85BA4E931A1BC74700FA8C22 /* w5_lvl1.tmx */; };
 		85BA4E991A1BC74700FA8C22 /* w5_lvl2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 85BA4E941A1BC74700FA8C22 /* w5_lvl2.tmx */; };
@@ -197,7 +197,7 @@
 		855684E81A0C5FE4001DCDFB /* w1_lvl5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl5.tmx; sourceTree = "<group>"; };
 		855684EE1A0C5FEF001DCDFB /* Forest_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forest_level.png; sourceTree = "<group>"; };
 		855684EF1A0C5FEF001DCDFB /* Forest_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forest_level@2x.png"; sourceTree = "<group>"; };
-		855684F21A0C5FF8001DCDFB /* bosque.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = bosque.sks; sourceTree = "<group>"; };
+		855684F21A0C5FF8001DCDFB /* Particulas_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Particulas_1.sks; sourceTree = "<group>"; };
 		855684F31A0C5FF8001DCDFB /* particula-mariposa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "particula-mariposa.png"; sourceTree = "<group>"; };
 		855684F61A0C626A001DCDFB /* manotouch.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = manotouch.atlas; sourceTree = "<group>"; };
 		855684F71A0C626A001DCDFB /* manotouch2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = manotouch2.atlas; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 		85BA4E871A1BC6D600FA8C22 /* w2_lvl3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w2_lvl3.tmx; sourceTree = "<group>"; };
 		85BA4E881A1BC6D600FA8C22 /* w2_lvl4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w2_lvl4.tmx; sourceTree = "<group>"; };
 		85BA4E891A1BC6D600FA8C22 /* w2_lvl5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w2_lvl5.tmx; sourceTree = "<group>"; };
-		85BA4E8F1A1BC6E300FA8C22 /* snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = snow.sks; sourceTree = "<group>"; };
+		85BA4E8F1A1BC6E300FA8C22 /* Particulas_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Particulas_2.sks; sourceTree = "<group>"; };
 		85BA4E901A1BC6E300FA8C22 /* Snowflakes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Snowflakes.png; sourceTree = "<group>"; };
 		85BA4E931A1BC74700FA8C22 /* w5_lvl1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w5_lvl1.tmx; sourceTree = "<group>"; };
 		85BA4E941A1BC74700FA8C22 /* w5_lvl2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w5_lvl2.tmx; sourceTree = "<group>"; };
@@ -562,7 +562,7 @@
 		8575DA9C1940E45600392E73 /* Particulas */ = {
 			isa = PBXGroup;
 			children = (
-				855684F21A0C5FF8001DCDFB /* bosque.sks */,
+				855684F21A0C5FF8001DCDFB /* Particulas_1.sks */,
 				855684F31A0C5FF8001DCDFB /* particula-mariposa.png */,
 			);
 			name = Particulas;
@@ -748,7 +748,7 @@
 		85B810781A1BBE6B00C19804 /* Particulas */ = {
 			isa = PBXGroup;
 			children = (
-				85BA4E8F1A1BC6E300FA8C22 /* snow.sks */,
+				85BA4E8F1A1BC6E300FA8C22 /* Particulas_2.sks */,
 				85BA4E901A1BC6E300FA8C22 /* Snowflakes.png */,
 			);
 			name = Particulas;
@@ -891,7 +891,7 @@
 				855684F91A0C626A001DCDFB /* manotouch2.atlas in Resources */,
 				85BA4E9A1A1BC74700FA8C22 /* w5_lvl3.tmx in Resources */,
 				855684F11A0C5FEF001DCDFB /* Forest_level@2x.png in Resources */,
-				85BA4E911A1BC6E300FA8C22 /* snow.sks in Resources */,
+				85BA4E911A1BC6E300FA8C22 /* Particulas_2.sks in Resources */,
 				8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */,
 				85BA4E981A1BC74700FA8C22 /* w5_lvl1.tmx in Resources */,
 				8575DAA51940EC0200392E73 /* BTpuntajes@2x.png in Resources */,
@@ -923,7 +923,7 @@
 				85BA4E9F1A1BC75700FA8C22 /* Graveyard_level.png in Resources */,
 				85547967199405EC008BBAF9 /* orange-round-play-button.png in Resources */,
 				85BA4E8E1A1BC6D600FA8C22 /* w2_lvl5.tmx in Resources */,
-				855684F41A0C5FF8001DCDFB /* bosque.sks in Resources */,
+				855684F41A0C5FF8001DCDFB /* Particulas_1.sks in Resources */,
 				85A659D119630E940095D51A /* configuracion_juego.plist in Resources */,
 				85BA4E9B1A1BC74700FA8C22 /* w5_lvl4.tmx in Resources */,
 				855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */,
