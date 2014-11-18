@@ -90,6 +90,8 @@ const float CannonCollisionSpeed = 100.0f;
     NSString *mundo;
     NSString *nivel;
     NSString *fondo;
+    int particulas_x;
+    int particulas_y;
     
     //Nuevo para escudo
     BOOL escudo;
@@ -124,9 +126,13 @@ const float CannonCollisionSpeed = 100.0f;
         switch (mundo.intValue) {
             case 1:
                 fondo = @"fondo_bosque_";
+                particulas_x = 1024;
+                particulas_y = 450;
                 break;
             case 2:
                 fondo = @"fondo_hielo_";
+                particulas_x = 100;
+                particulas_y = 750;
                 break;
             case 3:
                 fondo = @"fondo_agua_";
@@ -136,6 +142,8 @@ const float CannonCollisionSpeed = 100.0f;
                 break;
             case 5:
                 fondo = @"fondo_cementerio_";
+                particulas_x = 1024;
+                particulas_y = 450;
                 break;
             default:
                 break;
@@ -192,8 +200,8 @@ const float CannonCollisionSpeed = 100.0f;
         //Particulas
         NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Particulas_%i",mundo.intValue] ofType:@"sks"];
         SKEmitterNode *myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
-        myParticle.position=CGPointMake(1024, 450);
-        [self addChild:myParticle];
+        myParticle.position=CGPointMake(particulas_x, particulas_y);
+        //[self addChild:myParticle];
         
         NSLog(@"El nombre del mapa es: %@",nomMapa);
         self.mapa = [JSTileMap mapNamed:nomMapa]; //cambiar aquí nombre de mapa //Nuevo para reconocer niveles
@@ -248,7 +256,7 @@ const float CannonCollisionSpeed = 100.0f;
         menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
         menu_pausa.position = CGPointMake(100, 100);
         menu_pausa.hidden = YES;
-        menu_pausa.zPosition = 200;
+        menu_pausa.zPosition = 500;
         menu_pausa.name = @"reanuda";
         [self addChild:menu_pausa];
         
