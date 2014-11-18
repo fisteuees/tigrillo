@@ -39,6 +39,32 @@
         NSLog(@"Tabla creada");
     }
 }
+//Nuevo para base de datos
+-(void)creartablas{
+    char *err1;
+    char *err2;
+    NSString *mundo = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS 'mundos' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'nombre' TEXT, 'bloqueado' INTEGER, 'puntos_totales' INTEGER, 'completado' INTEGER);"];
+    if(sqlite3_exec(db, [mundo UTF8String], NULL, NULL, &err1) != SQLITE_OK){
+        sqlite3_close(db);
+        NSAssert(0, @"No se pudo crear la tabla");
+    }else{
+        NSLog(@"Tabla creada");
+    }
+    
+    //
+    
+    NSString *niveles = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS 'niveles' ('id' TEXT, 'mundo' TEXT, 'bloqueado' INTEGER, 'mejor_puntaje' INTEGER, 'completado' INTEGER);"];
+    if(sqlite3_exec(db, [niveles UTF8String], NULL, NULL, &err2) != SQLITE_OK){
+        sqlite3_close(db);
+        NSAssert(0, @"No se pudo crear la tabla");
+    }else{
+        NSLog(@"Tabla creada");
+    }
+}
+
+-(void)insertMundo{
+    
+}
 
 -(void)insert:(int)monedas{
     char *err;
@@ -53,5 +79,7 @@
     }
     NSLog(@"Monedas: %d",monedas);
 }
+
+
 
 @end

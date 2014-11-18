@@ -12,7 +12,8 @@
 
 @property (nonatomic, retain) IBOutlet UIView *terminado;
 @property (weak, nonatomic) IBOutlet UILabel *score;
-
--(id)initWithFrame:(CGRect)frame withPuntaje: (NSString *)puntaje;
+//Nuevo para reconocer niveles
+-(id)initWithFrame:(CGRect)frame withPuntaje: (NSDictionary *)puntaje;
+@property (weak, nonatomic) IBOutlet UIButton *siguienteNivel;
 
 @end

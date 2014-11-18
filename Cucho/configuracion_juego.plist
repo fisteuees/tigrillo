@@ -2,6 +2,49 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Niveles</key>
+	<dict>
+		<key>Cementerio</key>
+		<array>
+			<string>NO</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+		</array>
+		<key>Fuego</key>
+		<array>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+		</array>
+		<key>Agua</key>
+		<array>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+		</array>
+		<key>Hielo</key>
+		<array>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+		</array>
+		<key>Bosque</key>
+		<array>
+			<string>NO</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+			<string>SI</string>
+		</array>
+	</dict>
 	<key>Jugador</key>
 	<dict>
 		<key>Nombre</key>

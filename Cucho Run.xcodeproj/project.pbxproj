@@ -26,16 +26,11 @@
 		232312BF1937AA4600B34F7A /* CuchoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 232312BE1937AA4600B34F7A /* CuchoTests.m */; };
 		85019FD81947A87E007DB79E /* gameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 85019FD71947A87E007DB79E /* gameCenterManager.m */; };
 		850B4B1D1941195E007C5C20 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 850B4B1C1941195E007C5C20 /* GameKit.framework */; };
-		850EC3E2199438490044959B /* snow.sks in Resources */ = {isa = PBXBuildFile; fileRef = 850EC3E0199438490044959B /* snow.sks */; };
-		850EC3E3199438490044959B /* Snowflakes.png in Resources */ = {isa = PBXBuildFile; fileRef = 850EC3E1199438490044959B /* Snowflakes.png */; };
 		85151D59194A1591002E2FC5 /* Escena_mundos.m in Sources */ = {isa = PBXBuildFile; fileRef = 85151D58194A1591002E2FC5 /* Escena_mundos.m */; };
 		851EFF23198838A0009377CD /* Escena_juego.m in Sources */ = {isa = PBXBuildFile; fileRef = 851EFF22198838A0009377CD /* Escena_juego.m */; };
 		851EFF2519883E38009377CD /* bt_atras.png in Resources */ = {isa = PBXBuildFile; fileRef = 851EFF2419883E38009377CD /* bt_atras.png */; };
 		8528E9A719D4852F0098375C /* Coins_PowerUP.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A319D4852F0098375C /* Coins_PowerUP.png */; };
 		8528E9A819D4852F0098375C /* Coins_PowerUP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */; };
-		8528E9A919D4852F0098375C /* Ice_Level_Tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A519D4852F0098375C /* Ice_Level_Tileset.png */; };
-		8528E9AA19D4852F0098375C /* Ice_Level_Tileset@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A619D4852F0098375C /* Ice_Level_Tileset@2x.png */; };
-		852FB50F19DB4E0300F5BA25 /* w2_lvl1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 852FB50E19DB4E0300F5BA25 /* w2_lvl1.tmx */; };
 		8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C619880496005BEC90 /* bt_nivel1.png */; };
 		8535D6CC19880496005BEC90 /* bt_nivel2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C719880496005BEC90 /* bt_nivel2.png */; };
 		8535D6CD19880496005BEC90 /* bt_nivel3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C819880496005BEC90 /* bt_nivel3.png */; };
@@ -59,6 +54,18 @@
 		8554798119940731008BBAF9 /* SKTTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554797819940731008BBAF9 /* SKTTimingFunctions.m */; };
 		8554798519941092008BBAF9 /* conexionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8554798419941092008BBAF9 /* conexionBase.m */; };
 		8554798719942556008BBAF9 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8554798619942556008BBAF9 /* libsqlite3.dylib */; };
+		855684DE1A0C5E1B001DCDFB /* Escena_juego_tutorial.m in Sources */ = {isa = PBXBuildFile; fileRef = 855684DD1A0C5E1B001DCDFB /* Escena_juego_tutorial.m */; };
+		855684E91A0C5FE4001DCDFB /* w1_lvl1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 855684E41A0C5FE4001DCDFB /* w1_lvl1.tmx */; };
+		855684EA1A0C5FE4001DCDFB /* w1_lvl2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 855684E51A0C5FE4001DCDFB /* w1_lvl2.tmx */; };
+		855684EB1A0C5FE4001DCDFB /* w1_lvl3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 855684E61A0C5FE4001DCDFB /* w1_lvl3.tmx */; };
+		855684EC1A0C5FE4001DCDFB /* w1_lvl4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 855684E71A0C5FE4001DCDFB /* w1_lvl4.tmx */; };
+		855684ED1A0C5FE4001DCDFB /* w1_lvl5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 855684E81A0C5FE4001DCDFB /* w1_lvl5.tmx */; };
+		855684F01A0C5FEF001DCDFB /* Forest_level.png in Resources */ = {isa = PBXBuildFile; fileRef = 855684EE1A0C5FEF001DCDFB /* Forest_level.png */; };
+		855684F11A0C5FEF001DCDFB /* Forest_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 855684EF1A0C5FEF001DCDFB /* Forest_level@2x.png */; };
+		855684F41A0C5FF8001DCDFB /* bosque.sks in Resources */ = {isa = PBXBuildFile; fileRef = 855684F21A0C5FF8001DCDFB /* bosque.sks */; };
+		855684F51A0C5FF8001DCDFB /* particula-mariposa.png in Resources */ = {isa = PBXBuildFile; fileRef = 855684F31A0C5FF8001DCDFB /* particula-mariposa.png */; };
+		855684F81A0C626A001DCDFB /* manotouch.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 855684F61A0C626A001DCDFB /* manotouch.atlas */; };
+		855684F91A0C626A001DCDFB /* manotouch2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 855684F71A0C626A001DCDFB /* manotouch2.atlas */; };
 		855EEE66196C5A2A00AF42AF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 855EEE65196C5A2A00AF42AF /* QuartzCore.framework */; };
 		855EEE6C196C6CA200AF42AF /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EEE6B196C6CA200AF42AF /* iCarousel.m */; };
 		855EEE75196C6F1000AF42AF /* Escena_nivel.m in Sources */ = {isa = PBXBuildFile; fileRef = 855EEE74196C6F1000AF42AF /* Escena_nivel.m */; };
@@ -118,8 +125,6 @@
 		85019FD61947A87E007DB79E /* gameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gameCenterManager.h; sourceTree = "<group>"; };
 		85019FD71947A87E007DB79E /* gameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gameCenterManager.m; sourceTree = "<group>"; };
 		850B4B1C1941195E007C5C20 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		850EC3E0199438490044959B /* snow.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = snow.sks; sourceTree = "<group>"; };
-		850EC3E1199438490044959B /* Snowflakes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Snowflakes.png; sourceTree = "<group>"; };
 		85151D57194A1591002E2FC5 /* Escena_mundos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Escena_mundos.h; sourceTree = "<group>"; };
 		85151D58194A1591002E2FC5 /* Escena_mundos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Escena_mundos.m; sourceTree = "<group>"; };
 		851EFF21198838A0009377CD /* Escena_juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Escena_juego.h; sourceTree = "<group>"; };
@@ -127,9 +132,6 @@
 		851EFF2419883E38009377CD /* bt_atras.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_atras.png; sourceTree = "<group>"; };
 		8528E9A319D4852F0098375C /* Coins_PowerUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coins_PowerUP.png; sourceTree = "<group>"; };
 		8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Coins_PowerUP@2x.png"; sourceTree = "<group>"; };
-		8528E9A519D4852F0098375C /* Ice_Level_Tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ice_Level_Tileset.png; sourceTree = "<group>"; };
-		8528E9A619D4852F0098375C /* Ice_Level_Tileset@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ice_Level_Tileset@2x.png"; sourceTree = "<group>"; };
-		852FB50E19DB4E0300F5BA25 /* w2_lvl1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w2_lvl1.tmx; sourceTree = "<group>"; };
 		8535D6C619880496005BEC90 /* bt_nivel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel1.png; sourceTree = "<group>"; };
 		8535D6C719880496005BEC90 /* bt_nivel2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel2.png; sourceTree = "<group>"; };
 		8535D6C819880496005BEC90 /* bt_nivel3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel3.png; sourceTree = "<group>"; };
@@ -163,6 +165,19 @@
 		8554798319941092008BBAF9 /* conexionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conexionBase.h; sourceTree = "<group>"; };
 		8554798419941092008BBAF9 /* conexionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = conexionBase.m; sourceTree = "<group>"; };
 		8554798619942556008BBAF9 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		855684DC1A0C5E1B001DCDFB /* Escena_juego_tutorial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Escena_juego_tutorial.h; sourceTree = "<group>"; };
+		855684DD1A0C5E1B001DCDFB /* Escena_juego_tutorial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Escena_juego_tutorial.m; sourceTree = "<group>"; };
+		855684E41A0C5FE4001DCDFB /* w1_lvl1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl1.tmx; sourceTree = "<group>"; };
+		855684E51A0C5FE4001DCDFB /* w1_lvl2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl2.tmx; sourceTree = "<group>"; };
+		855684E61A0C5FE4001DCDFB /* w1_lvl3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl3.tmx; sourceTree = "<group>"; };
+		855684E71A0C5FE4001DCDFB /* w1_lvl4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl4.tmx; sourceTree = "<group>"; };
+		855684E81A0C5FE4001DCDFB /* w1_lvl5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl5.tmx; sourceTree = "<group>"; };
+		855684EE1A0C5FEF001DCDFB /* Forest_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forest_level.png; sourceTree = "<group>"; };
+		855684EF1A0C5FEF001DCDFB /* Forest_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forest_level@2x.png"; sourceTree = "<group>"; };
+		855684F21A0C5FF8001DCDFB /* bosque.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = bosque.sks; sourceTree = "<group>"; };
+		855684F31A0C5FF8001DCDFB /* particula-mariposa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "particula-mariposa.png"; sourceTree = "<group>"; };
+		855684F61A0C626A001DCDFB /* manotouch.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = manotouch.atlas; sourceTree = "<group>"; };
+		855684F71A0C626A001DCDFB /* manotouch2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = manotouch2.atlas; sourceTree = "<group>"; };
 		855EEE65196C5A2A00AF42AF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		855EEE6A196C6CA200AF42AF /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		855EEE6B196C6CA200AF42AF /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
@@ -323,10 +338,8 @@
 		850EC3CF199437490044959B /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
-				8528E9A319D4852F0098375C /* Coins_PowerUP.png */,
-				8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */,
-				8528E9A519D4852F0098375C /* Ice_Level_Tileset.png */,
-				8528E9A619D4852F0098375C /* Ice_Level_Tileset@2x.png */,
+				855684EE1A0C5FEF001DCDFB /* Forest_level.png */,
+				855684EF1A0C5FEF001DCDFB /* Forest_level@2x.png */,
 			);
 			name = Tiles;
 			sourceTree = "<group>";
@@ -334,19 +347,23 @@
 		850EC3D0199437660044959B /* Level Files */ = {
 			isa = PBXGroup;
 			children = (
-				852FB50E19DB4E0300F5BA25 /* w2_lvl1.tmx */,
+				855684E41A0C5FE4001DCDFB /* w1_lvl1.tmx */,
+				855684E51A0C5FE4001DCDFB /* w1_lvl2.tmx */,
+				855684E61A0C5FE4001DCDFB /* w1_lvl3.tmx */,
+				855684E71A0C5FE4001DCDFB /* w1_lvl4.tmx */,
+				855684E81A0C5FE4001DCDFB /* w1_lvl5.tmx */,
 			);
 			name = "Level Files";
 			sourceTree = "<group>";
 		};
-		850EC3D1199437A00044959B /* Ice Level */ = {
+		850EC3D1199437A00044959B /* Forest Level */ = {
 			isa = PBXGroup;
 			children = (
 				8575DA9C1940E45600392E73 /* Particulas */,
 				850EC3D0199437660044959B /* Level Files */,
 				850EC3CF199437490044959B /* Tiles */,
 			);
-			name = "Ice Level";
+			name = "Forest Level";
 			sourceTree = "<group>";
 		};
 		850EC3E419943B230044959B /* Cucho */ = {
@@ -403,6 +420,25 @@
 			name = Base_datos;
 			sourceTree = "<group>";
 		};
+		855684DF1A0C5E3C001DCDFB /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				855684F61A0C626A001DCDFB /* manotouch.atlas */,
+				855684F71A0C626A001DCDFB /* manotouch2.atlas */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
+		855DE9D219FEF206006A3784 /* Fire Level */ = {
+			isa = PBXGroup;
+			children = (
+				85B810711A1BBDBD00C19804 /* Tiles */,
+				85B810701A1BBDB400C19804 /* Level Files */,
+				85B8106F1A1BBDAB00C19804 /* Particulas */,
+			);
+			name = "Fire Level";
+			sourceTree = "<group>";
+		};
 		855EEE69196C680000AF42AF /* CoverFlow 3D */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +464,8 @@
 		8575DA901940E01D00392E73 /* Escenas */ = {
 			isa = PBXGroup;
 			children = (
+				855684DC1A0C5E1B001DCDFB /* Escena_juego_tutorial.h */,
+				855684DD1A0C5E1B001DCDFB /* Escena_juego_tutorial.m */,
 				85A659D6196338B70095D51A /* PopViews */,
 				232312A61937AA4600B34F7A /* Escena_menu.h */,
 				232312A71937AA4600B34F7A /* Escena_menu.m */,
@@ -454,7 +492,12 @@
 		8575DA921940E0FF00392E73 /* Mapas Mundos */ = {
 			isa = PBXGroup;
 			children = (
-				850EC3D1199437A00044959B /* Ice Level */,
+				85B810741A1BBE3900C19804 /* Water Level */,
+				85B810731A1BBE2600C19804 /* Ice Level */,
+				85B810721A1BBDFC00C19804 /* Graveyard Level */,
+				85B8106E1A1BBD9500C19804 /* Monedas */,
+				855DE9D219FEF206006A3784 /* Fire Level */,
+				850EC3D1199437A00044959B /* Forest Level */,
 			);
 			name = "Mapas Mundos";
 			sourceTree = "<group>";
@@ -473,8 +516,8 @@
 		8575DA9C1940E45600392E73 /* Particulas */ = {
 			isa = PBXGroup;
 			children = (
-				850EC3E0199438490044959B /* snow.sks */,
-				850EC3E1199438490044959B /* Snowflakes.png */,
+				855684F21A0C5FF8001DCDFB /* bosque.sks */,
+				855684F31A0C5FF8001DCDFB /* particula-mariposa.png */,
 			);
 			name = Particulas;
 			sourceTree = "<group>";
@@ -489,6 +532,7 @@
 		8575DA9E1940E61D00392E73 /* Disenos */ = {
 			isa = PBXGroup;
 			children = (
+				855684DF1A0C5E3C001DCDFB /* Tutorial */,
 				855EEE69196C680000AF42AF /* CoverFlow 3D */,
 				8575DAA11940EB0500392E73 /* Botones */,
 				8575DAA01940E64100392E73 /* Efecto Parallax */,
@@ -558,6 +602,129 @@
 				8584B2B719D21D9500B851DC /* View_terminado.m */,
 			);
 			name = PopViews;
+			sourceTree = "<group>";
+		};
+		85B8106E1A1BBD9500C19804 /* Monedas */ = {
+			isa = PBXGroup;
+			children = (
+				8528E9A319D4852F0098375C /* Coins_PowerUP.png */,
+				8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */,
+			);
+			name = Monedas;
+			sourceTree = "<group>";
+		};
+		85B8106F1A1BBDAB00C19804 /* Particulas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Particulas;
+			sourceTree = "<group>";
+		};
+		85B810701A1BBDB400C19804 /* Level Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Level Files";
+			sourceTree = "<group>";
+		};
+		85B810711A1BBDBD00C19804 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tiles;
+			sourceTree = "<group>";
+		};
+		85B810721A1BBDFC00C19804 /* Graveyard Level */ = {
+			isa = PBXGroup;
+			children = (
+				85B810771A1BBE5C00C19804 /* Particulas */,
+				85B810761A1BBE5500C19804 /* Level Files */,
+				85B810751A1BBE4F00C19804 /* Tiles */,
+			);
+			name = "Graveyard Level";
+			sourceTree = "<group>";
+		};
+		85B810731A1BBE2600C19804 /* Ice Level */ = {
+			isa = PBXGroup;
+			children = (
+				85B8107A1A1BBE8200C19804 /* Tiles */,
+				85B810791A1BBE7100C19804 /* Level Files */,
+				85B810781A1BBE6B00C19804 /* Particulas */,
+			);
+			name = "Ice Level";
+			sourceTree = "<group>";
+		};
+		85B810741A1BBE3900C19804 /* Water Level */ = {
+			isa = PBXGroup;
+			children = (
+				85B8107D1A1BBEB300C19804 /* Particulas */,
+				85B8107C1A1BBEAB00C19804 /* Level Files */,
+				85B8107B1A1BBE9E00C19804 /* Tiles */,
+			);
+			name = "Water Level";
+			sourceTree = "<group>";
+		};
+		85B810751A1BBE4F00C19804 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tiles;
+			sourceTree = "<group>";
+		};
+		85B810761A1BBE5500C19804 /* Level Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Level Files";
+			sourceTree = "<group>";
+		};
+		85B810771A1BBE5C00C19804 /* Particulas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Particulas;
+			sourceTree = "<group>";
+		};
+		85B810781A1BBE6B00C19804 /* Particulas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Particulas;
+			sourceTree = "<group>";
+		};
+		85B810791A1BBE7100C19804 /* Level Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Level Files";
+			sourceTree = "<group>";
+		};
+		85B8107A1A1BBE8200C19804 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tiles;
+			sourceTree = "<group>";
+		};
+		85B8107B1A1BBE9E00C19804 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tiles;
+			sourceTree = "<group>";
+		};
+		85B8107C1A1BBEAB00C19804 /* Level Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Level Files";
+			sourceTree = "<group>";
+		};
+		85B8107D1A1BBEB300C19804 /* Particulas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Particulas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -645,35 +812,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855684F81A0C626A001DCDFB /* manotouch.atlas in Resources */,
 				855056B019816B6F005EC6C2 /* mario.jpg in Resources */,
+				855684F01A0C5FEF001DCDFB /* Forest_level.png in Resources */,
 				855EEE7B196CA31800AF42AF /* background.png in Resources */,
-				852FB50F19DB4E0300F5BA25 /* w2_lvl1.tmx in Resources */,
+				855684F91A0C626A001DCDFB /* manotouch2.atlas in Resources */,
+				855684F11A0C5FEF001DCDFB /* Forest_level@2x.png in Resources */,
 				8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */,
-				850EC3E3199438490044959B /* Snowflakes.png in Resources */,
 				8575DAA51940EC0200392E73 /* BTpuntajes@2x.png in Resources */,
 				857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */,
 				85A659D5196338380095D51A /* BTajustes@2x.png in Resources */,
 				851EFF2519883E38009377CD /* bt_atras.png in Resources */,
-				850EC3E2199438490044959B /* snow.sks in Resources */,
-				8528E9A919D4852F0098375C /* Ice_Level_Tileset.png in Resources */,
 				8528E9A719D4852F0098375C /* Coins_PowerUP.png in Resources */,
 				8535D6CC19880496005BEC90 /* bt_nivel2.png in Resources */,
 				85547966199405EC008BBAF9 /* corazon@2x.png in Resources */,
-				8528E9AA19D4852F0098375C /* Ice_Level_Tileset@2x.png in Resources */,
+				855684E91A0C5FE4001DCDFB /* w1_lvl1.tmx in Resources */,
 				8575DAA71940EC3A00392E73 /* BTjugar@2x.png in Resources */,
 				8535D6CE19880496005BEC90 /* bt_nivel4.png in Resources */,
+				855684EC1A0C5FE4001DCDFB /* w1_lvl4.tmx in Resources */,
 				232312AC1937AA4600B34F7A /* Images.xcassets in Resources */,
 				8584B2B319D21C6300B851DC /* pausa_view.xib in Resources */,
 				8560EB4F1993E936000A57F7 /* ajustes_view.xib in Resources */,
 				8528E9A819D4852F0098375C /* Coins_PowerUP@2x.png in Resources */,
 				8535D6D719880AE2005BEC90 /* cuchoNiveles.atlas in Resources */,
 				85547967199405EC008BBAF9 /* orange-round-play-button.png in Resources */,
+				855684F41A0C5FF8001DCDFB /* bosque.sks in Resources */,
 				85A659D119630E940095D51A /* configuracion_juego.plist in Resources */,
 				855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */,
+				855684EB1A0C5FE4001DCDFB /* w1_lvl3.tmx in Resources */,
 				8575DAA91940EE2900392E73 /* BTcomprar@2x.png in Resources */,
 				8584B2B519D21C7500B851DC /* terminado_view.xib in Resources */,
+				855684ED1A0C5FE4001DCDFB /* w1_lvl5.tmx in Resources */,
+				855684F51A0C5FF8001DCDFB /* particula-mariposa.png in Resources */,
 				8535D6CD19880496005BEC90 /* bt_nivel3.png in Resources */,
 				85547962199405D7008BBAF9 /* bt_salir@2x.png in Resources */,
+				855684EA1A0C5FE4001DCDFB /* w1_lvl2.tmx in Resources */,
 				85547963199405D7008BBAF9 /* images.png in Resources */,
 				232312A21937AA4600B34F7A /* Main_iPad.storyboard in Resources */,
 				8554795F199405C2008BBAF9 /* bt_recargar@2x.png in Resources */,
@@ -712,6 +885,7 @@
 				85A659D9196339320095D51A /* View_ajustes.m in Sources */,
 				8554797F19940731008BBAF9 /* SKTAudio.m in Sources */,
 				85A659CB196307930095D51A /* Jugador.m in Sources */,
+				855684DE1A0C5E1B001DCDFB /* Escena_juego_tutorial.m in Sources */,
 				232312A81937AA4600B34F7A /* Escena_menu.m in Sources */,
 				8575DA991940E3E000392E73 /* LFCGzipUtility.m in Sources */,
 				8554797E19940731008BBAF9 /* SKNode+SKTExtras.m in Sources */,
@@ -861,7 +1035,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cucho/Cucho Run-Prefix.pch";
 				INFOPLIST_FILE = "Cucho/Cucho Run-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Cucho Run";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
@@ -879,7 +1053,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Cucho/Cucho Run-Prefix.pch";
 				INFOPLIST_FILE = "Cucho/Cucho Run-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Cucho Run";
 				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;

@@ -12,7 +12,7 @@
 @interface Escena_nivel : SKScene
 
 
-
--(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc;
+//Nuevo para reconocer niveles
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary*)info;
 
 @end

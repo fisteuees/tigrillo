@@ -1,12 +1,12 @@
 //
-//  Escena_juego.m
+//  Escena_juego_tutorial.m
 //  Cucho Run
 //
 //  Created by FISTE on 29/7/14.
 //  Copyright (c) 2014 FISTE. All rights reserved.
 //
 
-#import "Escena_juego.h"
+#import "Escena_juego_tutorial.h"
 #import "JSTileMap.h"
 #import "Jugador.h"
 #import "SKTUtils.h"
@@ -24,7 +24,7 @@ const float CannonCollisionSpeed = 100.0f;
 
 
 
-@interface Escena_juego ()
+@interface Escena_juego_tutorial ()
 {
     NSTimeInterval delta;
     BOOL salto_doble;
@@ -55,7 +55,7 @@ const float CannonCollisionSpeed = 100.0f;
     NSNumber *cont_tiempo;
     NSArray *cuchoCaminando;
     
-
+    
     //datosAcelerometro
     CGSize tamanoPantalla;
     UIAccelerationValue _aceX;
@@ -86,20 +86,35 @@ const float CannonCollisionSpeed = 100.0f;
     BOOL colisiones;
     int vidas;
     
-    //Nuevo para reconocer niveles
-    NSString *mundo;
-    NSString *nivel;
-    NSString *fondo;
     
-    //Nuevo para escudo
-    BOOL escudo;
+    //particula
+    SKEmitterNode *myParticle;
+    
+    
+    //animacion de caminar
+    SKAction *walkAnimation;
+    
+    
+    //tutorial
+    
+    int num_mensaje;
+    UIView *mask_terminado;
+    SKSpriteNode *fondo_oscuro;
+    SKSpriteNode *mensaje;
+    SKSpriteNode *bt_aceptar;
+    SKSpriteNode *bt_mano;
+    SKSpriteNode *bt_mano2;
+    
+    BOOL choque;
+    BOOL choque_escudo;
+    
 }
 @end
 
-@implementation Escena_juego
+@implementation Escena_juego_tutorial
 @synthesize tiempo;
 
--(id)initWithSize:(CGSize)size conInformacion:(NSMutableDictionary *)informacion{
+-(id)initWithSize:(CGSize)size{
     //con = cb; pendiente para base de datos
     if (self = [super initWithSize:size]) {
         //
@@ -115,32 +130,10 @@ const float CannonCollisionSpeed = 100.0f;
         colisiones = YES;
         //nomMapa = mapa;
         vidas = 3;
+        
+        
+        
         //
-        //Nuevo para reconocer niveles
-        mundo = [informacion objectForKey:@"nroMundo"];
-        nivel = [informacion objectForKey:@"nroNivel"];
-        nomMapa = [informacion objectForKey:@"nombreNivel"];
-        
-        switch (mundo.intValue) {
-            case 1:
-                fondo = @"fondo_bosque_";
-                break;
-            case 2:
-                fondo = @"fondo_hielo_";
-                break;
-            case 3:
-                fondo = @"fondo_agua_";
-                break;
-            case 4:
-                fondo = @"fondo_fuego_";
-                break;
-            case 5:
-                fondo = @"fondo_cementerio_";
-                break;
-            default:
-                break;
-        }
-        
         //NOTIFICACIONES PARA IR Y VOLVER DE PAUSA
         [[NSNotificationCenter defaultCenter]
          addObserver:self
@@ -156,12 +149,13 @@ const float CannonCollisionSpeed = 100.0f;
         //FIN DE NOTIFICACIONES
         self.userInteractionEnabled = YES;
         
-        self.fondo0=[[EfectoParallax alloc]initWithBackground:[NSString stringWithFormat:@"%@1",fondo] size:size speed:1.0]; //1
+        self.fondo0=[[EfectoParallax alloc]initWithBackground:@"fondo_bosque_1" size:size speed:1.0];
         self.fondo0.zPosition=-3;
         [self addChild:self.fondo0];
-        self.fondo1=[[EfectoParallax alloc]initWithBackground:[NSString stringWithFormat:@"%@2",fondo] size:size speed:1.5]; //2
+        self.fondo1=[[EfectoParallax alloc]initWithBackground:@"fondo_bosque_2" size:size speed:1.5];
         self.fondo1.zPosition=-2;
         [self addChild:self.fondo1];
+        
         
         
         con_monedas = [[SKLabelNode alloc] initWithFontNamed:@"Verdana"];
@@ -182,21 +176,24 @@ const float CannonCollisionSpeed = 100.0f;
         corazon3.position = CGPointMake(CGRectGetMinX(self.frame)+50, CGRectGetMaxY(self.frame)-35);
         [self addChild:corazon3];
         
-        pausa = [[SKSpriteNode alloc] initWithImageNamed:@"images.png"];
+        /*pausa = [[SKSpriteNode alloc] initWithImageNamed:@"images.png"];
         pausa.position = CGPointMake(CGRectGetMinX(self.frame)+80, CGRectGetMaxY(self.frame)-35);
         pausa.name = @"pausa";
         pausa.zPosition = 120;
-        [self addChild:pausa];
+        [self addChild:pausa];*/
         //FIN PARA VIDAS
         
         //Particulas
-        NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"bosque" ofType:@"sks"];
-        SKEmitterNode *myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
-        myParticle.position=CGPointMake(1024, 450);
-        [self addChild:myParticle];
+        NSString *myParticlePath = [[NSBundle mainBundle] pathForResource:@"snow" ofType:@"sks"];
+        myParticle = [NSKeyedUnarchiver unarchiveObjectWithFile:myParticlePath];
+        myParticle.particlePosition = CGPointMake(CGRectGetMidX(self.frame),780);
+        myParticle.particleRotation = -0.5;
+        //myParticle.particleScale = 0.5;
+        //myParticle.position=CGPointMake(-100, -230);
+        //[self addChild:myParticle];
         
-        NSLog(@"El nombre del mapa es: %@",nomMapa);
-        self.mapa = [JSTileMap mapNamed:nomMapa]; //cambiar aquí nombre de mapa //Nuevo para reconocer niveles
+        
+        self.mapa = [JSTileMap mapNamed:@"w1_lvl1.tmx"]; //cambiar aquí nombre de mapa
         self.mapa.zPosition=99;
         [self addChild:self.mapa];
         self.suelo = [self.mapa layerNamed:@"Suelo"]; //revisar nombre de capas
@@ -219,8 +216,8 @@ const float CannonCollisionSpeed = 100.0f;
         self.monedasVolar = [self.mapa layerNamed:(@"MonedasVolar")];
         self.monedasVolar.zPosition = 110;
         self.correccion =[self.mapa layerNamed:@"Correccion"];
-        self.correccion.zPosition = 110;
-
+        self.correccion.zPosition = 90;
+        
         
         SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"cuchoAnimacion"];
         SKTexture *f1 = [atlas textureNamed:@"cucho01.png"];
@@ -240,15 +237,14 @@ const float CannonCollisionSpeed = 100.0f;
         self.jugador.physicsBody.dynamic=YES;
         [self.mapa addChild:self.jugador];
         
-        SKAction *walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
+        walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
         [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
-
         
-        //BOTON DE PAUSA
-        menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
+        
+       /* menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
         menu_pausa.position = CGPointMake(100, 100);
         menu_pausa.hidden = YES;
-        menu_pausa.zPosition = 200;
+        menu_pausa.zPosition = 120;
         menu_pausa.name = @"reanuda";
         [self addChild:menu_pausa];
         
@@ -256,7 +252,7 @@ const float CannonCollisionSpeed = 100.0f;
             [menu_pausa setHidden:NO];
             NSLog(@"salio la imagen");
             
-        }];
+        }];*/
         
         /*NSString *path = [[NSBundle mainBundle] pathForResource:@"MyParticle"
          ofType:@"sks"];
@@ -273,6 +269,10 @@ const float CannonCollisionSpeed = 100.0f;
         _radioJugador=20.0f;
         _motionManager=[[CMMotionManager alloc]init];
         [self startMonitoringAcceleration];
+        
+        
+        //se pausa el juego al comienzo
+        [self mostrarMensaje];
     }
     return self;
 }
@@ -350,14 +350,14 @@ const float CannonCollisionSpeed = 100.0f;
     _velociY = fmaxf(fminf(_velociY, maxVelocidad), -maxVelocidad);
     
     float newY = self.jugador.position.y + _velociY*delta1;
-
+    
     BOOL collidedWithVerticalBorder = NO;
     BOOL collidedWithHorizontalBorder = NO;
     
     
-    if (newY < 130.0f)
+    if (newY < 150.0f)
     {
-        newY = 130.0f;
+        newY = 150.0f;
         collidedWithHorizontalBorder = YES;
     }
     else if (newY > tamanoPantalla.height-100)
@@ -380,9 +380,9 @@ const float CannonCollisionSpeed = 100.0f;
         _aceleracionY = -_aceleracionY * BorderCollisionDamping;
         _velociY = -_velociY * BorderCollisionDamping;
     }
-
+    
     self.jugador.position = CGPointMake(self.jugador.position.x, newY);
-
+    
 }
 
 -(void)didMoveToView:(SKView *)view{
@@ -399,6 +399,8 @@ const float CannonCollisionSpeed = 100.0f;
 }
 
 - (void)saltoDoble{
+    
+    
     if (salto_doble) {
         self.jugador.enPiso=YES;
         self.jugador.puede_saltar=YES;
@@ -412,7 +414,7 @@ const float CannonCollisionSpeed = 100.0f;
 
 -(void)update:(CFTimeInterval)currentTime {
     if (self.juegoTermino) return;
-    if (self.mapa.position.x<-9840) {
+    if (self.mapa.position.x<-11400) {
         [self juegoTerminado:1];
     }
     delta = currentTime - self.tiempoAnterior;
@@ -423,48 +425,61 @@ const float CannonCollisionSpeed = 100.0f;
     //4
     self.tiempoAnterior = currentTime;
     
-    
+    if ((choque && num_mensaje==3)||(choque && num_mensaje==5)||(!choque_escudo && num_mensaje==9 && choque)) {
+        //[self reiniciar];
+        //[self pausarJuego];
+        SKSpriteNode *cara_triste=[SKSpriteNode spriteNodeWithImageNamed:@"cara_triste"];
+        cara_triste.position=CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        [self addChild:cara_triste];
+        
+        /*SKSpriteNode *bt_aceptar1=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+        bt_aceptar1.position=CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-100);
+        bt_aceptar1.name=@"finalizar";
+        [self addChild:bt_aceptar1];*/
+        num_mensaje=0;
+        choque=NO;
+        choque_escudo=NO;
+        [self performSelector:@selector(reiniciar) withObject:self afterDelay:3.0];
+        
+    }
     
     //5
-    [self setViewpointCenter:CGPointMake(0, CGRectGetMidY(self.frame))];
-     [self updatePlayerAccelerationFromMotionManager];
-    if (volando) {
-       
-        [self actualizarJugador:delta];
-        [self.jugador update:delta];
-    }
-    else{
-         [self.jugador update:delta];
-        [self comprobarColisiones:self.jugador porCapas:self.suelo];
-    }
-    
-   //volando=YES;
-    //se lo pone cuando coga el powerup de volar!
-    
-    
-
-    
-    [self.fondo0 update:delta];
-    [self.fondo1 update:delta];
-    
-    
-    if (espacio_movimiento!=5) {
-    }else{
-        if (colisiones) {
-            [self comprobarColisionesMonedas:self.jugador porCapas:self.monedas];
-            [self comprobarColisionesPU:self.jugador porCapas:self.multiplicador];
-            [self comprobarColisionesPU:self.jugador porCapas:self.volar];
-            [self comprobarColisionesPU:self.jugador porCapas:self.escudo];
-            if (!escudo) {
-               [self comprobarColisionesTrampas:self.jugador porCapas:self.rocas];
-            }
+    if (!pausado) {
+        
+        
+        [self setViewpointCenter:CGPointMake(0, CGRectGetMidY(self.frame))];
+        [self updatePlayerAccelerationFromMotionManager];
+        if (volando) {
+            
+            [self actualizarJugador:delta];
+            [self.jugador update:delta];
+        }
+        else{
+            [self.jugador update:delta];
+            [self comprobarColisiones:self.jugador porCapas:self.suelo];
+        }
+        
+        //volando=YES;
+        //se lo pone cuando coga el powerup de volar!
+        [self.fondo0 update:delta];
+        [self.fondo1 update:delta];
+        
+        
+        if (espacio_movimiento!=5) {
         }else{
-            [self comprobarColisionesMonedas:self.jugador porCapas:self.monedasVolar];
+            if (colisiones) {
+                [self comprobarColisionesMonedas:self.jugador porCapas:self.monedas];
+                [self comprobarColisionesPU:self.jugador porCapas:self.multiplicador];
+                [self comprobarColisionesPU:self.jugador porCapas:self.volar];
+                [self comprobarColisionesPU:self.jugador porCapas:self.escudo];
+                if (!choque_escudo) {
+                    [self comprobarColisionesTrampas:self.jugador porCapas:self.rocas];
+                }
+            }else{
+                [self comprobarColisionesMonedas:self.jugador porCapas:self.monedasVolar];
+            }
         }
     }
-    
-    
-    
     
 }
 
@@ -475,30 +490,87 @@ const float CannonCollisionSpeed = 100.0f;
     for (UITouch *touch in touches) {
         CGPoint location = [touch  locationInNode:self];
         SKNode *nodo=[self nodeAtPoint:location];
-        self.jugador.puede_saltar=YES;
-        NSLog(@"saltando");
+        
+        NSLog(@"saltando %@",nodo.name);
         if([nodo.name isEqualToString:@"salir"]){
             SKTransition *reveal = [SKTransition doorsCloseVerticalWithDuration:1.0];
             //Cambiar aquí para ir a la otra pantalla
             //SKScene * gameOverScene = [[Menu alloc] initWithSize:self.size withBase:con];
             //[self.view presentScene:gameOverScene transition: reveal];
         }
+        else if([nodo.name isEqualToString:@"finalizar"]){
+            [self reiniciar];
+        }
         else if([nodo.name isEqualToString:@"recargar"]){
             SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-            SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size]; //withBase: cb
+            SKScene * gameOverScene = [[Escena_juego_tutorial alloc] initWithSize:self.size]; //withBase: cb
             [self.view presentScene:gameOverScene transition: reveal];
         }
+        else if([nodo.name isEqualToString:@"aceptar1"]){
+            num_mensaje++;
+            [self reanudarJuego];
+            //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mostrarMensaje) userInfo:nil repeats:NO];
+            switch (num_mensaje) {
+                case 1:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:4.0];
+                    break;
+                case 2:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:1.0];
+                    break;
+                case 3:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:2.5];
+                    break;
+                case 4:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.7];
+                    break;
+                case 5:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
+                    break;
+                case 6:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
+                    break;
+                case 7:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.6];
+                    break;
+                case 8:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:6.2];
+                    break;
+                case 9:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:4.8];
+                    break;
+                case 10:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.4];
+                    break;
+                case 11:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:12.0];
+                    break;
+                    
+                default:
+                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
+                    break;
+            }
+            
+            
+        }
+        /*else if(nodo==bt_aceptar){
+            num_mensaje++;
+            [self reanudarJuego];
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mostrarMensaje) userInfo:nil repeats:NO];
+            
+        }*/
         else if ([nodo.name isEqualToString:@"pausa"]){
-
-            if(self.scene.view.paused){
-
+            
+            if(pausado){
+                [self reanudarJuego];
+                pausado=NO;
             }else{
-                [tiempo_reanudar invalidate];
-                pausado=YES;
-                self.jugador.puede_saltar=NO;
-                salto_doble = YES;
-                cont_tiempo = [NSNumber numberWithInt:3];
-                [self pausar];
+                /*[tiempo_reanudar invalidate];
+                 pausado=YES;
+                 self.jugador.puede_saltar=NO;
+                 salto_doble = YES;
+                 cont_tiempo = [NSNumber numberWithInt:3];
+                 [self pausar];*/
+                [self pausarJuego];
             }
             
             
@@ -516,6 +588,12 @@ const float CannonCollisionSpeed = 100.0f;
                 [tiempo_reanudar invalidate];
                 tiempo_reanudar = [NSTimer scheduledTimerWithTimeInterval:0.67 target:self selector:@selector(disminuirTiempo) userInfo:nil repeats:YES];
             }
+        }
+        else if (num_mensaje==1){
+            
+        }
+        else{
+            self.jugador.puede_saltar=YES;
         }
         
     }
@@ -681,21 +759,23 @@ const float CannonCollisionSpeed = 100.0f;
             CGRect areaTile = [self tileRectFromTileCoords:posiTile];
             //1
             if (CGRectIntersectsRect(areaJugador, areaTile)) {
+                
                 if (contador_vidas > 0) {
                     contador = [NSNumber numberWithInt:0];
                     [self.tiempo invalidate];
-                    self.tiempo = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(chocar) userInfo:nil repeats:YES];
+                    self.tiempo = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(chocar) userInfo:nil repeats:YES];
                     SKAction *fadeOut=[SKAction fadeAlphaTo:0.30 duration:0.2];
                     SKAction *fadeIn=[SKAction fadeAlphaTo:1.0 duration:0.2];
                     [self.jugador runAction:[SKAction repeatActionForever:[SKAction sequence:@[fadeOut,fadeIn]]]withKey:@"fade"];
                     espacio_movimiento = 2;
+                    choque=YES;
                     
                 }else{
                     [corazon1 setHidden:YES];
                     vidas--;
                     [self juegoTerminado:0];
                 }
-   
+                
             }
         }
     }
@@ -726,27 +806,24 @@ const float CannonCollisionSpeed = 100.0f;
                 if (capa == self.multiplicador) {
                     //Aquí hacer la notificación del multiplicador
                     suma_x2 = 2;
-                    //Cambios para timers
-                    //int_mult = [NSNumber numberWithInt:0];
-                    //[multi invalidate];
-                    //multi = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(mult) userInfo:nil repeats:YES];
-                    [self performSelector:@selector(mult) withObject:self afterDelay:3.0];
+                    int_mult = [NSNumber numberWithInt:0];
+                    [multi invalidate];
+                    multi = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(mult) userInfo:nil repeats:YES];
                 }else if (capa == self.volar){
-                    //Cambios para timers
-                    //timVolar = 0;
+                    timVolar = 0;
                     NSLog(@"se llama");
                     [self.rocas setHidden:YES];
                     [self.monedas setHidden:YES];
                     [self.correccion setHidden:YES];
                     [self.monedasVolar setHidden:NO];
                     [self.multiplicador setHidden:YES];
-                    //[volar1 invalidate];
-                    //volar1 = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(metVolar) userInfo:nil repeats:YES];
-                    [self performSelector:@selector(metVolar) withObject:self afterDelay:9.0];
+                    [volar1 invalidate];
+                    volar1 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(metVolar) userInfo:nil repeats:YES];
                     volando = YES;
                     colisiones = NO;
-                }else if (capa == self.escudo){
-                    escudo = YES;
+                }
+                else if (capa == self.escudo){
+                    choque_escudo=YES;
                     [self performSelector:@selector(metEscudo) withObject:self afterDelay:3.0];
                 }
                 for (x=-1; x<2; x++) {
@@ -767,28 +844,26 @@ const float CannonCollisionSpeed = 100.0f;
     }
 }
 
-//Nuevo para escudo
 -(void)metEscudo{
-    escudo = NO;
-    //NSLog(@"pasaron 3 segundos");
+    choque_escudo=NO;
 }
-//Cambios para timers
+
 -(void)mult{
-    /*if (int_mult.intValue < 3) {
+    if (int_mult.intValue < 3) {
         int_mult = [NSNumber numberWithInt:[int_mult intValue]+1];
         suma_x2 = 2;
         NSLog(@"Multiplicador cogido");
-    }else{*/
+    }else{
         suma_x2 = 1;
-    //}
+    }
 }
-//Cambios para timers
+
 -(void)metVolar{
-    /*if (timVolar < 13) {
+    if (timVolar < 9) {
         timVolar++;
         NSLog(@"Se cogió la pluma");
         
-    }else{*/
+    }else{
         volando = NO;
         colisiones = YES;
         [self.correccion setHidden:NO];
@@ -796,8 +871,8 @@ const float CannonCollisionSpeed = 100.0f;
         [self.monedas setHidden:NO];
         [self.rocas setHidden:NO];
         [self.monedasVolar setHidden:YES];
-        //[volar1 invalidate];
-    //}
+        [volar1 invalidate];
+    }
 }
 
 -(void)chocar
@@ -855,7 +930,10 @@ const float CannonCollisionSpeed = 100.0f;
                     jugador.posicionDeseada = CGPointMake(jugador.posicionDeseada.x, jugador.posicionDeseada.y + intersection.size.height);
                     jugador.velocity = CGPointMake(jugador.velocity.x, 0.0);
                     jugador.enPiso = YES;
-                    salto_doble=YES;
+                    if (num_mensaje!=1|| num_mensaje!=2) {
+                        salto_doble=YES;
+                    }
+                    
                 } else if (indice  == 1) {
                     //tile is directly above Koala
                     jugador.posicionDeseada = CGPointMake(jugador.posicionDeseada.x, jugador.posicionDeseada.y - intersection.size.height);
@@ -906,10 +984,10 @@ const float CannonCollisionSpeed = 100.0f;
     [self.jugador removeAllActions];
     //
     self.juegoTermino=YES;
-    SKLabelNode *mensaje=[SKLabelNode labelNodeWithFontNamed:@"Arial"];
-    mensaje.position=CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)+30);
-    mensaje.fontSize=50.0f;
-    mensaje.fontColor=[SKColor blackColor];
+    SKLabelNode *mensaje1=[SKLabelNode labelNodeWithFontNamed:@"Arial"];
+    mensaje1.position=CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)+30);
+    mensaje1.fontSize=100.0f;
+    mensaje1.fontColor=[SKColor blackColor];
     
     SKSpriteNode *bt_recargar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_recargar"];
     bt_recargar.position=CGPointMake(CGRectGetMidX(self.frame)+50, CGRectGetMidY(self.frame)-40);
@@ -922,7 +1000,7 @@ const float CannonCollisionSpeed = 100.0f;
     bt_salir.zPosition=103;
     if(gano){
         NSLog(@"ganaste");
-        mensaje.text=@"Ganaste!";
+        mensaje1.text=@"Ganaste!";
         //Para base
         //conexionBase *cb;// = [[conexionBase alloc] init];
         //[con insert:contar_monedas];
@@ -937,7 +1015,7 @@ const float CannonCollisionSpeed = 100.0f;
         //Fin para base
     }else{
         NSLog(@"perdiste");
-        mensaje.text=@"Perdiste";
+        mensaje1.text=@"Perdiste";
         contador_vidas = 2;
     }
     //[self addChild:mensaje];
@@ -949,11 +1027,11 @@ const float CannonCollisionSpeed = 100.0f;
     NSNumber *puntuacion;
     puntuacion=[NSNumber numberWithInt:contar_monedas+(vidas*20)];//*20);
     NSLog(@"%i",contar_monedas);
+    [puntajes setObject:@"1" forKey:@"mundo"];
+    [puntajes setObject:@"1" forKey:@"nivel"];
     [puntajes setObject:puntuacion forKey:@"monedas"];
-    [puntajes setObject:mundo forKey:@"mundo"];
-    [puntajes setObject:nivel forKey:@"nivel"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarTerminado" object:self userInfo:puntajes];
-
+    
 }
 
 - (void)setViewpointCenter:(CGPoint)position {
@@ -972,7 +1050,7 @@ const float CannonCollisionSpeed = 100.0f;
     self.mapa.position = CGPointMake(self.mapa.position.x-espacio_movimiento, self.mapa.position.y);
     self.jugador.position= CGPointMake(self.jugador.position.x+espacio_movimiento, self.jugador.position.y);
     slider.value=slider.value+4;
-
+    
 }
 
 
@@ -983,7 +1061,7 @@ const float CannonCollisionSpeed = 100.0f;
     slider = [[UISlider alloc] initWithFrame:frame];
     [slider setBackgroundColor:[UIColor clearColor]];
     slider.minimumValue = 0.0;
-    slider.maximumValue = 6110;
+    slider.maximumValue = 10500;
     slider.continuous = YES;
     slider.value = 0.0;
     slider.userInteractionEnabled=NO;
@@ -998,6 +1076,337 @@ const float CannonCollisionSpeed = 100.0f;
 }
 
 
+#pragma mark Pausar y reanudar juego
+-(void)pausarJuego{
+    pausado=YES;
+    //self.jugador.puede_moverse=NO;
+    //self.jugador.puede_saltar=NO;
+    [self.jugador removeAllActions];
+    myParticle.paused=YES;
+    //[[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarPausa" object:self userInfo:nil];
+    fondo_oscuro=[SKSpriteNode spriteNodeWithImageNamed:@"fondo_oscuro"];
+    fondo_oscuro.alpha=0.5f;
+    fondo_oscuro.position=CGPointMake(512, 384);
+    [self addChild:fondo_oscuro];
+    //[self.view sendSubviewToBack:mask_terminado];
+    
+}
+
+-(void)reanudarJuego{
+    pausado=NO;
+    myParticle.paused=NO;
+    choque=NO;
+    //fondo_oscuro.alpha=0.0f;
+    [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
+    [fondo_oscuro removeFromParent];
+    [mensaje removeFromParent];
+    [bt_aceptar removeFromParent];
+    [bt_mano removeFromParent];
+    [bt_mano2 removeFromParent];
+    //bt_aceptar.alpha=0.0f;
+}
+
+
+//metodos Tutorial
+
+
+#pragma mark Metodos Tutorial
+
+-(void)mostrarMensaje{
+    [self pausarJuego];
+    
+    switch (num_mensaje) {
+        case 0:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje1"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+            bt_mano.position=CGPointMake(600, 200);
+            [self addChild:bt_mano];*/
+            break;
+            
+        case 1:
+            NSLog(@"wey");
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje2"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+             bt_mano.position=CGPointMake(55, 680);
+            //bt_mano.zRotation = M_PI/1.5f;
+            [self addChild:bt_mano];
+            
+        {
+            SKAction *mover1=[SKAction moveTo:CGPointMake(70, 640) duration:0.5];
+            SKAction *mover2=[SKAction moveTo:CGPointMake(55, 680) duration:0.5];
+            SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
+            [bt_mano runAction:[SKAction repeatActionForever:sequence]];
+        }
+            
+            
+            break;
+            
+        case 2:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje3"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+            bt_mano.position=CGPointMake(600, 220);
+            bt_mano.zRotation = M_PI/1.0f;
+            [self addChild:bt_mano];
+            
+       {
+            SKAction *mover1=[SKAction moveTo:CGPointMake(600, 220) duration:0.5];
+            SKAction *mover2=[SKAction moveTo:CGPointMake(580, 240) duration:0.5];
+            SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
+            [bt_mano runAction:[SKAction repeatActionForever:sequence]];
+        }
+            
+            bt_mano2=[SKSpriteNode spriteNodeWithImageNamed:@"mano_touch1"];
+            bt_mano2.position=CGPointMake(512, 450);
+            //bt_mano2.zRotation = M_PI/1.0f;
+            [self addChild:bt_mano2];
+            
+        {
+            SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"manotouch"];
+            SKTexture *mano1 = [atlas textureNamed:@"mano_touch1.png"];
+            SKTexture *mano2 = [atlas textureNamed:@"mano_touch2.png"];
+
+            NSArray *ar_manos = @[mano1,mano2];
+      
+            SKAction *manos = [SKAction animateWithTextures:ar_manos timePerFrame:0.3];
+            [bt_mano2 runAction:[SKAction repeatActionForever:manos]];
+        }
+            break;
+        case 3:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje4"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+             bt_mano.position=CGPointMake(600, 200);
+             [self addChild:bt_mano];*/
+            break;
+        case 4:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje5"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+            bt_mano.position=CGPointMake(530, 270);
+            bt_mano.zRotation = M_PI/1.0f;
+            [self addChild:bt_mano];
+            
+       {
+            SKAction *mover1=[SKAction moveTo:CGPointMake(550, 240) duration:0.5];
+            SKAction *mover2=[SKAction moveTo:CGPointMake(530, 270) duration:0.5];
+            SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
+            [bt_mano runAction:[SKAction repeatActionForever:sequence]];
+        }
+            break;
+        case 5:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje6"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+             bt_mano.position=CGPointMake(600, 200);
+             [self addChild:bt_mano];*/
+            break;
+        case 6:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje7"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+            bt_mano.position=CGPointMake(900, 680);
+            bt_mano.zRotation =-M_PI/2.0f;
+            [self addChild:bt_mano];
+            
+       {
+            SKAction *mover1=[SKAction moveTo:CGPointMake(920, 690) duration:0.5];
+            SKAction *mover2=[SKAction moveTo:CGPointMake(900, 680) duration:0.5];
+            SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
+            [bt_mano runAction:[SKAction repeatActionForever:sequence]];
+        }
+            break;
+        case 7:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje8"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+            bt_mano.position=CGPointMake(530, 270);
+            bt_mano.zRotation = M_PI/1.0f;
+            [self addChild:bt_mano];
+            
+        {
+            SKAction *mover1=[SKAction moveTo:CGPointMake(550, 240) duration:0.5];
+            SKAction *mover2=[SKAction moveTo:CGPointMake(530, 270) duration:0.5];
+            SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
+            [bt_mano runAction:[SKAction repeatActionForever:sequence]];
+        }
+            break;
+        case 8:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje9"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+            bt_mano.position=CGPointMake(530, 270);
+            bt_mano.zRotation = M_PI/1.0f;
+            [self addChild:bt_mano];
+            
+        {
+            SKAction *mover1=[SKAction moveTo:CGPointMake(550, 240) duration:0.5];
+            SKAction *mover2=[SKAction moveTo:CGPointMake(530, 270) duration:0.5];
+            SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
+            [bt_mano runAction:[SKAction repeatActionForever:sequence]];
+        }
+            break;
+        case 9:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje10"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            break;
+        case 10:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje11"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+            bt_mano.position=CGPointMake(600, 220);
+            bt_mano.zRotation = M_PI/1.0f;
+            [self addChild:bt_mano];
+            
+        {
+            SKAction *mover1=[SKAction moveTo:CGPointMake(600, 220) duration:0.5];
+            SKAction *mover2=[SKAction moveTo:CGPointMake(580, 240) duration:0.5];
+            SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
+            [bt_mano runAction:[SKAction repeatActionForever:sequence]];
+        }
+            
+            bt_mano2=[SKSpriteNode spriteNodeWithImageNamed:@"mano_touch21"];
+            bt_mano2.position=CGPointMake(512, 450);
+            //bt_mano2.zRotation = M_PI/1.0f;
+            [self addChild:bt_mano2];
+            
+        {
+            SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"manotouch2"];
+            SKTexture *mano1 = [atlas textureNamed:@"mano_touch21.png"];
+            SKTexture *mano2 = [atlas textureNamed:@"mano_touch22.png"];
+            
+            NSArray *ar_manos = @[mano1,mano2];
+            
+            SKAction *manos = [SKAction animateWithTextures:ar_manos timePerFrame:0.3];
+            [bt_mano2 runAction:[SKAction repeatActionForever:manos]];
+        }
+            break;
+        case 11:
+            mensaje=[SKSpriteNode spriteNodeWithImageNamed:@"mensaje12"];
+            mensaje.position=CGPointMake(305, 270);
+            [self addChild:mensaje];
+            
+            bt_aceptar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
+            bt_aceptar.position=CGPointMake(400, 170);
+            bt_aceptar.name=@"aceptar1";
+            bt_aceptar.zPosition = 200;
+            [self addChild:bt_aceptar];
+            
+            /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
+             bt_mano.position=CGPointMake(600, 200);
+             [self addChild:bt_mano];*/
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    
+    
+}
+
+-(void)reiniciar{
+    num_mensaje=0;
+    choque=NO;
+    choque_escudo=NO;
+    
+
+    SKTransition *reveal = [SKTransition doorsOpenVerticalWithDuration:0.4];
+    //SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size];
+    SKScene * gameOverScene = [[Escena_juego_tutorial alloc] initWithSize:self.size];
+    [self.view presentScene:gameOverScene transition:reveal];
+}
 
 
 

@@ -13,19 +13,27 @@
     UISwitch* voiceFXSwitch;
     UISwitch* soundFXSwitch;
     BOOL isPhone;
-    NSString *puntuacion;
+    NSNumber *puntuacion;
+    NSString *mundo;
+    NSString *nivel;
+    NSString *puntos;
     
 }
 
 @end
 
 @implementation View_terminado
-@synthesize score;
-
-- (id)initWithFrame:(CGRect)frame withPuntaje:(NSString *)puntaje
+@synthesize score, siguienteNivel;
+//Nuevo para reconocer niveles
+- (id)initWithFrame:(CGRect)frame withPuntaje:(NSDictionary *)puntaje
 {
-    puntuacion = puntaje;
-    NSLog(@"%@",puntaje);
+    mundo = [NSString stringWithFormat:@"%@",[puntaje objectForKey:@"mundo"]];
+    nivel = [[NSString alloc] initWithFormat:@"%@",[puntaje objectForKey:@"nivel"]];
+    puntuacion = [puntaje objectForKey:@"monedas"];
+    //mundo = [puntaje objectForKey:@"mundo"];
+    //nivel = [puntaje objectForKey:@"nivel"];
+    puntos = [NSString stringWithFormat:@"Puntaje = %i",puntuacion.intValue];
+    NSLog(@"%@",puntos);
     self = [super initWithFrame:frame];
     
     if (self) {
@@ -63,15 +71,32 @@
     //
     UILabel *lbl1 = [[UILabel alloc] init];
     lbl1.frame = CGRectMake(116, 104, 118, 21);
-    lbl1.text = puntuacion;
+    lbl1.text = puntos;
     [mainView addSubview:lbl1];
+    [mainView addSubview:siguienteNivel];
     NSLog(@"Se añade");
+    //
+    //Nuevo para reconocer niveles
+    UIButton *siguiente = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [siguiente addTarget:self action:@selector(siguiente:) forControlEvents:UIControlEventTouchUpInside];
+    [siguiente setTitle:@"Siguiente Nivel" forState:UIControlStateNormal];
+    siguiente.frame = CGRectMake(118, 177, 115, 30);
+    [mainView addSubview:siguiente];
+    //
+    UIButton *deNuevo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [deNuevo addTarget:self action:@selector(jugarDeNuevo:) forControlEvents:UIControlEventTouchUpInside];
+    [deNuevo setTitle:@"Jugar de nuevo" forState:UIControlStateNormal];
+    deNuevo.frame = CGRectMake(121, 231, 108, 43);
+    [mainView addSubview:deNuevo];
     //
     [self addSubview:mainView];
     
 }
 
 -(IBAction)jugarDeNuevo:(id)sender{
+    NSMutableDictionary *mundoNivel = [NSMutableDictionary dictionary];
+    [mundoNivel setObject:mundo forKey:@"nroMundo"];
+    [mundoNivel setObject:nivel forKey:@"nroNivel"];
     [UIView animateWithDuration:0.5
                           delay: 0.0
                         options: UIViewAnimationOptionCurveEaseInOut
@@ -81,12 +106,16 @@
                          [self removeFromSuperview];
                      }
                      completion:^(BOOL finished){
-                         [[NSNotificationCenter defaultCenter] postNotificationName:@"jugardenuevo" object:nil];
+                         [[NSNotificationCenter defaultCenter] postNotificationName:@"jugardenuevo" object:self userInfo:mundoNivel];
                          
                      }];
 }
-
+//Nuevo para reconocer niveles
 -(IBAction)siguienteNivel:(id)sender{
+    NSMutableDictionary *mundoNivel = [NSMutableDictionary dictionary];
+    //mundo = [NSString stringWithFormat:@"4"];
+    [mundoNivel setObject:mundo forKey:@"nroMundo"];
+    [mundoNivel setObject:nivel forKey:@"nroNivel"];
     [UIView animateWithDuration:0.5
                           delay: 0.0
                         options: UIViewAnimationOptionCurveEaseInOut
@@ -96,7 +125,7 @@
                          [self removeFromSuperview];
                      }
                      completion:^(BOOL finished){
-                         [[NSNotificationCenter defaultCenter] postNotificationName:@"siguientenivel" object:nil];
+                         [[NSNotificationCenter defaultCenter] postNotificationName:@"siguientenivel" object:self userInfo:mundoNivel];
                          
                      }];
 }
@@ -112,6 +141,26 @@
                      }
                      completion:^(BOOL finished){
                          [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarmenu" object:nil];
+                         
+                     }];
+}
+
+//Nuevo para reconocer niveles
+-(IBAction)siguiente:(id)sender{
+    NSMutableDictionary *mundoNivel = [NSMutableDictionary dictionary];
+    //mundo = [NSString stringWithFormat:@"4"];
+    [mundoNivel setObject:mundo forKey:@"nroMundo"];
+    [mundoNivel setObject:nivel forKey:@"nroNivel"];
+    [UIView animateWithDuration:0.5
+                          delay: 0.0
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self setTransform:CGAffineTransformMakeScale(0.0, 0.0)];
+                         self.alpha=0.0f;
+                         [self removeFromSuperview];
+                     }
+                     completion:^(BOOL finished){
+                         [[NSNotificationCenter defaultCenter] postNotificationName:@"siguientenivel" object:self userInfo:mundoNivel];
                          
                      }];
 }

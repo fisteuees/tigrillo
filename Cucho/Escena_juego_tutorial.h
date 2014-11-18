@@ -1,8 +1,8 @@
 //
-//  Escena_juego.h
+//  Escena_juego_tutorial_tutorial.h
 //  Cucho Run
 //
-//  Created by FISTE on 29/7/14.
+//  Created by FISTE on 29/10/14.
 //  Copyright (c) 2014 FISTE. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 #import "EfectoParallax.h"
 #import "conexionBase.h"
 
-@interface Escena_juego : SKScene
+@interface Escena_juego_tutorial : SKScene
 
 @property (strong, nonatomic) JSTileMap *mapa;
 @property (strong, nonatomic) Jugador *jugador;
@@ -34,8 +34,6 @@
 @property (nonatomic, assign) BOOL juegoTermino;
 //
 //-(id)initWithSize:(CGSize)size withBase:(conexionBase *)cb;
-//Nuevo para reconocer niveles
--(id)initWithSize:(CGSize)size conInformacion:(NSMutableDictionary *)informacion;
 -(void)pausar;
 
 //

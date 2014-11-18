@@ -185,9 +185,9 @@
         
         switch (index) {
             case 0:
-                 ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_nieve"];
+                ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_bosque"];
                 label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
-                label.text = @"Mundo de nieve";
+                label.text = @"Mundo de bosque";
                 NSLog(@"mundo nieve");
                 break;
             case 1:
@@ -209,7 +209,7 @@
                 NSLog(@"mundo agua");
                 break;
             case 4:
-                ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_bosque"];
+                ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_nieve"];
                 label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
                 label.text = @"Mundo de bosque";
                 NSLog(@"mundo bosque");
@@ -252,16 +252,20 @@
 }
 
 -(void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
-    NSLog(@"SI PASA DID SELECT %d",index);
+    NSLog(@"SI PASA DID SELECT %ld",(long)index);
     //[UIView beginAnimations:nil context:NULL];
     //[UIView setAnimationDuration:0.75];
     [carousel removeFromSuperview];
     //[UIView commitAnimations];
     
+    //Nuevo para reconocer niveles
+    NSMutableDictionary *informacion = [[NSMutableDictionary alloc] init];
+    NSString *nroMundo = [NSString stringWithFormat:@"%li",(long)index+1];
+    [informacion setObject:nroMundo forKey:@"nroMundo"];
         SKTransition *reveal = [SKTransition crossFadeWithDuration:0.7];
-    SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size conGameCenter:gc];
+        SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size conGameCenter:gc conInformacion:informacion];
         [skView presentScene:gameOverScene transition:reveal];
-    
+    //Nuevo para reconocer niveles
 
 }
 
@@ -315,15 +319,16 @@
 }
 
 #pragma mark View terminado
-
+//Nuevo para reconocer niveles
 -(void)mostrarTerminado:(NSNotification *)notification{
     NSDictionary *puntajes = notification.userInfo;
-    NSNumber *monedas = [puntajes objectForKey:@"monedas"];
-    NSString *puntaje = [NSString stringWithFormat:@"%i",monedas.intValue];
-    
+    //NSNumber *monedas = [puntajes objectForKey:@"monedas"];
+    //NSString *puntaje = [NSString stringWithFormat:@"%i",monedas.intValue];
+    //NSString *mundo = [puntajes objectForKey:@"mundo"];
+    //NSString *nivel = [puntajes objectForKey:@"nivel"];
     
     CGRect rect = CGRectMake(CGRectGetMidX(skView.bounds),CGRectGetMidY(skView.bounds), 350, 450);
-    terminado = [[View_terminado alloc] initWithFrame:rect withPuntaje:[NSString stringWithFormat:@"Puntaje = %@",puntaje]];
+    terminado = [[View_terminado alloc] initWithFrame:rect withPuntaje:puntajes];//[NSString stringWithFormat:@"Puntaje = %@",puntaje]];
     //[terminado.score setText:[NSString stringWithFormat:@"Puntaje= %@",puntaje]];
     terminado.layer.anchorPoint = CGPointMake(1, 1);
     terminado.alpha=0.0f;
@@ -350,32 +355,65 @@
                      }];
     
 }
-
+//Nuevo para reconocer niveles
 -(void)siguienteNivel:(NSNotification *)notification{
     
     mask_terminado.alpha=0.0f;
     [mask_terminado removeFromSuperview];
     desplegado_terminado=NO;
     [skView.scene setUserInteractionEnabled:YES];
+    NSDictionary *informacion = [NSDictionary dictionary];
+    informacion = notification.userInfo;
+    NSString *mundo1 = [informacion objectForKey:@"nroMundo"];
+    NSString *nivel1 = [informacion objectForKey:@"nroNivel"];
+    NSString *nomNivel;
+    int mundoInt = [mundo1 intValue];
+    int nivelInt = [nivel1 intValue];
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
     
-    /*SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size]; //withBase: cb
+    if (nivelInt<5) {
+        nivelInt++;
+    }else if (nivelInt==5){
+        nivelInt=1;
+    }
+    /*if (mundoInt<2 && nivelInt==5) {
+        mundoInt++;
+    }else if (mundoInt==2 && nivelInt==5){
+        mundoInt=1;
+    }*/
+    nomNivel = [NSString stringWithFormat:@"w%i_lvl%i.tmx",mundoInt,nivelInt];
+    
+    [info setObject:[NSString stringWithFormat:@"%i",mundoInt] forKey:@"nroMundo"];
+    [info setObject:[NSString stringWithFormat:@"%i",nivelInt] forKey:@"nroNivel"];
+    [info setObject:nomNivel forKey:@"nombreNivel"];
+    
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info]; //withBase: cb
     [skView presentScene:gameOverScene transition: reveal];
-    */
+    
     NSLog(@"siguiente nivel");
     
 }
 
-
+//Nuevo para reconocer niveles
 -(void)jugarDeNuevo:(NSNotification *)notification{
-    
+    NSDictionary *informacion = [NSDictionary dictionary];
+    informacion = notification.userInfo;
+    NSString *mundo1 = [informacion objectForKey:@"nroMundo"];
+    NSString *nivel1 = [informacion objectForKey:@"nroNivel"];
+    NSString *nomNivel;
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    nomNivel = [NSString stringWithFormat:@"w%@_lvl%@.tmx",mundo1,nivel1];
+    [info setObject:[NSString stringWithFormat:@"%@",mundo1] forKey:@"nroMundo"];
+    [info setObject:[NSString stringWithFormat:@"%@",nivel1] forKey:@"nroNivel"];
+    [info setObject:nomNivel forKey:@"nombreNivel"];
     mask_terminado.alpha=0.0f;
     [mask_terminado removeFromSuperview];
     desplegado_terminado=NO;
     [skView.scene setUserInteractionEnabled:YES];
     
     SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size]; //withBase: cb
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info]; //withBase: cb
     [skView presentScene:gameOverScene transition: reveal];
     
     NSLog(@"jugar de nuevo");
@@ -400,9 +438,9 @@
 -(void)insertBase:(NSNotification *)notification{
     //------------------Nuevo para base de datos
     NSDictionary* userInfo = notification.userInfo;
-    int monedas = [[userInfo objectForKey:@"total"] intValue];
-    [cb insert:monedas];
-    NSLog (@"Successfully received test notification! %i", monedas);
+    int puntaje = [[userInfo objectForKey:@"total"] intValue];
+    [cb insert:puntaje];
+    NSLog (@"Successfully received test notification! %i", puntaje);
     //----------------Nuevo para base de datos
 }
 
