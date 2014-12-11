@@ -33,7 +33,7 @@
  </layer>
  <layer name="Obstaculos" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1UFOAjEUBuAm9AAYFi7xHCzlLHgOIl5EEjQBjgFL9Bi40TP4MgkLiAvj1Olovi956a798+a1kxIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMDXxoOUbga1U8C5x5zSMtdOwV/xHm/YRw/esdvIMK2cYx3nb6K2Hea4zk3Nuzvxd91H7xZRDz2YqRJ28X32ld7TNr08zdXlWjwkZ4bR56se/H9nMTN3le/gIc5/iXrtMMckNzUvuecoN1V0z+9aRe+eop7/yXt6jF6+/eB+jArcqTa9PM3V5do+FQAAAAAAffAJZZsbgw==
+   eJzt1UFOAkEQBdBO6ANIWLDEc7jUs+A5iHgRTcQEOQYshWPgRs9gZRIWEBeGaaaH5L2kMruun5qanpQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+NhmkdDuonQKOveSUXnPtFFyL77jDfnpwj91HhofKOZbR/yNq1WGOcW5q1l3Hy3qK2c2jnnuwUyWs4/1sKt2nbWZ52KvTZ/GQHLmJOQ978P+dxs48Vv4GP6P/NmrXYY673NSs5Jmj3FTRM//rLWa3iHq/wAxr7Oo++n2d0XNUIGebWR726vTZPhUAAAAAAH3wCxzPG6w=
   </data>
  </layer>
  <layer name="Correccion" width="340" height="25">

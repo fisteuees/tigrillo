@@ -80,7 +80,6 @@
 		8538EFAA1A30D53F00E0E701 /* w1_lvl1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFA51A30D53F00E0E701 /* w1_lvl1.tmx */; };
 		8538EFAB1A30D53F00E0E701 /* w1_lvl2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFA61A30D53F00E0E701 /* w1_lvl2.tmx */; };
 		8538EFAC1A30D53F00E0E701 /* w1_lvl3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFA71A30D53F00E0E701 /* w1_lvl3.tmx */; };
-		8538EFAD1A30D53F00E0E701 /* w1_lvl4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFA81A30D53F00E0E701 /* w1_lvl4.tmx */; };
 		8538EFAE1A30D53F00E0E701 /* w1_lvl5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFA91A30D53F00E0E701 /* w1_lvl5.tmx */; };
 		8538EFB11A30D56C00E0E701 /* Forest_level.png in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFAF1A30D56C00E0E701 /* Forest_level.png */; };
 		8538EFB21A30D56C00E0E701 /* Forest_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFB01A30D56C00E0E701 /* Forest_level@2x.png */; };
@@ -134,6 +133,7 @@
 		858A01DD1A3A1E75002ADF01 /* s_perder.wav in Resources */ = {isa = PBXBuildFile; fileRef = 858A01D11A3A1E75002ADF01 /* s_perder.wav */; };
 		858A01DE1A3A1E75002ADF01 /* s_volar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 858A01D21A3A1E75002ADF01 /* s_volar.mp3 */; };
 		858A01E01A3A45D7002ADF01 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858A01DF1A3A45D7002ADF01 /* AVFoundation.framework */; };
+		858A01E21A3A483A002ADF01 /* w1_lvl4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 858A01E11A3A483A002ADF01 /* w1_lvl4.tmx */; };
 		85A659CB196307930095D51A /* Jugador.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659CA196307930095D51A /* Jugador.m */; };
 		85A659CF196307C90095D51A /* EfectoParallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659CE196307C90095D51A /* EfectoParallax.m */; };
 		85A659D119630E940095D51A /* configuracion_juego.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85A659D019630E940095D51A /* configuracion_juego.plist */; };
@@ -233,7 +233,6 @@
 		8538EFA51A30D53F00E0E701 /* w1_lvl1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl1.tmx; sourceTree = "<group>"; };
 		8538EFA61A30D53F00E0E701 /* w1_lvl2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl2.tmx; sourceTree = "<group>"; };
 		8538EFA71A30D53F00E0E701 /* w1_lvl3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl3.tmx; sourceTree = "<group>"; };
-		8538EFA81A30D53F00E0E701 /* w1_lvl4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl4.tmx; sourceTree = "<group>"; };
 		8538EFA91A30D53F00E0E701 /* w1_lvl5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl5.tmx; sourceTree = "<group>"; };
 		8538EFAF1A30D56C00E0E701 /* Forest_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forest_level.png; sourceTree = "<group>"; };
 		8538EFB01A30D56C00E0E701 /* Forest_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forest_level@2x.png"; sourceTree = "<group>"; };
@@ -303,6 +302,7 @@
 		858A01D11A3A1E75002ADF01 /* s_perder.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = s_perder.wav; sourceTree = "<group>"; };
 		858A01D21A3A1E75002ADF01 /* s_volar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = s_volar.mp3; sourceTree = "<group>"; };
 		858A01DF1A3A45D7002ADF01 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		858A01E11A3A483A002ADF01 /* w1_lvl4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl4.tmx; sourceTree = "<group>"; };
 		85A659C9196307930095D51A /* Jugador.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jugador.h; sourceTree = "<group>"; };
 		85A659CA196307930095D51A /* Jugador.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jugador.m; sourceTree = "<group>"; };
 		85A659CD196307C90095D51A /* EfectoParallax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EfectoParallax.h; sourceTree = "<group>"; };
@@ -456,7 +456,7 @@
 				8538EFA51A30D53F00E0E701 /* w1_lvl1.tmx */,
 				8538EFA61A30D53F00E0E701 /* w1_lvl2.tmx */,
 				8538EFA71A30D53F00E0E701 /* w1_lvl3.tmx */,
-				8538EFA81A30D53F00E0E701 /* w1_lvl4.tmx */,
+				858A01E11A3A483A002ADF01 /* w1_lvl4.tmx */,
 				8538EFA91A30D53F00E0E701 /* w1_lvl5.tmx */,
 			);
 			name = "Level Files";
@@ -1004,12 +1004,12 @@
 				8538EF8A1A30D49F00E0E701 /* Graveyard_level@2x.png in Resources */,
 				8538EF701A30D3CA00E0E701 /* w2_lvl5.tmx in Resources */,
 				8538EF9B1A30D4DF00E0E701 /* w4_lvl4.tmx in Resources */,
+				858A01E21A3A483A002ADF01 /* w1_lvl4.tmx in Resources */,
 				8584B2B319D21C6300B851DC /* pausa_view.xib in Resources */,
 				8538EF9C1A30D4DF00E0E701 /* w4_lvl5.tmx in Resources */,
 				8538EF771A30D40900E0E701 /* Particulas_2.sks in Resources */,
 				858A01D41A3A1E75002ADF01 /* s_fondo_agua.mp3 in Resources */,
 				8560EB4F1993E936000A57F7 /* ajustes_view.xib in Resources */,
-				8538EFAD1A30D53F00E0E701 /* w1_lvl4.tmx in Resources */,
 				8538EF891A30D49F00E0E701 /* Graveyard_level.png in Resources */,
 				8538EF8F1A30D4C700E0E701 /* Fire_level.png in Resources */,
 				8538EFA31A30D53600E0E701 /* particula-mariposa.png in Resources */,

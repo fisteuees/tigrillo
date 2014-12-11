@@ -20,7 +20,7 @@
 
 const float maxVelocidad = 850.0f;
 const float maxAceleracion = 850.0f;
-const float BorderCollisionDamping = 0.5f;
+const float BorderCollisionDamping = 0.2f;
 const float CannonCollisionSpeed = 100.0f;
 
 @import CoreMotion;
@@ -57,6 +57,8 @@ const float CannonCollisionSpeed = 100.0f;
     NSString *strTiempo;
     NSNumber *cont_tiempo;
     NSArray *cuchoCaminando;
+    NSArray *cuchoVolando;
+    SKAction *walkAnimation;
     UITapGestureRecognizer *doubleTap;
 
     //datosAcelerometro
@@ -105,7 +107,6 @@ const float CannonCollisionSpeed = 100.0f;
     SKSpriteNode *fondo_oscuro;
     SKEmitterNode *myParticle;
     BOOL choque;
-    SKAction *walkAnimation;
 }
 @end
 
@@ -283,6 +284,11 @@ const float CannonCollisionSpeed = 100.0f;
         SKTexture *f6 = [atlas textureNamed:@"cucho06.png"];
         SKTexture *f7 = [atlas textureNamed:@"cucho07.png"];
         cuchoCaminando = @[f1,f2,f3,f4,f5,f6,f7];
+        
+        SKTextureAtlas *atlas1 = [SKTextureAtlas atlasNamed:@"cuchoAnimacion"];
+        SKTexture *f8 = [atlas1 textureNamed:@"fly01.png"];
+        SKTexture *f9 = [atlas1 textureNamed:@"fly02.png"];
+        cuchoVolando = @[f8,f9];
         
         self.jugador = [[Jugador alloc] initWithImageNamed:@"cucho01.png"];
         self.jugador.position = CGPointMake(140, 150);
@@ -688,19 +694,24 @@ const float CannonCollisionSpeed = 100.0f;
 
 #pragma mark pausa2
 -(void)pausarJuego{
-    pausado=YES;
-    //self.jugador.puede_moverse=NO;
-    self.jugador.puede_saltar=NO;
-    [self.jugador removeAllActions];
-    //myParticle.paused=YES;
-    espacio_movimiento = 0;
-    menu_pausa.hidden = NO;
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarPausa" object:self userInfo:nil];
-    fondo_oscuro=[SKSpriteNode spriteNodeWithImageNamed:@"fondo_oscuro"];
-    fondo_oscuro.alpha=0.5f;
-    fondo_oscuro.position=CGPointMake(512, 384);
-    [self addChild:fondo_oscuro];
-    //[self.view sendSubviewToBack:mask_terminado];
+    if (pausado) {
+        
+    }else{
+        pausado=YES;
+        //self.jugador.puede_moverse=NO;
+        self.jugador.puede_saltar=NO;
+        [self.jugador removeAllActions];
+        //myParticle.paused=YES;
+        espacio_movimiento = 0;
+        menu_pausa.hidden = NO;
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarPausa" object:self userInfo:nil];
+        fondo_oscuro=[SKSpriteNode spriteNodeWithImageNamed:@"fondo_oscuro"];
+        fondo_oscuro.alpha=0.5f;
+        fondo_oscuro.position=CGPointMake(512, 384);
+        [self addChild:fondo_oscuro];
+        //[self.view sendSubviewToBack:mask_terminado];
+    }
+    
     
 }
 
@@ -864,6 +875,10 @@ const float CannonCollisionSpeed = 100.0f;
                 }else if (capa == self.volar){
                     //Cambios para timers
                     //timVolar = 0;
+                    [self.jugador removeActionForKey:@"volar"];
+                    walkAnimation = [SKAction animateWithTextures:cuchoVolando timePerFrame:0.5];
+                    [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
+                    self.jugador.size = CGSizeMake(80, 130);
                     NSLog(@"se llama");
                     doubleTap.enabled = NO;
                     [self.rocas setHidden:YES];
@@ -872,7 +887,7 @@ const float CannonCollisionSpeed = 100.0f;
                     [self.monedasVolar setHidden:NO];
                     [self.multiplicador setHidden:YES];
                     
-                    [self.jugador runAction:[SKAction moveTo:CGPointMake(self.jugador.position.x+100, self.jugador.position.y+300) duration:0.5]];
+                    [self.jugador runAction:[SKAction moveTo:CGPointMake(self.jugador.position.x+100, self.jugador.position.y+150) duration:0.5]];
                     //[volar1 invalidate];
                     //volar1 = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(metVolar) userInfo:nil repeats:YES];
                     if ([defaults integerForKey:@"estadoSwitch2"]==1) {
@@ -929,6 +944,7 @@ const float CannonCollisionSpeed = 100.0f;
 }
 //Cambios para timers
 -(void)metVolar{
+    
     /*if (timVolar < 13) {
         timVolar++;
         NSLog(@"Se cogió la pluma");
@@ -937,6 +953,10 @@ const float CannonCollisionSpeed = 100.0f;
         doubleTap.enabled = YES;
         volando = NO;
         colisiones = YES;
+        [self.jugador removeActionForKey:@"volar"];
+        walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
+        [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
+        self.jugador.size = CGSizeMake(70,70);
         [self.correccion setHidden:NO];
         [self.multiplicador setHidden:NO];
         [self.monedas setHidden:NO];
