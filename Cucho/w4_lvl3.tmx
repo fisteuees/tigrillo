@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="340" height="25" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="340" height="25" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Coins_PowerUP" tilewidth="32" tileheight="32">
   <image source="Coins_PowerUP.png" width="1136" height="640"/>
  </tileset>
  <tileset firstgid="701" name="Fire_level" tilewidth="32" tileheight="32">
   <image source="Fire_level.png" width="1136" height="640"/>
+ </tileset>
+ <tileset firstgid="1401" name="Piedra" tilewidth="32" tileheight="32">
+  <image source="Piedra.png" width="64" height="64"/>
  </tileset>
  <layer name="Multiplicador" width="340" height="25">
   <data encoding="base64" compression="zlib">
@@ -28,12 +31,12 @@
  </layer>
  <layer name="Monedas" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2FFShDAMAFC4sZ5FD6wz/rFCk9BS0Pe+6JTNlqTDNrssAAAAAAAAAAAAAAAAAAAAAAAAMMfbuizv6+s186nNeE/M8RPX/F98fNfic329vovM3tnOt8aRmL3tPc9v67iiNpmc9shVpCbZ783kdKuV4zOxWyr7NbLmTCzmitQlu++O7sm8U7bzrXEkZm97zzPrtyyT0+gao/U8ilmte++cVmNn3+WRcXXde7G8Y+eL1Di7p+94LqZOPZ+Rgyes8S85e7a8Kube5870PJE+tKJX/3h0f3Uus96qnn1oJJd3qVcrdmTcMzbXG3G2HHle7dk/RfrQil696dH91bnMeqtG9bSjev6r/kuIjHvGBgAAAAAAAH58AbR5lW0=
+   eJzt2FFugzAMAFC48XaW7cCbtJ+pFcQ2CYT2vS8qgWPiNGCWBQAAAAAAAAAAAAAAAAAAAAAAAK7xsS7L5/p8zPXUZrw7zvEdc34XX7+1+F6fj2dRWTuP5+1dN/N6PKM2rfvv/d+N1mZr3FY+2Xxbc5wZuyqzXiM5V2JyjUhdsutu75zKnvJ43t51Mz5DztS6/8r8R+u5F3Nr3FY+vZ9BmbH/y+xfmfUaFYlpj71epNbZNf3ue9qrUc97zMEdcnwlR98tz4q5dd2RnifSh1b06h+r3zCOjHNmv1/NZ2S+Z8/FkTH0+/MZ8W458n211eNk4kb60Ipq/5jJo+f3jZH984h8Zun3s7Ejv3vGBgAAAAAAAP78ANNxjT0=
   </data>
  </layer>
  <layer name="Obstaculos" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt08ENglAMBmCiJA5ivDiQzqIXd3EXN/HgGMKBC4lJwVflhe9LuDXQ9i9NAwAAAAAAAAAAAAAAAAAAAAAAAAAAAABl3bb/7oBPZJOvxh3X2PNa3BeezXPh/WVaejaZfpV7jTuusee1eESzaSfUdc8mUh+o2UW/O9Gpm/tc6i7bZtrcQeFsZig6/6Dg7Fm5j5XeccpeRzLvgu+8gtnsg/fd1/XPIVAfeecx6b+6dHNfC93lMHN07qhoNnOUnH8QvZGIrNzHSu84Y69jmXcBAAAAAMDyvQFuOhRj
+   eJzt080JwkAQBtBFIxYiXuzQH7AXe7ETD5ZhPOQSECa6o1l8D/Y2bHbmm5QCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHWdl79+Aa/IJl+LM27xzf/iMvNsbjN/X6a5Z5PpW7m3OOMW3/wvrtFsugl1/VlE6gM16+h3J9qvSjmsKl3WlWl9B4WzeUPV/gcVe8/Kfaz2jFPmOpK5F3zmHsxmE9zvZ93zbAP1kTt3Sf/Vsd/5U6W9H3qO9h0VzeYdNfsfRHckIiv3sdozzpjrWOZeAAAAAAAwfw/iExVZ
   </data>
  </layer>
  <layer name="Correccion" width="340" height="25">

@@ -8,11 +8,12 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "gameCenterManager.h"
+#import <AVFoundation/AVFoundation.h>
 
 
 @interface Escena_mundos : SKScene
 
--(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc;
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conAudioPlayer:(AVAudioPlayer*)audio;
 
 
 

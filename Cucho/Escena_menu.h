@@ -8,9 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "gameCenterManager.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface Escena_menu : SKScene
 
 -(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc;
+@property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 
 @end

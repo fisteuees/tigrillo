@@ -43,7 +43,7 @@
 -(void)creartablas{
     char *err1;
     char *err2;
-    NSString *mundo = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS 'mundos' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'nombre' TEXT, 'bloqueado' INTEGER, 'puntos_totales' INTEGER, 'completado' INTEGER);"];
+    NSString *mundo = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS 'mundos' ('nroMundo' TEXT, 'puntos_totales' INTEGER, 'completado' INTEGER);"];
     if(sqlite3_exec(db, [mundo UTF8String], NULL, NULL, &err1) != SQLITE_OK){
         sqlite3_close(db);
         NSAssert(0, @"No se pudo crear la tabla");
@@ -53,7 +53,7 @@
     
     //
     
-    NSString *niveles = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS 'niveles' ('id' TEXT, 'mundo' TEXT, 'bloqueado' INTEGER, 'mejor_puntaje' INTEGER, 'completado' INTEGER);"];
+    NSString *niveles = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS 'niveles' ('nroNivel' TEXT, 'nroMundo' TEXT, 'mejor_puntaje' INTEGER, 'completado' INTEGER);"];
     if(sqlite3_exec(db, [niveles UTF8String], NULL, NULL, &err2) != SQLITE_OK){
         sqlite3_close(db);
         NSAssert(0, @"No se pudo crear la tabla");
@@ -62,8 +62,26 @@
     }
 }
 
--(void)insertMundo{
-    
+-(void)insertMundo:(int)puntaje conMundo:(NSString*)mundo{
+    char *err;
+    NSString *sql1 = [NSString stringWithFormat:@"INSERT INTO mundos ('nroMundo', 'puntos_totales') VALUES ('%@', '%d')",mundo,puntaje];
+    if (sqlite3_exec(db, [sql1 UTF8String], NULL, NULL, &err) != SQLITE_OK) {
+        sqlite3_close(db);
+        NSAssert(0, @"No se pudo hacer el insert");
+    }else{
+        NSLog(@"Insert realizado exitosamente");
+    }
+}
+
+-(void)insertNivel:(int)puntaje conMundo:(NSString*)mundo conNivel:(NSString*)nivel{
+    char *err;
+    NSString *sql1 = [NSString stringWithFormat:@"INSERT INTO niveles ('nroNivel', 'nroMundo', 'mejor_puntaje') VALUES ('%@','%@','%d')",nivel,mundo,puntaje];
+    if (sqlite3_exec(db, [sql1 UTF8String], NULL, NULL, &err) != SQLITE_OK) {
+        sqlite3_close(db);
+        NSAssert(0, @"No se pudo hacer el insert");
+    }else{
+        NSLog(@"Insert realizado exitosamente");
+    }
 }
 
 -(void)insert:(int)monedas{

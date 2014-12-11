@@ -177,10 +177,10 @@ const float CannonCollisionSpeed = 100.0f;
         [self addChild:corazon3];
         
         /*pausa = [[SKSpriteNode alloc] initWithImageNamed:@"images.png"];
-        pausa.position = CGPointMake(CGRectGetMinX(self.frame)+80, CGRectGetMaxY(self.frame)-35);
-        pausa.name = @"pausa";
-        pausa.zPosition = 120;
-        [self addChild:pausa];*/
+         pausa.position = CGPointMake(CGRectGetMinX(self.frame)+80, CGRectGetMaxY(self.frame)-35);
+         pausa.name = @"pausa";
+         pausa.zPosition = 120;
+         [self addChild:pausa];*/
         //FIN PARA VIDAS
         
         //Particulas
@@ -241,18 +241,18 @@ const float CannonCollisionSpeed = 100.0f;
         [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
         
         
-       /* menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
-        menu_pausa.position = CGPointMake(100, 100);
-        menu_pausa.hidden = YES;
-        menu_pausa.zPosition = 120;
-        menu_pausa.name = @"reanuda";
-        [self addChild:menu_pausa];
-        
-        action = [SKAction runBlock:^{
-            [menu_pausa setHidden:NO];
-            NSLog(@"salio la imagen");
-            
-        }];*/
+        /* menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
+         menu_pausa.position = CGPointMake(100, 100);
+         menu_pausa.hidden = YES;
+         menu_pausa.zPosition = 120;
+         menu_pausa.name = @"reanuda";
+         [self addChild:menu_pausa];
+         
+         action = [SKAction runBlock:^{
+         [menu_pausa setHidden:NO];
+         NSLog(@"salio la imagen");
+         
+         }];*/
         
         /*NSString *path = [[NSBundle mainBundle] pathForResource:@"MyParticle"
          ofType:@"sks"];
@@ -433,9 +433,9 @@ const float CannonCollisionSpeed = 100.0f;
         [self addChild:cara_triste];
         
         /*SKSpriteNode *bt_aceptar1=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
-        bt_aceptar1.position=CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-100);
-        bt_aceptar1.name=@"finalizar";
-        [self addChild:bt_aceptar1];*/
+         bt_aceptar1.position=CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-100);
+         bt_aceptar1.name=@"finalizar";
+         [self addChild:bt_aceptar1];*/
         num_mensaje=0;
         choque=NO;
         choque_escudo=NO;
@@ -492,21 +492,7 @@ const float CannonCollisionSpeed = 100.0f;
         SKNode *nodo=[self nodeAtPoint:location];
         
         NSLog(@"saltando %@",nodo.name);
-        if([nodo.name isEqualToString:@"salir"]){
-            SKTransition *reveal = [SKTransition doorsCloseVerticalWithDuration:1.0];
-            //Cambiar aquí para ir a la otra pantalla
-            //SKScene * gameOverScene = [[Menu alloc] initWithSize:self.size withBase:con];
-            //[self.view presentScene:gameOverScene transition: reveal];
-        }
-        else if([nodo.name isEqualToString:@"finalizar"]){
-            [self reiniciar];
-        }
-        else if([nodo.name isEqualToString:@"recargar"]){
-            SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-            SKScene * gameOverScene = [[Escena_juego_tutorial alloc] initWithSize:self.size]; //withBase: cb
-            [self.view presentScene:gameOverScene transition: reveal];
-        }
-        else if([nodo.name isEqualToString:@"aceptar1"]){
+        if (pausado) {
             num_mensaje++;
             [self reanudarJuego];
             //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mostrarMensaje) userInfo:nil repeats:NO];
@@ -550,14 +536,32 @@ const float CannonCollisionSpeed = 100.0f;
                     break;
             }
             
+        }
+        
+        else if([nodo.name isEqualToString:@"salir"]){
+            SKTransition *reveal = [SKTransition doorsCloseVerticalWithDuration:1.0];
+            //Cambiar aquí para ir a la otra pantalla
+            //SKScene * gameOverScene = [[Menu alloc] initWithSize:self.size withBase:con];
+            //[self.view presentScene:gameOverScene transition: reveal];
+        }
+        else if([nodo.name isEqualToString:@"finalizar"]){
+            [self reiniciar];
+        }
+        else if([nodo.name isEqualToString:@"recargar"]){
+            SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+            SKScene * gameOverScene = [[Escena_juego_tutorial alloc] initWithSize:self.size]; //withBase: cb
+            [self.view presentScene:gameOverScene transition: reveal];
+        }
+        else if([nodo.name isEqualToString:@"aceptar1"]){
+            
             
         }
         /*else if(nodo==bt_aceptar){
-            num_mensaje++;
-            [self reanudarJuego];
-            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mostrarMensaje) userInfo:nil repeats:NO];
-            
-        }*/
+         num_mensaje++;
+         [self reanudarJuego];
+         [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mostrarMensaje) userInfo:nil repeats:NO];
+         
+         }*/
         else if ([nodo.name isEqualToString:@"pausa"]){
             
             if(pausado){
@@ -1125,11 +1129,11 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
-            bt_mano.position=CGPointMake(600, 200);
-            [self addChild:bt_mano];*/
+             bt_mano.position=CGPointMake(600, 200);
+             [self addChild:bt_mano];*/
             break;
             
         case 1:
@@ -1142,10 +1146,10 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            // [self addChild:bt_aceptar];
             
             bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
-             bt_mano.position=CGPointMake(55, 680);
+            bt_mano.position=CGPointMake(55, 680);
             //bt_mano.zRotation = M_PI/1.5f;
             [self addChild:bt_mano];
             
@@ -1168,14 +1172,14 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
             bt_mano.position=CGPointMake(600, 220);
             bt_mano.zRotation = M_PI/1.0f;
             [self addChild:bt_mano];
             
-       {
+        {
             SKAction *mover1=[SKAction moveTo:CGPointMake(600, 220) duration:0.5];
             SKAction *mover2=[SKAction moveTo:CGPointMake(580, 240) duration:0.5];
             SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
@@ -1191,9 +1195,9 @@ const float CannonCollisionSpeed = 100.0f;
             SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"manotouch"];
             SKTexture *mano1 = [atlas textureNamed:@"mano_touch1.png"];
             SKTexture *mano2 = [atlas textureNamed:@"mano_touch2.png"];
-
+            
             NSArray *ar_manos = @[mano1,mano2];
-      
+            
             SKAction *manos = [SKAction animateWithTextures:ar_manos timePerFrame:0.3];
             [bt_mano2 runAction:[SKAction repeatActionForever:manos]];
         }
@@ -1207,7 +1211,7 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
              bt_mano.position=CGPointMake(600, 200);
@@ -1222,14 +1226,14 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
             bt_mano.position=CGPointMake(530, 270);
             bt_mano.zRotation = M_PI/1.0f;
             [self addChild:bt_mano];
             
-       {
+        {
             SKAction *mover1=[SKAction moveTo:CGPointMake(550, 240) duration:0.5];
             SKAction *mover2=[SKAction moveTo:CGPointMake(530, 270) duration:0.5];
             SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
@@ -1245,7 +1249,7 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
              bt_mano.position=CGPointMake(600, 200);
@@ -1260,14 +1264,14 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
             bt_mano.position=CGPointMake(900, 680);
             bt_mano.zRotation =-M_PI/2.0f;
             [self addChild:bt_mano];
             
-       {
+        {
             SKAction *mover1=[SKAction moveTo:CGPointMake(920, 690) duration:0.5];
             SKAction *mover2=[SKAction moveTo:CGPointMake(900, 680) duration:0.5];
             SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
@@ -1283,7 +1287,7 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
             bt_mano.position=CGPointMake(530, 270);
@@ -1306,7 +1310,7 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
             bt_mano.position=CGPointMake(530, 270);
@@ -1329,7 +1333,7 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             break;
         case 10:
@@ -1341,7 +1345,7 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
             bt_mano.position=CGPointMake(600, 220);
@@ -1380,7 +1384,7 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.position=CGPointMake(400, 170);
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
-            [self addChild:bt_aceptar];
+            //[self addChild:bt_aceptar];
             
             /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
              bt_mano.position=CGPointMake(600, 200);
@@ -1401,7 +1405,7 @@ const float CannonCollisionSpeed = 100.0f;
     choque=NO;
     choque_escudo=NO;
     
-
+    
     SKTransition *reveal = [SKTransition doorsOpenVerticalWithDuration:0.4];
     //SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size];
     SKScene * gameOverScene = [[Escena_juego_tutorial alloc] initWithSize:self.size];

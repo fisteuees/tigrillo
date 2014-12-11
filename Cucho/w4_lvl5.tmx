@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="340" height="25" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="340" height="25" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Coins_PowerUP" tilewidth="32" tileheight="32">
   <image source="Coins_PowerUP.png" width="1136" height="640"/>
  </tileset>
  <tileset firstgid="701" name="Fire_level" tilewidth="32" tileheight="32">
   <image source="Fire_level.png" width="1136" height="640"/>
+ </tileset>
+ <tileset firstgid="1401" name="Piedra" tilewidth="32" tileheight="32">
+  <image source="Piedra.png" width="64" height="64"/>
  </tileset>
  <layer name="Multiplicador" width="340" height="25">
   <data encoding="base64" compression="zlib">
@@ -18,7 +21,7 @@
  </layer>
  <layer name="Escudo" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPBihNAAAQ==
+   eJztzsENACAIADH2H0Nn0blkCUMgbXL/iwAAAAAAAAAAAAAAAAAAAKCTle3qCYABTnarJwAAAAAAAAAAAAAAAAAAAAA+eBBtAtE=
   </data>
  </layer>
  <layer name="MonedasVolar" width="340" height="25">
@@ -28,12 +31,12 @@
  </layer>
  <layer name="Monedas" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2FEOgjAMANBxYz2LHli/ITC3tTjCe1+YuLZ0JRmUAgAAAAAAAAAAAAAAAAAAAAAAAPR6LKU8l+01XIH5ZaZ9f33reC/b67V1zWfeg2cm1mz9rM3WUY1R83v0e4Ye3Ulrv4/2PSNfhHXNtXuIrPHXZ6ZVZI09sXrzj9Y90s/W3L/8vzZbEXvemiNr5qg7u99X2N+71dgTqzf/P3vbmvsKc8D8Is4rGTGizkSjZ6S996mRuJExs/qWvW50bW+MyHozvi2dkYM8EeeVjBhRZ6LRc8fe+9RI3MiYWX3LXje6tjdGZL0zvO8DAAAAAAAAdR/UZnCV
+   eJzt2EESgjAMAMDyY32LPljPMIw0TbAMuycONglpmGltDQAAAAAAAAAAAAAAAAAAAAAAAIh6LK09l+0zXIH5ZaZ9f33reC/b57V1zWe+g28m16z9jMzY0fntzTFrj+6gt99H9j0zX4Z1zb/eIbPG3m/mqMwaI7Gi+UfrHulnb+6e3/fOWMTRHFUzx29n9/sK+3u3GiOxovn/2dve3FeYA+aXcV6piJF1Jho9I+3dp0biZsas6lv1utG10RiZ9Vb8t3RGDupknFcqYmSdiUbPHXv3qZG4mTGr+la9bnRtNEZmvRX3/jNyAAAAAAAAwN18AOdSbH0=
   </data>
  </layer>
  <layer name="Obstaculos" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt0rENwjAQBdAIIjEIomEgmAUadmEXNqFgDBLRBMtN4ktIwnuSO9uy//2qAgAAAAAAAAAAAAAAAAAAAAAAAAAAAABSt+2vXwDD6e//es5w9vcZvik1x9yWbE15jtXfNWW0GHW/7bue+1OnZsbn4Dk/Iu+rP2tT+M9UaW6p0ByHvG3of4JyiM4zZ4yu5oT2t2OKjPi275n5sXBGl6Y71+D+vALva/No1yG4i6W5pSJz7NuBoWdKzqWi88wZo6s5kf3tmiIjAAAAAACm9wZFLhBq
+   eJzt0rsNwjAUBVALEjEIomFDPhK7sAubUDAGRDTBSpP4JYRwjuTOtp6vb0oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQO6y/vYEMJz+/q/7DP/+OsOZcnPM7ZctKc+x+rukjH5G1W/7puf+3KFO6ViX3ZG7Rfameq9V4TtzpbnlQnMcMtvQ9wTlEJ1nlzG62iW0vy1TZMSnbc/M94V/dHr18xzc0UdgH5s8mrUL7mJpbrnIHPt2YOiZknO56Dy7jNHVLpH9bZsiIwAAAAAApvcECc4RYA==
   </data>
  </layer>
  <layer name="Correccion" width="340" height="25">

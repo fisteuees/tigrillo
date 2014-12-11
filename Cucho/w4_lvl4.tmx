@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="340" height="25" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="340" height="25" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Coins_PowerUP" tilewidth="32" tileheight="32">
   <image source="Coins_PowerUP.png" width="1136" height="640"/>
  </tileset>
  <tileset firstgid="701" name="Fire_level" tilewidth="32" tileheight="32">
   <image source="Fire_level.png" width="1136" height="640"/>
+ </tileset>
+ <tileset firstgid="1401" name="Piedra" tilewidth="32" tileheight="32">
+  <image source="../Tiles/Piedra.png" width="64" height="64"/>
  </tileset>
  <layer name="Multiplicador" width="340" height="25">
   <data encoding="base64" compression="zlib">
@@ -28,12 +31,12 @@
  </layer>
  <layer name="Monedas" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt2EESwiAMAED4sb5FH6wXL60dIQSHdnZPPYQakg4TLAUAAAAAAAAAAAAAAAAAAAAAAAAgz62Wcq/7Z4BfWs+Po7irnT+Pd/7Pun/eitbg7PWalXNGXTLWnbEntBnpc2t86/lxFBc5fzLzj8aPitSgN/ajZW8j++9Z25pz77sjdRnNLfO3Wd9In1f7Lmbnv9p+M7XsbWT/M2t35b5wHZHZNWuGybzv/3NuzZxhZ/3nMWPOXr0vvfE9a7ex7vN8E5lds2aY6F03I6eR+MxZKbMGR+/NsnpfeuN71m5jzcsAAAAAAACQ4wUmC2px
+   eJzt2EESgyAMAED8cfuW9sH1XGsLJDhod08ekJDEYcBSAAAAAAAAAAAAAAAAAAAAAAAAAPLcllLuy/YZ4Jee/ePKe85jzeW5bJ+/aanB2Ws3as0Zdcl474w9oU6kz7Xje/aP0XvOEeMz1dbgfWxm7SL5t7zbkmvL3D11ia4tMzbzi/R5tu9i9PpnyzdTTW6R/EfW7sp94Tqi9/SseNG70pHn1swzbGYN9ubNMntfWsf3/l/pict/iN7Ts+JF70pHnlszz0qZNdibN8vsfWkd3/t/pScuAAAAAAAA8NkL0lRiQQ==
   </data>
  </layer>
  <layer name="Obstaculos" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJwkAQBdCgCxYSvFiQ1qIXe7EXO/FgGQaCB0HIzsAogfdgb7PhZ3Z2hwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYNl1++8EwFo9vB8fbsX90O/v9IVSbV6bltgXsIt+Pyiav7p+yb34Xof63VF7nPKespl7s2Rm8YdzmO5BG/L3jFUZ27z2wXMeg/WH4jmK5q+uX/Isfk8j/e45y/OU95LM3DsrmVn85Rxme/D+r8w9AwAAAABgfV7b0wyG
+   eJzt1M0JwkAQBtBFN1hI8GKH/oC92IudeLAMheBBELIzsJHAe5DbJEy+nZ1SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADmXbf/7gBYq4f98eXWOQ95/yYXuqrTs6mJ9wJ20e8HRfvvXT/n3vleh/JuqD0OpZyGZDOtvWRmccE5TGdQS/6esSpjnZ598JzHYP2h8xxF++9dP+fZeZ9G8m45y/N7j1yS+7R1VjKzuOQcZjP4/FfmngEAAAAAsD4vjFENKg==
   </data>
  </layer>
  <layer name="Correccion" width="340" height="25">

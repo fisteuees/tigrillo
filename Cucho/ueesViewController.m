@@ -14,6 +14,8 @@
 #import "View_ajustes.h"
 #import "View_terminado.h"
 #import "conexionBase.h"
+//para volver a tutorial
+#import "Escena_juego_tutorial.h"
 
 @interface ueesViewController(){
     SKView * skView;
@@ -28,6 +30,10 @@
     BOOL desplegado_terminado;
     conexionBase *cb;
     NSString *mapa;
+    //para volver a tutorial
+    SKTransition *reveal;
+    Escena_menu *es;
+    BOOL recargar;
 }
 
 @end
@@ -75,6 +81,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(nombreMapa:)
                                                  name:@"nombreMapa"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(recargarEscena)
+                                                 name:@"recargarEscena"
                                                object:nil];
     //base de datos
     cb = [[conexionBase alloc]init];
@@ -138,6 +148,10 @@
 
 -(void)reload:(NSNotification *)notification
 {
+    if (!recargar) {
+        
+        es=notification.object;
+        
     self.items = [NSMutableArray array];
     for (int i = 1; i <=5; i++)
     {
@@ -155,6 +169,7 @@
     [UIView commitAnimations];
 
     [self.carousel reloadData];
+    }
 }
 
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
@@ -183,42 +198,42 @@
             //((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_nieve.jpg"];
         }
         
-        switch (index) {
-            case 0:
-                ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_bosque"];
-                label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
-                label.text = @"Mundo de bosque";
-                NSLog(@"mundo nieve");
-                break;
-            case 1:
-                ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_fuego"];
-                label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
-                label.text = @"Mundo de fuego";
-                NSLog(@"mundo fuego");
-                break;
-            case 2:
-                ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_montana"];
-                label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
-                label.text = @"Mundo de montaña";
-                NSLog(@"mundo montaña");
-                break;
-            case 3:
-                ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_agua"];
-                label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
-                label.text = @"Mundo de agua";
-                NSLog(@"mundo agua");
-                break;
-            case 4:
-                ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_nieve"];
-                label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
-                label.text = @"Mundo de bosque";
-                NSLog(@"mundo bosque");
-                break;
-        }
-        
+    switch (index) {
+        case 0:
+            ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_bosque"];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
+            label.text = @"Mundo de bosque";
+            NSLog(@"mundo bosque");
+            break;
+        case 1:
+            ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_nieve"];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
+            label.text = @"Mundo de Nieve";
+            NSLog(@"mundo nieve");
+            break;
+        case 2:
+            ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_agua"];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
+            label.text = @"Mundo de Agua";
+            NSLog(@"mundo agua");
+            break;
+        case 3:
+            ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_fuego"];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
+            label.text = @"Mundo de Fuego";
+            NSLog(@"mundo fuego");
+            break;
+        case 4:
+            ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_cementerio"];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
+            label.text = @"Mundo de Cementerio";
+            NSLog(@"mundo cementerio");
+            break;
+    }
+    
         view.contentMode = UIViewContentModeCenter;
         //view.clipsToBounds=YES;
-        
+    
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [label.font fontWithSize:50];
@@ -263,7 +278,7 @@
     NSString *nroMundo = [NSString stringWithFormat:@"%li",(long)index+1];
     [informacion setObject:nroMundo forKey:@"nroMundo"];
         SKTransition *reveal = [SKTransition crossFadeWithDuration:0.7];
-        SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size conGameCenter:gc conInformacion:informacion];
+        SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size conGameCenter:gc conInformacion:informacion conAudioPlayer:es.audioPlayer];
         [skView presentScene:gameOverScene transition:reveal];
     //Nuevo para reconocer niveles
 
@@ -283,6 +298,8 @@
     ajustes = [[View_ajustes alloc] initWithFrame:rect];
     ajustes.layer.anchorPoint = CGPointMake(1, 1);
     ajustes.alpha=0.0f;
+    
+    
     [ajustes setTransform:CGAffineTransformMakeScale(0.1, 0.1)];
     [self.view addSubview:ajustes];
     //ajustes.center = CGPointMake(ajustes.frame.size.width / 2, ajustes.frame.size.height / 2);
@@ -310,7 +327,7 @@
 
 -(void)cerrarVentanaAjustes:(NSNotification *)notification{
     
-    
+     recargar=NO;
         mask.alpha=0.0f;
     [mask removeFromSuperview];
     desplegado=NO;
@@ -371,24 +388,28 @@
     int nivelInt = [nivel1 intValue];
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
     
+    if (mundoInt<5 && nivelInt==5) {
+        mundoInt++;
+    }else if (mundoInt==5 && nivelInt==5){
+        mundoInt=1;
+        //para volver a tutorial
+        SKScene *juego = [[Escena_juego_tutorial alloc] initWithSize:skView.bounds.size];
+        [skView presentScene:juego transition:reveal];
+    }
     if (nivelInt<5) {
         nivelInt++;
     }else if (nivelInt==5){
         nivelInt=1;
     }
-    /*if (mundoInt<2 && nivelInt==5) {
-        mundoInt++;
-    }else if (mundoInt==2 && nivelInt==5){
-        mundoInt=1;
-    }*/
+    
     nomNivel = [NSString stringWithFormat:@"w%i_lvl%i.tmx",mundoInt,nivelInt];
     
     [info setObject:[NSString stringWithFormat:@"%i",mundoInt] forKey:@"nroMundo"];
     [info setObject:[NSString stringWithFormat:@"%i",nivelInt] forKey:@"nroNivel"];
     [info setObject:nomNivel forKey:@"nombreNivel"];
     
-    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info]; //withBase: cb
+    /*SKTransition */reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info conAudioPlayer:es.audioPlayer]; //withBase: cb
     [skView presentScene:gameOverScene transition: reveal];
     
     NSLog(@"siguiente nivel");
@@ -413,7 +434,7 @@
     [skView.scene setUserInteractionEnabled:YES];
     
     SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info]; //withBase: cb
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info conAudioPlayer:es.audioPlayer]; //withBase: cb
     [skView presentScene:gameOverScene transition: reveal];
     
     NSLog(@"jugar de nuevo");
@@ -448,6 +469,16 @@
     NSDictionary* userInfo = notification.userInfo;
     mapa = [userInfo objectForKey:@"mapa"];
     NSLog(@"%@",mapa);
+}
+
+-(void)recargarEscena{
+    SKScene *scene;
+    scene = [[Escena_menu alloc]initWithSize:skView.bounds.size conGameCenter:gc];
+    scene.scaleMode = SKSceneScaleModeAspectFit;
+    
+    recargar=YES;
+    [skView presentScene:scene];
+    
 }
 
 @end

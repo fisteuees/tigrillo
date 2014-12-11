@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="340" height="24" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="340" height="24" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Coins_PowerUP" tilewidth="32" tileheight="32">
   <image source="Coins_PowerUP.png" width="1136" height="640"/>
  </tileset>
@@ -28,7 +28,7 @@
  </layer>
  <layer name="Monedas" width="340" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt2EESgjAMBVC4sZ5FD6wuXIHSpKEi896qg9Pf0EKZOk0AAAAAAAAAAAAAAAAAAAAAADDeZZ6m67xsA2Rt7Sst177tR6P2rUhNL7fnb/d52Y5kjt6Ho2tVVV9k3Gg7M+4Zv39nv7+jq5rzrX2l5dqn/aglv0XLvUZqarWVuTbGnu9CdK2q6ouMG21/q6m1/1pOdh1G93vLvCf23ToV+8W/+Kd7PXqtR6yvqqaKb/fofj2OuJZnU31G3fNcWXk+3eOsWzmX0axM/dmMymek4rxf+Z/Bp9xoxq/mtrcffTJn1EheRWZ1TnVWa2ZkjGhWpv5sRuUzkjnv9+Zl6oxm/Gpue/sBAAAAAADAGT0APy6dnQ==
+   eJzt10sSwiAMAND2xnoWPbBu3LRTKQnQz7y36owQPtKkTBMAAAAAAAAAAAAAAAAAAAAAAIz3mKfpOa+fAaJq8kokB43KW8vYpbFe39/e8/o5E7O30l72mm/NuFtjql//2Z9jtdrzPXkl0jbTZ2nPWpexo2NlY/Z8F0p7uWe+kfnVjLu1R//ajMr7tTFG9PuJvCfybjst8sVVXGmtZ5/rGefXak4tavfofhln/C/vpnTnq61pWzW/x7dApt72uOuOnF+LsaIxep2R2jalttkzl1nnUXub7UdO6c5XW9O2an6Pb4FMvT3LfT8aq8VY0Ri9zkhtm1Lb7JnLrPOovc32AwAAAAAAgDv6ALtfj0k=
   </data>
  </layer>
  <layer name="Obstaculos" width="340" height="24">

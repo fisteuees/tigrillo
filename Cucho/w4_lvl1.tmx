@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="340" height="25" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="340" height="25" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Coins_PowerUP" tilewidth="32" tileheight="32">
   <image source="Coins_PowerUP.png" width="1136" height="640"/>
  </tileset>
  <tileset firstgid="701" name="Fire_level" tilewidth="32" tileheight="32">
   <image source="Fire_level.png" width="1136" height="640"/>
+ </tileset>
+ <tileset firstgid="1401" name="Piedra" tilewidth="32" tileheight="32">
+  <image source="Piedra.png" width="64" height="64"/>
  </tileset>
  <layer name="Multiplicador" width="340" height="25">
   <data encoding="base64" compression="zlib">
@@ -28,12 +31,12 @@
  </layer>
  <layer name="Monedas" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt10sSgjAMANByYz2LHljXOLUfCG31vRXDQJJpk0VSAgAAAAAAAAAAAAAAAAAAAAAAABjjtqV03z6fgevsZ69mFkfNbi7v0Rqi4l7p8a7zuX0+R+jpmVIc98mMWvtnP3s1sxg5u99qzuUt1VA6h6i4rVaZ956eKcU5s6ei4o6ySl/8otX7J6LmqHM4O+6K90U8fTG/0s52xc7Vk2P2HTH3fev73n9q4xy571n3/aiei8xx9twxRmlnu2Ln6skx+46Y+771fe8/tXGO3Pes+35Uz0XmOHvuAAAAAAAA4B+9ALC0gPU=
+   eJzt2EsOgkAMAFC4sZ5FD6w7E8g43w6g760IgXZCW3RYFgAAAAAAAAAAAAAAAAAAAAAAAIBj3NZlua/7Y2Ce7eyVzOJRs5vK27uGqLgzPd7rfK774wgtPVMbE86g9n2wnb2SWYyc3W9rTuXNrSH3HKLi1rrKO6WlZ2pj8nGVvvhFM/+nRIhYc9RzGB33ivUinr44v9yebcYeuiXH2ff8qetrz7feUxqnp96jemV0LaN6LjJHxLcT5svt2Xp/E0v20C05RsaKiJu6vvZ86z2lcXrqPapXRtcyqucic0R8OwEAAAAAAIB/8wIRr3a5
   </data>
  </layer>
  <layer name="Obstaculos" width="340" height="25">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJwlAQBNCgAQsRLxaktejFXuzFTjxYhgnyPQl62I0bfQ/+eQdmkq4DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIh1Wn47Aa/ohXeuNlLOuWgn/76Vqr3woT7/xCrhxm7Y3T5he4sZZI3IeCmWp4naStY+nvrHi95LZC9Mbz3B/3SbcOMw7O6YsL3NDLJGZLwVy9NEbSVrH8343Ywvei+RvQAAAAAA8DvuA9cONg==
+   eJzt1M0JAjEQBtCgu1iIeLFDf8Be7MVOPFiGLqInQQ9f1qy+B7lmhsw3KQUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIOsw/3YHvGIuvHOWkeYcG53Jv2el1bnwoa5+iUWFGpu+lG2fv3c2gV4TPZ6Ce5t8s1RWauXjqbufdF6Sc2F8yxH+03WFGrvbruwr7MtqAr0merwE9zb5Zqms1MrHw7A3w0nnJTkXAAAAAAB+xxXWgA8s
   </data>
  </layer>
  <layer name="Correccion" width="340" height="25">

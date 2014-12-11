@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="340" height="24" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Coins_PowerUP" tilewidth="32" tileheight="32">
+  <image source="Coins_PowerUP.png" width="1136" height="640"/>
+ </tileset>
+ <tileset firstgid="701" name="Water_level" tilewidth="32" tileheight="32">
+  <image source="Water_level.png" width="1136" height="640"/>
+ </tileset>
+ <layer name="Multiplicador" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4G9/gAAB
+  </data>
+ </layer>
+ <layer name="Volar" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4G9/gAAB
+  </data>
+ </layer>
+ <layer name="Escudo" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztzsENACAIADH2H0Nn0blkBH8Q0ib3vwgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgJ5WtqsnAAY42a2eAAAAAAAAAPjwAHOUAtE=
+  </data>
+ </layer>
+ <layer name="MonedasVolar" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4G9/gAAB
+  </data>
+ </layer>
+ <layer name="Monedas" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt2EESgjAMAED4sb5FH6xnOCSBRHHcPSHtpE2mrVOWBQAAAAAAAAAAAAAAAAAAAAAAAL7jti7Lfd0/Z9uzfaK2ar/smBUdcY7UIhp3Iter2OZzdo1VYk6Z2jMdtWHW413757p/zrZn+0Rt1X7ZMSs64hypRTRud67VPXdmv0b9t/mcXWOVmNk5Vk3tmY7aOG+hV/VMPnOed/3XTfqFOXb5p1yv6BP3jeh+9s2YmZyP6Lqjddaucx5Rn8q8q9+hpmuSfZeNe5W1xLzu+0Y0Rub3J2Nmcj6i6w7fWbvOeUR9KvOufoearkn2XTbuVdYSAAAAAAAA/KMXoHWVbQ==
+  </data>
+ </layer>
+ <layer name="Obstaculos" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt1DEOAVEUBdCfsDwaSougoWMRNBQSEguRKGzLn15jcucjOWcBM/e+9/JLAQAAAAAAAAAAAAAAAAAAAAAAAAAAAICsxbjNf7aj7PcmNfe0UfZPzGqmeTjXr3ZtqdWdJiT39U+9KWXXaF+X8Hu6rLlXoey3YLZ1zbQJzzTVtW/Pvrs7B+c61J2m77KTvM1k7+Q+eO/a6D19hHe5r7kPoezPYLZjzXQKzzTVtW/Pvru7B+c61J2m77KTvM1k7+Q+AAAAAAD4nhft8xnu
+  </data>
+ </layer>
+ <layer name="Correccion" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzt1NEqBVEUBuCp46G8gxLlhjyDEnVuHOINlCjJwclziCSPZU9ttS+Umr12p2m+73qa/rX+NdN1AAAAAAAAAAAAAAAAAAAAAAAAAAAA/NrcWHcC+N9U73Sqc4/NfurpIHd1OLLOtoq82wHZL2dddzWre8dOyrFbZNkL2mnkrEPnXFTupkbrO+1nOw+cL6qvMX+fU3SWOlrkni4a97XM9/ocdLdHRd7jyuyrnOm1MttJynFaZJkH7TRq1qFzDu3uIT//WLnXlncafZe9qL6i547qg78tU0dPuaeXxv/Tj9zhZ1CX10Xem8rsXznTd2W225TjrshyH7TTqFmHzjm0u7f8/HvlXlveafRd9qL6ip47qg8AAAAAANbvBzujMg8=
+  </data>
+ </layer>
+ <layer name="CorreccionSuelo" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztxSEVACAQBTAeJ+hCF/oXIAjqEnyB2czGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADghztt28ltlW07ue2ybSe3U7bt5AccLPD2
+  </data>
+ </layer>
+ <layer name="Suelo" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztxcEJACAQBLGF6/+htWh/2sOB+EhgmAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgJdGJbPc3b37ddvu7t4+AAD85ABzM7kA
+  </data>
+ </layer>
+ <layer name="Base" width="340" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztxcEJACAMBMGD9F+f1qIf00OezsCyCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwq1XJLnd3n/50193dx3/jdHL/
+  </data>
+ </layer>
+</map>

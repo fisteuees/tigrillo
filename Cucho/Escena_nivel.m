@@ -21,6 +21,7 @@
     NSString *nroMundo;
     NSMutableDictionary *informacion;
     SKTransition *reveal;
+    AVAudioPlayer *ap1;
     //Nuevo para reconocer niveles
 }
 
@@ -28,9 +29,10 @@
 
 @implementation Escena_nivel
 
--(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary *)info{
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary *)info conAudioPlayer:(AVAudioPlayer*)ap{
     if (self = [super initWithSize:size]) {
         //Nuevo para reconocer niveles
+        ap1=ap;
         reveal = [SKTransition doorsOpenVerticalWithDuration:0.1];
         nroMundo = [info objectForKey:@"nroMundo"];
         informacion = info;
@@ -70,16 +72,16 @@
         [self addChild:bt_nivel5];
         
         /*SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"cuchoNiveles"];
-        SKTexture *f1 = [atlas textureNamed:@"cucho-1.png"];
-        SKTexture *f2 = [atlas textureNamed:@"cucho-2.png"];
-        SKTexture *f3 = [atlas textureNamed:@"cucho-3.png"];
-        cuchoCaminando = @[f1,f2,f3];
+         SKTexture *f1 = [atlas textureNamed:@"cucho-1.png"];
+         SKTexture *f2 = [atlas textureNamed:@"cucho-2.png"];
+         SKTexture *f3 = [atlas textureNamed:@"cucho-3.png"];
+         cuchoCaminando = @[f1,f2,f3];
+         
+         cucho=[SKSpriteNode spriteNodeWithImageNamed:@"cucho-1"];
+         cucho.position=CGPointMake(60, 60);
+         cucho.name=@"cucho";
+         [self addChild:cucho];*/
         
-        cucho=[SKSpriteNode spriteNodeWithImageNamed:@"cucho-1"];
-        cucho.position=CGPointMake(60, 60);
-        cucho.name=@"cucho";
-        [self addChild:cucho];*/
-
         
         
     }
@@ -102,67 +104,68 @@
                 
                 SKScene *juego = [[Escena_juego_tutorial alloc] initWithSize:self.size];
                 [self.view presentScene:juego transition:reveal];
-
+                
             }
             else{
                 [informacion setObject:[NSString stringWithFormat:@"1"] forKey:@"nroNivel"];
                 [informacion setObject:[NSString stringWithFormat:@"w%@_lvl1.tmx",nroMundo] forKey:@"nombreNivel"];
                 [informacion setObject:nroMundo forKey:@"nroMundo"];
-                SKScene *juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion];
+                SKScene *juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
                 [self.view presentScene:juego transition:reveal];
                 NSLog(@"w%@_lvl1.tmx",nroMundo);
             }
             
             
+            
         }else if([nodo.name isEqualToString:@"nivel2"]){
             /*SKAction *walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
-            [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
-            [cucho runAction:[SKAction moveTo:location duration:2.0]completion:^{
-                [cucho removeAllActions];
-                SKTransition *reveal = [SKTransition doorsOpenVerticalWithDuration:0.1];
-                SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size];
-                [self.view presentScene:gameOverScene transition:reveal];
-            
-            }];*/
+             [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
+             [cucho runAction:[SKAction moveTo:location duration:2.0]completion:^{
+             [cucho removeAllActions];
+             SKTransition *reveal = [SKTransition doorsOpenVerticalWithDuration:0.1];
+             SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size];
+             [self.view presentScene:gameOverScene transition:reveal];
+             
+             }];*/
             [informacion setObject:[NSString stringWithFormat:@"2"] forKey:@"nroNivel"];
             [informacion setObject:[NSString stringWithFormat:@"w%@_lvl2.tmx",nroMundo] forKey:@"nombreNivel"];
             [informacion setObject:nroMundo forKey:@"nroMundo"];
-            SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion];
+            SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
             [self.view presentScene:juego transition:reveal];
             NSLog(@"w%@_lvl2.tmx",nroMundo);
         }
         else if([nodo.name isEqualToString:@"nivel3"]){
             /*SKAction *walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
-            [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
-            [cucho runAction:[SKAction moveTo:location duration:2.5]completion:^{[cucho removeAllActions];}];*/
+             [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
+             [cucho runAction:[SKAction moveTo:location duration:2.5]completion:^{[cucho removeAllActions];}];*/
             [informacion setObject:[NSString stringWithFormat:@"3"] forKey:@"nroNivel"];
             [informacion setObject:[NSString stringWithFormat:@"w%@_lvl3.tmx",nroMundo] forKey:@"nombreNivel"];
             [informacion setObject:nroMundo forKey:@"nroMundo"];
-            SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion];
+            SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
             [self.view presentScene:juego transition:reveal];
             NSLog(@"w%@_lvl3.tmx",nroMundo);
             
         }
         else if([nodo.name isEqualToString:@"nivel4"]){
             /*SKAction *walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
-            [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
-            [cucho runAction:[SKAction moveTo:location duration:2.5]completion:^{[cucho removeAllActions];}];*/
+             [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
+             [cucho runAction:[SKAction moveTo:location duration:2.5]completion:^{[cucho removeAllActions];}];*/
             [informacion setObject:[NSString stringWithFormat:@"4"] forKey:@"nroNivel"];
             [informacion setObject:[NSString stringWithFormat:@"w%@_lvl4.tmx",nroMundo] forKey:@"nombreNivel"];
             [informacion setObject:nroMundo forKey:@"nroMundo"];
-            SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion];
+            SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
             [self.view presentScene:juego transition:reveal];
             NSLog(@"w%@_lvl4.tmx",nroMundo);
             
         }
         else if([nodo.name isEqualToString:@"nivel5"]){
             /*SKAction *walkAnimation = [SKAction animateWithTextures:cuchoCaminando timePerFrame:0.1];
-            [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
-            [cucho runAction:[SKAction moveTo:location duration:2.5]completion:^{[cucho removeAllActions];}];*/
+             [cucho runAction:[SKAction repeatActionForever:walkAnimation]];
+             [cucho runAction:[SKAction moveTo:location duration:2.5]completion:^{[cucho removeAllActions];}];*/
             [informacion setObject:[NSString stringWithFormat:@"5"] forKey:@"nroNivel"];
             [informacion setObject:[NSString stringWithFormat:@"w%@_lvl5.tmx",nroMundo] forKey:@"nombreNivel"];
             [informacion setObject:nroMundo forKey:@"nroMundo"];
-            SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion];
+            SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
             [self.view presentScene:juego transition:reveal];
             NSLog(@"w%@_lvl5.tmx",nroMundo);
             
@@ -171,8 +174,8 @@
             atras=YES;
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"borrar" object:self];
-            //SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.0];
-            SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size conGameCenter:gc1];
+            SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.0];
+            SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size conGameCenter:gc1 conAudioPlayer:ap1];
             [self.view presentScene:gameOverScene transition:reveal];
         }
     }

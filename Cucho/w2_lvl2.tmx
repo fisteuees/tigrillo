@@ -28,17 +28,17 @@
  </layer>
  <layer name="Monedas" width="340" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt10sWwiAMAMD2xnoWPbAufX1aPg0F6syq7QKSoAGWBQAAAAAAAAAAAAAAAAAAAOAct3VZ7uv+MwBpj3fPfK77z9+c3Xtz5rMHnOef9uGr53dVM61bSe89a77t99b1zB1/pnXNjbV2H26lpL+X7gUj5Ee5FuuWc5Yb6awROWfr/0Hu+KVx1NQgqm6ta3Ykzqj+3nsvGH1P5becs1zv39evuD6N2v9bqKn7LOemI3HOkmPKVfKY3bZfpN57iu5/Lfp/aT1r6xvR84+Okbr39haZX/R9v3T+vW+MY9svUu89jXr+/VRaz9p4I3I+Okbq3ttbZH497vuj1xcAAAAAAABG9gLum5FV
+   eJzt10kCgjAMAED4sb5FH6wXTyzdUqA4c+JQ0iSUQqcJAAAAAAAAAAAAAAAAAAAAAIB/8Jin6Tkvr+8yH/xYe2Ma6bm9vrm95+X1lebr3c/c+CM9171cc+o4s9a9fFvGHr3WidHjubWs+zPejch5er8HufFL86jpQVTf9nLNqSM1piXP1L17+baMjXb1byrbatd97phoW/Ns7e13XJs1vR7lv6klz1FqTLlLHaNLnVGutLfk7H8l+W7t7S1rs7Sftf2N2P9bY6zdUxqn55kmsr5UrB7f5oj+cqzUGeVK372c/e/sfEv7WZtvRM2tMdbuKY3T80wTWV8qVo/1GNFfAAAAAAAA+FcfEQSNPQ==
   </data>
  </layer>
  <layer name="Obstaculos" width="340" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt1DFOQkEUBdCJ0ELFQqByX1rgRqDAjUiBrYUuQltMIO7AR4kNBt4LTHLOAib3z73zWwMAAAAAAAAAAAAAAAAAAAAAAAAAAKBn80FrT4NrpyDb2921E9weW+/PQ/T12FFnq8j6fON5fwr/Db319V/buLNv/9QjPWydY4voa5nY2WjY2niYd95fm8j6mpj3Pc76SN7spPANZPd1cE5n2T2P4pvGBfd2Sc7qLZ+SvXXqvURf68TOprG/WeEGPyPrV2LeXZy1T97sfeEbyO7r4JzOsnuexjfNCu7tkpzVWz4le+sAAAAAAPTvF2bPHME=
+   eJzt1DFOQkEUBdCJ0ELlQqByX1roRqSAjWihrYUuQltNNOyARwkhwcB7+UxyzgImd+be/1sDAAAAAAAAAAAAAAAAAAAAAAAAAACgZ/ej1h5GQ6cg29vV0Akuj6335zb6uuuos2VkXV143nXhv6G3vv7rO97sxz91Rw9bZ9dj9LVI7Gwybm06zjtv30tkfU3M+x5nfSRv9rrwG8jua+uUzrJ7nsSdpgXvdk7O6i0fk7X1io1z2FO883PiW89if/PCDX5G1q/EvL9x1l/y1m4Kt5vd19YpnWX3PIs7zQve7Zyc1Vs+JmvrFRsHAAAAAGAYG8zKIEE=
   </data>
  </layer>
  <layer name="Correccion" width="340" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt001qwlAUBtCg04IDcR2CA3EXtUsRXEpBBPchiOAC7B4EZwVRcQUNGOF2FkiCeeEcCBm9x3d/XpYBAAAAAAAAAAAAAAAAAAAAAAAAAAAQffazbJ5/X/13J6GM17yAdlmEd7lM4I2uQ8ZNS/Pee8//o1f/3anNq6zf0KtLA31LUQq7zn/fYU6rBGa2DxkPLc07LHKNGsiX2rzK+gi1DDpUVxV17voxP/+jr43bhh7vEuj3KWQ8tzTvtMg1ayBfavMqaxxqmXSorirq3PVrfv6mrwAAAAAAnfAHIpMaNA==
+   eJzt00EKQVEUBuAXU2Ug61AGsgssRVmKkrIPJWUpykwZyAoo1DF7xeMdfV+93uz2n/ufWxQAAAAAAAAAAAAAAAAAAAAAAAAAAABEo2ZRjG/fpPnrJJTx7Auol2l4l7MEb3QZMq5qmvfcuP8vjc+fna2vso7hrk4V3FtGGXadV/PQ0yJBZ9uQcVfTvJ1Hrm4F+bL1VVYrzNL+o7nekWHXebUOPW0SdLYPGQ81zTt45BpWkC9bX2X1wiz9P5rrHRl2HQAAAACA77sCvIkWtA==
   </data>
  </layer>
  <layer name="CorreccionSuelo" width="340" height="24">
@@ -48,7 +48,7 @@
  </layer>
  <layer name="Suelo" width="340" height="24">
   <data encoding="base64" compression="zlib">
-   eJzt1LEJACAMRcGA+xc6i+6njU26NGJxB+HxF0gEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAv9RYxmqqqVpv/6Dy3VFW13CtvAAD4wQaUJbZo
+   eJztxcEJACAQBLGF6/+htWh/2sOB+EhgmAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgJdGJbPc3b37ddvu7t4+AAD85ABzM7kA
   </data>
  </layer>
  <layer name="Base" width="340" height="24">

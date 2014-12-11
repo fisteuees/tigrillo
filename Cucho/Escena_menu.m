@@ -50,15 +50,33 @@
         bt_jugar.name=@"bt_jugar";//se le asigna un nombre para saber que fué seleccionado
         [self addChild:bt_jugar];
         
-        SKSpriteNode *bt_comprar=[SKSpriteNode spriteNodeWithImageNamed:@"BTcomprar"];//crear boton carrito de compras, va en el lado derecho inferior de la pantalla
-        bt_comprar.position=CGPointMake(CGRectGetMaxX(self.frame)-90, 50);
-        bt_comprar.name=@"bt_comprar";//se le asigºna un nombre para saber que fué seleccionado
-        [self addChild:bt_comprar];
+        /*SKSpriteNode *bt_comprar=[SKSpriteNode spriteNodeWithImageNamed:@"BTcomprar"];//crear boton carrito de compras, va en el lado derecho inferior de la pantalla
+         bt_comprar.position=CGPointMake(CGRectGetMaxX(self.frame)-90, 50);
+         bt_comprar.name=@"bt_comprar";//se le asigºna un nombre para saber que fué seleccionado
+         [self addChild:bt_comprar];*/
         
         SKSpriteNode *bt_ajustes=[SKSpriteNode spriteNodeWithImageNamed:@"BTajustes"];//crear boton carrito de compras, va en el lado derecho inferior de la pantalla
         bt_ajustes.position=CGPointMake(CGRectGetMaxX(self.frame)-90,CGRectGetMaxY(self.frame)-50);
         bt_ajustes.name=@"bt_ajustes";//se le asigna un nombre para saber que fué seleccionado
         [self addChild:bt_ajustes];
+        
+        /*SKAction *s_fondo=[SKAction playSoundFileNamed:@"s_fondo_menu.mp3" waitForCompletion:NO];
+         [self runAction:s_fondo withKey:@"fondo"];*/
+        NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/s_fondo_menu.mp3", [[NSBundle mainBundle] resourcePath]]];
+        
+        NSError *error;
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        self.audioPlayer.numberOfLoops = -1;
+        NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+        
+        if ([defaults integerForKey:@"estadoSwitch1"]==1) {
+            if (!self.audioPlayer)
+                NSLog([error localizedDescription]);
+            else
+                [self.audioPlayer play];
+        }
+        [defaults synchronize];
+        
     }
     return self;
 }
@@ -75,12 +93,12 @@
         }
         if([nodo.name isEqualToString:@"bt_jugar"]){
             SKTransition *reveal = [SKTransition doorwayWithDuration:1.0];
-            SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size conGameCenter:gc1];
+            SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size conGameCenter:gc1 conAudioPlayer:self.audioPlayer];
             NSLog(@"size: %@",NSStringFromCGSize(self.size));
             [self.view presentScene:gameOverScene transition:reveal];
         }
         if([nodo.name isEqualToString:@"bt_comprar"]){
-
+            
         }
         if([nodo.name isEqualToString:@"bt_ajustes"]){
             CGRect rect;
@@ -95,9 +113,9 @@
                 
             }
             //if (!desplegado) {
-                [self setUserInteractionEnabled:NO];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarAjustes" object:self];
-                
+            [self setUserInteractionEnabled:NO];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarAjustes" object:self];
+            
             //}
             
             

@@ -11,5 +11,10 @@
 @interface View_ajustes : UIView
 
 @property (nonatomic, retain) IBOutlet UIView *ajustes;
+@property  UISwitch *musica;
+@property (nonatomic, strong) IBOutlet UISwitch *sonido;
+
+-(IBAction)switchSeleccionadoMusica:(id)sender;
+-(IBAction)switchSeleccionadoSonido:(id)sender;
 
 @end

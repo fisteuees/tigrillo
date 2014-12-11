@@ -11,6 +11,7 @@
 #import "JSTileMap.h"
 #import "EfectoParallax.h"
 #import "conexionBase.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface Escena_juego : SKScene
 
@@ -35,7 +36,7 @@
 //
 //-(id)initWithSize:(CGSize)size withBase:(conexionBase *)cb;
 //Nuevo para reconocer niveles
--(id)initWithSize:(CGSize)size conInformacion:(NSMutableDictionary *)informacion;
+-(id)initWithSize:(CGSize)size conInformacion:(NSMutableDictionary *)informacion conAudioPlayer:(AVAudioPlayer*)ap;
 -(void)pausar;
 
 //

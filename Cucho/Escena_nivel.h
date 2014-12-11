@@ -8,11 +8,12 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "gameCenterManager.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface Escena_nivel : SKScene
 
 
 //Nuevo para reconocer niveles
--(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary*)info;
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary*)info conAudioPlayer:(AVAudioPlayer*)ap;
 
 @end

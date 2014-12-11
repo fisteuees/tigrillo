@@ -18,6 +18,9 @@
     NSString *nivel;
     NSString *puntos;
     
+    //para mostrar siguiente
+    NSString *ganar;
+    
 }
 
 @end
@@ -33,6 +36,9 @@
     //mundo = [puntaje objectForKey:@"mundo"];
     //nivel = [puntaje objectForKey:@"nivel"];
     puntos = [NSString stringWithFormat:@"Puntaje = %i",puntuacion.intValue];
+    
+    //para mostrar siguiente
+    ganar = [puntaje objectForKey:@"gano"];
     NSLog(@"%@",puntos);
     self = [super initWithFrame:frame];
     
@@ -77,11 +83,19 @@
     NSLog(@"Se añade");
     //
     //Nuevo para reconocer niveles
-    UIButton *siguiente = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [siguiente addTarget:self action:@selector(siguiente:) forControlEvents:UIControlEventTouchUpInside];
-    [siguiente setTitle:@"Siguiente Nivel" forState:UIControlStateNormal];
-    siguiente.frame = CGRectMake(118, 177, 115, 30);
-    [mainView addSubview:siguiente];
+    //para mostrar siguiente
+    if ([ganar isEqualToString:@"gano"]) {
+        if (mundo.intValue == 5 && nivel.intValue == 5) {
+            
+        }else{
+        UIButton *siguiente = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [siguiente addTarget:self action:@selector(siguiente:) forControlEvents:UIControlEventTouchUpInside];
+        [siguiente setTitle:@"Siguiente Nivel" forState:UIControlStateNormal];
+        siguiente.frame = CGRectMake(118, 177, 115, 30);
+        [mainView addSubview:siguiente];
+        }
+    }
+    
     //
     UIButton *deNuevo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [deNuevo addTarget:self action:@selector(jugarDeNuevo:) forControlEvents:UIControlEventTouchUpInside];
