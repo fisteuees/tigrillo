@@ -28,7 +28,6 @@
 		850B4B1D1941195E007C5C20 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 850B4B1C1941195E007C5C20 /* GameKit.framework */; };
 		85151D59194A1591002E2FC5 /* Escena_mundos.m in Sources */ = {isa = PBXBuildFile; fileRef = 85151D58194A1591002E2FC5 /* Escena_mundos.m */; };
 		851EFF23198838A0009377CD /* Escena_juego.m in Sources */ = {isa = PBXBuildFile; fileRef = 851EFF22198838A0009377CD /* Escena_juego.m */; };
-		851EFF2519883E38009377CD /* bt_atras.png in Resources */ = {isa = PBXBuildFile; fileRef = 851EFF2419883E38009377CD /* bt_atras.png */; };
 		8528E9A719D4852F0098375C /* Coins_PowerUP.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A319D4852F0098375C /* Coins_PowerUP.png */; };
 		8528E9A819D4852F0098375C /* Coins_PowerUP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */; };
 		8535D6CB19880496005BEC90 /* bt_nivel1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8535D6C619880496005BEC90 /* bt_nivel1.png */; };
@@ -111,6 +110,7 @@
 		8575DA961940E3C200392E73 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 8575DA951940E3C200392E73 /* JSTileMap.m */; };
 		8575DA991940E3E000392E73 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8575DA981940E3E000392E73 /* LFCGzipUtility.m */; };
 		8575DA9B1940E42B00392E73 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8575DA9A1940E42B00392E73 /* libz.dylib */; };
+		8577C0BA1A82878C00D413C8 /* bt_atras@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8577C0B91A82878C00D413C8 /* bt_atras@2x.png */; };
 		857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 857985FD199D29CE001352E6 /* cuchoAnimacion.atlas */; };
 		8584B2B319D21C6300B851DC /* pausa_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8584B2B219D21C6300B851DC /* pausa_view.xib */; };
 		8584B2B519D21C7500B851DC /* terminado_view.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8584B2B419D21C7500B851DC /* terminado_view.xib */; };
@@ -181,7 +181,6 @@
 		85151D58194A1591002E2FC5 /* Escena_mundos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Escena_mundos.m; sourceTree = "<group>"; };
 		851EFF21198838A0009377CD /* Escena_juego.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Escena_juego.h; sourceTree = "<group>"; };
 		851EFF22198838A0009377CD /* Escena_juego.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Escena_juego.m; sourceTree = "<group>"; };
-		851EFF2419883E38009377CD /* bt_atras.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_atras.png; sourceTree = "<group>"; };
 		8528E9A319D4852F0098375C /* Coins_PowerUP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coins_PowerUP.png; sourceTree = "<group>"; };
 		8528E9A419D4852F0098375C /* Coins_PowerUP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Coins_PowerUP@2x.png"; sourceTree = "<group>"; };
 		8535D6C619880496005BEC90 /* bt_nivel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bt_nivel1.png; sourceTree = "<group>"; };
@@ -279,6 +278,7 @@
 		8575DA971940E3E000392E73 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
 		8575DA981940E3E000392E73 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
 		8575DA9A1940E42B00392E73 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		8577C0B91A82878C00D413C8 /* bt_atras@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_atras@2x.png"; sourceTree = "<group>"; };
 		857985FD199D29CE001352E6 /* cuchoAnimacion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = cuchoAnimacion.atlas; sourceTree = "<group>"; };
 		8584B2B219D21C6300B851DC /* pausa_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pausa_view.xib; sourceTree = "<group>"; };
 		8584B2B419D21C7500B851DC /* terminado_view.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = terminado_view.xib; sourceTree = "<group>"; };
@@ -689,7 +689,7 @@
 		85770F0E1988040900176CF6 /* Botones */ = {
 			isa = PBXGroup;
 			children = (
-				851EFF2419883E38009377CD /* bt_atras.png */,
+				8577C0B91A82878C00D413C8 /* bt_atras@2x.png */,
 				8535D6D619880AE2005BEC90 /* cuchoNiveles.atlas */,
 				8535D6C619880496005BEC90 /* bt_nivel1.png */,
 				8535D6C719880496005BEC90 /* bt_nivel2.png */,
@@ -987,7 +987,6 @@
 				857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */,
 				8538EFAE1A30D53F00E0E701 /* w1_lvl5.tmx in Resources */,
 				8538EFAA1A30D53F00E0E701 /* w1_lvl1.tmx in Resources */,
-				851EFF2519883E38009377CD /* bt_atras.png in Resources */,
 				858A01DA1A3A1E75002ADF01 /* s_ganar.wav in Resources */,
 				8528E9A719D4852F0098375C /* Coins_PowerUP.png in Resources */,
 				8538EFAC1A30D53F00E0E701 /* w1_lvl3.tmx in Resources */,
@@ -1049,6 +1048,7 @@
 				8538EF6E1A30D3CA00E0E701 /* w2_lvl3.tmx in Resources */,
 				85547963199405D7008BBAF9 /* images.png in Resources */,
 				232312A21937AA4600B34F7A /* Main_iPad.storyboard in Resources */,
+				8577C0BA1A82878C00D413C8 /* bt_atras@2x.png in Resources */,
 				8538EF621A30D36500E0E701 /* w3_lvl5.tmx in Resources */,
 				8538EF6C1A30D3CA00E0E701 /* w2_lvl1.tmx in Resources */,
 				8554795F199405C2008BBAF9 /* bt_recargar@2x.png in Resources */,

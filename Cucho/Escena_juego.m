@@ -18,10 +18,10 @@
 #define IPAD UIUserInterfaceIdiomPad
 #define idiom UI_USER_INTERFACE_IDIOM()
 
-const float maxVelocidad = 850.0f;
-const float maxAceleracion = 850.0f;
-const float BorderCollisionDamping = 0.2f;
-const float CannonCollisionSpeed = 100.0f;
+const float maxVelocidad1 = 850.0f;
+const float maxAceleracion1 = 850.0f;
+const float BorderCollisionDamping1 = 0.2f;
+const float CannonCollisionSpeed1 = 100.0f;
 
 @import CoreMotion;
 
@@ -375,11 +375,11 @@ const float CannonCollisionSpeed = 100.0f;
     }
     if (_aceX >= 0.30)
     {
-        _aceleracionX = -maxAceleracion;
+        _aceleracionX = -maxAceleracion1;
     }
     else if (_aceX <= -0.30)
     {
-        _aceleracionX = maxAceleracion;
+        _aceleracionX = maxAceleracion1;
     }
     
     if (_aceY<0.30 || _aceY>0.0){
@@ -390,11 +390,11 @@ const float CannonCollisionSpeed = 100.0f;
     }
     if (_aceY >= 0.30)
     {
-        _aceleracionY = maxAceleracion;
+        _aceleracionY = maxAceleracion1;
     }
     else if (_aceY <= -0.30)
     {
-        _aceleracionY = -maxAceleracion;
+        _aceleracionY = -maxAceleracion1;
     }
     
 }
@@ -405,8 +405,8 @@ const float CannonCollisionSpeed = 100.0f;
     _velociY += _aceleracionY*delta1;
     
     // 2
-    _velociX = fmaxf(fminf(_velociX, maxVelocidad), -maxVelocidad);
-    _velociY = fmaxf(fminf(_velociY, maxVelocidad), -maxVelocidad);
+    _velociX = fmaxf(fminf(_velociX, maxVelocidad1), -maxVelocidad1);
+    _velociY = fmaxf(fminf(_velociY, maxVelocidad1), -maxVelocidad1);
     
     float newY = self.jugador.position.y + _velociY*delta1;
 
@@ -426,18 +426,18 @@ const float CannonCollisionSpeed = 100.0f;
     }
     if (collidedWithVerticalBorder)
     {
-        _aceleracionX = -_aceleracionX * BorderCollisionDamping;
-        _velociX = -_velociX * BorderCollisionDamping;
-        _aceleracionY= _aceleracionY * BorderCollisionDamping;
-        _velociY = _velociY * BorderCollisionDamping;
+        _aceleracionX = -_aceleracionX * BorderCollisionDamping1;
+        _velociX = -_velociX * BorderCollisionDamping1;
+        _aceleracionY= _aceleracionY * BorderCollisionDamping1;
+        _velociY = _velociY * BorderCollisionDamping1;
     }
     
     if (collidedWithHorizontalBorder)
     {
-        _aceleracionX = _aceleracionX * BorderCollisionDamping;
-        _velociX = _velociX * BorderCollisionDamping;
-        _aceleracionY = -_aceleracionY * BorderCollisionDamping;
-        _velociY = -_velociY * BorderCollisionDamping;
+        _aceleracionX = _aceleracionX * BorderCollisionDamping1;
+        _velociX = _velociX * BorderCollisionDamping1;
+        _aceleracionY = -_aceleracionY * BorderCollisionDamping1;
+        _velociY = -_velociY * BorderCollisionDamping1;
     }
 
     self.jugador.position = CGPointMake(self.jugador.position.x, newY);

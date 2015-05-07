@@ -14,8 +14,7 @@
 @interface Escena_mundos(){
     bool isPhone;
     gameCenterManager *gc1;
-    AVAudioPlayer *ap1;
-}
+} vcxsza<   
 
 @end
 
@@ -27,11 +26,12 @@
         //[audio stop];
         self.backgroundColor = [SKColor whiteColor];
         gc1=gc;
-        ap1=audio;
+        self.ap1=audio;
         
         SKSpriteNode *bt_atras=[SKSpriteNode spriteNodeWithImageNamed:@"bt_atras"];
         bt_atras.position=CGPointMake(CGRectGetMinX(self.frame)+60, CGRectGetMaxY(self.frame)-60);
         bt_atras.name=@"atras";
+        bt_atras.zPosition=150;
         [self addChild:bt_atras];
         
     }
@@ -49,7 +49,8 @@
         if([nodo.name isEqualToString:@"atras"]){
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"borrar" object:self];
-            [ap1 stop];
+            [self.ap1 stop];
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"borrarFondo" object:self];
             SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.0];
             SKScene * gameOverScene = [[Escena_menu alloc] initWithSize:self.size conGameCenter:gc1];
             [self.view presentScene:gameOverScene transition:reveal];

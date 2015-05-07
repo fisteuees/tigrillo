@@ -17,6 +17,8 @@
 //para volver a tutorial
 #import "Escena_juego_tutorial.h"
 
+#import "Escena_mundos.h"
+
 @interface ueesViewController(){
     SKView * skView;
     BOOL isPhone;
@@ -34,6 +36,8 @@
     SKTransition *reveal;
     Escena_menu *es;
     BOOL recargar;
+    
+    UIImageView *background;
 }
 
 @end
@@ -86,10 +90,16 @@
                                              selector:@selector(recargarEscena)
                                                  name:@"recargarEscena"
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(borrarFondo)
+                                                 name:@"borrarFondo"
+                                               object:nil];
     //base de datos
     cb = [[conexionBase alloc]init];
     [cb abrirBD];
     [cb crearTabla:@"prueba" conCampo1:@"id" conCampo2:@"nombre" conCampo3:@"puntaje" conCampo4:@"tema"];
+    
+    background=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pre_fondo_bosque"]];
     
     
 }
@@ -203,6 +213,12 @@
             ((UIImageView *)view).image = [UIImage imageNamed:@"pre_mundo_bosque"];
             label = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.origin.x, view.frame.origin.y+300, view.frame.size.width, view.frame.size.height)];
             label.text = @"Mundo de bosque";
+            
+            background.image=[UIImage imageNamed:@"pre_fondo_bosque"];
+            [self.view addSubview:background];
+            [self.view sendSubviewToBack:background];
+            self.view.contentMode=UIViewContentModeScaleAspectFit;
+            
             NSLog(@"mundo bosque");
             break;
         case 1:
@@ -250,6 +266,33 @@
     return view;
 }
 
+-(void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel{
+    switch ([carousel currentItemIndex]) {
+        case 0:
+            background.image=[UIImage imageNamed:@"pre_fondo_bosque"];
+            break;
+        case 1:
+            background.image=[UIImage imageNamed:@"pre_fondo_nieve"];
+            break;
+        case 2:
+            background.image=[UIImage imageNamed:@"pre_fondo_agua"];
+            break;
+        case 3:
+            background.image=[UIImage imageNamed:@"pre_fondo_fuego"];
+            break;
+        case 4:
+            background.image=[UIImage imageNamed:@"pre_fondo_cementerio"];
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self.view addSubview:background];
+    [self.view sendSubviewToBack:background];
+    self.view.contentMode=UIViewContentModeScaleAspectFit;
+}
+
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
@@ -268,6 +311,8 @@
 
 -(void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index{
     NSLog(@"SI PASA DID SELECT %ld",(long)index);
+    
+    [background removeFromSuperview];
     //[UIView beginAnimations:nil context:NULL];
     //[UIView setAnimationDuration:0.75];
     [carousel removeFromSuperview];
@@ -278,8 +323,11 @@
     NSString *nroMundo = [NSString stringWithFormat:@"%li",(long)index+1];
     [informacion setObject:nroMundo forKey:@"nroMundo"];
         SKTransition *reveal = [SKTransition crossFadeWithDuration:0.7];
-        SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size conGameCenter:gc conInformacion:informacion conAudioPlayer:es.audioPlayer];
+    Escena_mundos *current_scene=(Escena_mundos*)skView.scene;
+         SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:skView.bounds.size conGameCenter:gc conInformacion:informacion conAudioPlayer:current_scene.ap1];
+    
         [skView presentScene:gameOverScene transition:reveal];
+    
     //Nuevo para reconocer niveles
 
 }
@@ -479,6 +527,10 @@
     recargar=YES;
     [skView presentScene:scene];
     
+}
+
+-(void)borrarFondo{
+    [background removeFromSuperview];
 }
 
 @end

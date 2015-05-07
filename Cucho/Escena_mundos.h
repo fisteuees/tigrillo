@@ -15,6 +15,8 @@
 
 -(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conAudioPlayer:(AVAudioPlayer*)audio;
 
+@property (strong, nonatomic) AVAudioPlayer *ap1;
+
 
 
 @end
