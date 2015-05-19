@@ -133,11 +133,11 @@
 		858A01DE1A3A1E75002ADF01 /* s_volar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 858A01D21A3A1E75002ADF01 /* s_volar.mp3 */; };
 		858A01E01A3A45D7002ADF01 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 858A01DF1A3A45D7002ADF01 /* AVFoundation.framework */; };
 		858A01E21A3A483A002ADF01 /* w1_lvl4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 858A01E11A3A483A002ADF01 /* w1_lvl4.tmx */; };
+		859C0F361B0BF0450023CD0E /* bloqueado.png in Resources */ = {isa = PBXBuildFile; fileRef = 859C0F351B0BF0450023CD0E /* bloqueado.png */; };
 		85A659CB196307930095D51A /* Jugador.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659CA196307930095D51A /* Jugador.m */; };
 		85A659CF196307C90095D51A /* EfectoParallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659CE196307C90095D51A /* EfectoParallax.m */; };
 		85A659D119630E940095D51A /* configuracion_juego.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85A659D019630E940095D51A /* configuracion_juego.plist */; };
 		85A659D9196339320095D51A /* View_ajustes.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659D8196339320095D51A /* View_ajustes.m */; };
-		85DF4B0B1B0BD09B00641A08 /* bloqueado.png in Resources */ = {isa = PBXBuildFile; fileRef = 85DF4B0A1B0BD09B00641A08 /* bloqueado.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -302,6 +302,7 @@
 		858A01D21A3A1E75002ADF01 /* s_volar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = s_volar.mp3; sourceTree = "<group>"; };
 		858A01DF1A3A45D7002ADF01 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		858A01E11A3A483A002ADF01 /* w1_lvl4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl4.tmx; sourceTree = "<group>"; };
+		859C0F351B0BF0450023CD0E /* bloqueado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bloqueado.png; sourceTree = "<group>"; };
 		85A659C9196307930095D51A /* Jugador.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jugador.h; sourceTree = "<group>"; };
 		85A659CA196307930095D51A /* Jugador.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jugador.m; sourceTree = "<group>"; };
 		85A659CD196307C90095D51A /* EfectoParallax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EfectoParallax.h; sourceTree = "<group>"; };
@@ -309,7 +310,6 @@
 		85A659D019630E940095D51A /* configuracion_juego.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configuracion_juego.plist; sourceTree = "<group>"; };
 		85A659D7196339320095D51A /* View_ajustes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View_ajustes.h; sourceTree = "<group>"; };
 		85A659D8196339320095D51A /* View_ajustes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View_ajustes.m; sourceTree = "<group>"; };
-		85DF4B0A1B0BD09B00641A08 /* bloqueado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bloqueado.png; path = ../../../Desktop/bloqueado.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -688,8 +688,8 @@
 		85770F0E1988040900176CF6 /* Botones */ = {
 			isa = PBXGroup;
 			children = (
+				859C0F351B0BF0450023CD0E /* bloqueado.png */,
 				8577C0B91A82878C00D413C8 /* bt_atras@2x.png */,
-				85DF4B0A1B0BD09B00641A08 /* bloqueado.png */,
 				8535D6D619880AE2005BEC90 /* cuchoNiveles.atlas */,
 				8535D6C619880496005BEC90 /* bt_nivel1.png */,
 				8535D6C719880496005BEC90 /* bt_nivel2.png */,
@@ -983,7 +983,6 @@
 				8538EFB21A30D56C00E0E701 /* Forest_level@2x.png in Resources */,
 				858A01DB1A3A1E75002ADF01 /* s_moneda.mp3 in Resources */,
 				8538EF6D1A30D3CA00E0E701 /* w2_lvl2.tmx in Resources */,
-				85DF4B0B1B0BD09B00641A08 /* bloqueado.png in Resources */,
 				8538EFB11A30D56C00E0E701 /* Forest_level.png in Resources */,
 				857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */,
 				8538EFAE1A30D53F00E0E701 /* w1_lvl5.tmx in Resources */,
@@ -1034,6 +1033,7 @@
 				85A659D119630E940095D51A /* configuracion_juego.plist in Resources */,
 				855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */,
 				8538EF921A30D4C700E0E701 /* Piedra@2x.png in Resources */,
+				859C0F361B0BF0450023CD0E /* bloqueado.png in Resources */,
 				8538EF841A30D45700E0E701 /* w5_lvl3.tmx in Resources */,
 				858A01C41A3A1E07002ADF01 /* BTpuntajes@2x.png in Resources */,
 				8538EF651A30D39D00E0E701 /* Water_level.png in Resources */,
