@@ -1045,6 +1045,57 @@ const float CannonCollisionSpeed1 = 100.0f;
         //contar_monedas = 0;
         contador_vidas = 2;
         //Fin para base
+        //Para desbloquear niveles
+        NSMutableArray *mundos = [[NSMutableArray alloc] init];
+        [mundos setObject:@"Bosque" atIndexedSubscript:0];
+        [mundos setObject:@"Hielo" atIndexedSubscript:1];
+        [mundos setObject:@"Agua" atIndexedSubscript:2];
+        [mundos setObject:@"Fuego" atIndexedSubscript:3];
+        [mundos setObject:@"Cementerio" atIndexedSubscript:4];
+        //[mundos addObject:@"Hielo"];
+        //[mundos addObject:@"Agua"];
+        //[mundos addObject:@"Fuego"];
+        //[mundos addObject:@"Cementerio"];
+        
+        NSString *esteMundo = [mundos objectAtIndex:mundo.intValue];
+        
+        NSLog(@"Este es el mundo %@ en el lugar %i",esteMundo, mundo.intValue);
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *dir_niveles = [documentsDirectory stringByAppendingPathComponent:@"info_niveles.plist"];
+        
+        NSMutableDictionary *contenido_plist = [[NSMutableDictionary alloc] initWithContentsOfFile:dir_niveles];
+        NSMutableDictionary *contenido_niveles = [[NSMutableDictionary alloc] initWithDictionary:[contenido_plist objectForKey:@"Niveles"]];
+        NSMutableArray *contenido_nivel = [[NSMutableArray alloc] initWithArray:[contenido_niveles objectForKey:[mundos objectAtIndex:(mundo.intValue-1)]]];
+        NSLog(@"%@",[contenido_nivel objectAtIndex:0]);
+        NSLog(@"%@",[contenido_nivel objectAtIndex:1]);
+        NSLog(@"%@",[contenido_nivel objectAtIndex:2]);
+        NSLog(@"%@",[contenido_nivel objectAtIndex:3]);
+        NSLog(@"%@",[contenido_nivel objectAtIndex:4]);
+        if (mundo.intValue<5 && nivel.intValue==5) {
+            //Se desbloquea el primer nivel del siguiente mundo
+            contenido_nivel = [contenido_niveles objectForKey:[mundos objectAtIndex:(mundo.intValue)]];
+            [contenido_nivel insertObject:@"NO" atIndex:0];
+            [contenido_niveles setObject:contenido_nivel forKey:[mundos objectAtIndex:mundo.intValue]];
+            
+        }else if (mundo.intValue==5 && nivel.intValue==5){
+            //No se desbloquea nada
+        }
+        if (nivel.intValue<5) {
+            //Se desbloquea el siguiente nivel del mismo mundo
+            [contenido_nivel insertObject:@"NO" atIndex:nivel.intValue];
+            [contenido_niveles setObject:contenido_nivel forKey:[mundos objectAtIndex:(mundo.intValue-1)]];
+        }else if (nivel.intValue==5){
+            //nivelInt=1;
+        }
+        NSLog(@"%@",[contenido_nivel objectAtIndex:0]);
+        NSLog(@"%@",[contenido_nivel objectAtIndex:1]);
+        NSLog(@"%@",[contenido_nivel objectAtIndex:2]);
+        NSLog(@"%@",[contenido_nivel objectAtIndex:3]);
+        NSLog(@"%@",[contenido_nivel objectAtIndex:4]);
+        [contenido_plist setObject:contenido_niveles forKey:@"Niveles"];
+        [contenido_plist writeToFile:dir_niveles atomically:YES];
     }else{
         //para mostrar siguiente
         if ([defaults integerForKey:@"estadoSwitch2"]==1) {

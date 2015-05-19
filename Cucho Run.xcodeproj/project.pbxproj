@@ -82,6 +82,7 @@
 		8538EFAE1A30D53F00E0E701 /* w1_lvl5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFA91A30D53F00E0E701 /* w1_lvl5.tmx */; };
 		8538EFB11A30D56C00E0E701 /* Forest_level.png in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFAF1A30D56C00E0E701 /* Forest_level.png */; };
 		8538EFB21A30D56C00E0E701 /* Forest_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFB01A30D56C00E0E701 /* Forest_level@2x.png */; };
+		854A3A9D1B0A9CBA00A016D7 /* niveles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 854A3A9C1B0A9CBA00A016D7 /* niveles.plist */; };
 		855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 855056AD19816B6F005EC6C2 /* mario_phone.jpg */; };
 		855056B019816B6F005EC6C2 /* mario.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 855056AE19816B6F005EC6C2 /* mario.jpg */; };
 		85547962199405D7008BBAF9 /* bt_salir@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85547960199405D7008BBAF9 /* bt_salir@2x.png */; };
@@ -136,6 +137,7 @@
 		85A659CF196307C90095D51A /* EfectoParallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659CE196307C90095D51A /* EfectoParallax.m */; };
 		85A659D119630E940095D51A /* configuracion_juego.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85A659D019630E940095D51A /* configuracion_juego.plist */; };
 		85A659D9196339320095D51A /* View_ajustes.m in Sources */ = {isa = PBXBuildFile; fileRef = 85A659D8196339320095D51A /* View_ajustes.m */; };
+		85DF4B0B1B0BD09B00641A08 /* bloqueado.png in Resources */ = {isa = PBXBuildFile; fileRef = 85DF4B0A1B0BD09B00641A08 /* bloqueado.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +235,7 @@
 		8538EFA91A30D53F00E0E701 /* w1_lvl5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = w1_lvl5.tmx; sourceTree = "<group>"; };
 		8538EFAF1A30D56C00E0E701 /* Forest_level.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Forest_level.png; sourceTree = "<group>"; };
 		8538EFB01A30D56C00E0E701 /* Forest_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forest_level@2x.png"; sourceTree = "<group>"; };
+		854A3A9C1B0A9CBA00A016D7 /* niveles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = niveles.plist; sourceTree = "<group>"; };
 		855056AD19816B6F005EC6C2 /* mario_phone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario_phone.jpg; sourceTree = "<group>"; };
 		855056AE19816B6F005EC6C2 /* mario.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario.jpg; sourceTree = "<group>"; };
 		85547960199405D7008BBAF9 /* bt_salir@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_salir@2x.png"; sourceTree = "<group>"; };
@@ -306,6 +309,7 @@
 		85A659D019630E940095D51A /* configuracion_juego.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configuracion_juego.plist; sourceTree = "<group>"; };
 		85A659D7196339320095D51A /* View_ajustes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View_ajustes.h; sourceTree = "<group>"; };
 		85A659D8196339320095D51A /* View_ajustes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View_ajustes.m; sourceTree = "<group>"; };
+		85DF4B0A1B0BD09B00641A08 /* bloqueado.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bloqueado.png; path = ../../../Desktop/bloqueado.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				85A659D019630E940095D51A /* configuracion_juego.plist */,
+				854A3A9C1B0A9CBA00A016D7 /* niveles.plist */,
 				85019FD21947A470007DB79E /* Game Center */,
 				8575DA9F1940E62900392E73 /* Jugador_Cucho */,
 				8575DA9E1940E61D00392E73 /* Disenos */,
@@ -684,6 +689,7 @@
 			isa = PBXGroup;
 			children = (
 				8577C0B91A82878C00D413C8 /* bt_atras@2x.png */,
+				85DF4B0A1B0BD09B00641A08 /* bloqueado.png */,
 				8535D6D619880AE2005BEC90 /* cuchoNiveles.atlas */,
 				8535D6C619880496005BEC90 /* bt_nivel1.png */,
 				8535D6C719880496005BEC90 /* bt_nivel2.png */,
@@ -977,6 +983,7 @@
 				8538EFB21A30D56C00E0E701 /* Forest_level@2x.png in Resources */,
 				858A01DB1A3A1E75002ADF01 /* s_moneda.mp3 in Resources */,
 				8538EF6D1A30D3CA00E0E701 /* w2_lvl2.tmx in Resources */,
+				85DF4B0B1B0BD09B00641A08 /* bloqueado.png in Resources */,
 				8538EFB11A30D56C00E0E701 /* Forest_level.png in Resources */,
 				857985FE199D29CE001352E6 /* cuchoAnimacion.atlas in Resources */,
 				8538EFAE1A30D53F00E0E701 /* w1_lvl5.tmx in Resources */,
@@ -1046,6 +1053,7 @@
 				8538EF621A30D36500E0E701 /* w3_lvl5.tmx in Resources */,
 				8538EF6C1A30D3CA00E0E701 /* w2_lvl1.tmx in Resources */,
 				858A01DE1A3A1E75002ADF01 /* s_volar.mp3 in Resources */,
+				854A3A9D1B0A9CBA00A016D7 /* niveles.plist in Resources */,
 				2323129F1937AA4600B34F7A /* Main_iPhone.storyboard in Resources */,
 				232312961937AA4600B34F7A /* InfoPlist.strings in Resources */,
 				8538EF911A30D4C700E0E701 /* Piedra.png in Resources */,
