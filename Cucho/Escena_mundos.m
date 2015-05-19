@@ -14,7 +14,7 @@
 @interface Escena_mundos(){
     bool isPhone;
     gameCenterManager *gc1;
-} vcxsza<   
+}  
 
 @end
 

@@ -1017,6 +1017,19 @@ const float CannonCollisionSpeed = 100.0f;
         //contar_monedas = 0;
         contador_vidas = 2;
         //Fin para base
+        
+        //Para desbloquear niveles
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *ruta = [documentsDirectory stringByAppendingPathComponent:@"info_niveles.plist"];
+        NSMutableDictionary *contenido_plist = [[NSMutableDictionary alloc] initWithContentsOfFile:ruta];
+        NSMutableDictionary *contenido_niveles = [[NSMutableDictionary alloc] initWithDictionary:[contenido_plist objectForKey:@"Niveles"]];
+        //NSMutableDictionary *contenido_cucho = [[NSMutableDictionary alloc] initWithDictionary:[contenido_plist objectForKey:@"Jugador"]];
+        NSMutableArray *contenido_nivel = [[NSMutableArray alloc] initWithArray:[contenido_niveles objectForKey:@"Bosque"]];
+        [contenido_nivel insertObject:@"NO" atIndex:1];
+        [contenido_niveles setObject:contenido_nivel forKey:@"Bosque"];
+        [contenido_plist setObject:contenido_niveles forKey:@"Niveles"];
+        [contenido_plist writeToFile:ruta atomically:YES];
     }else{
         NSLog(@"perdiste");
         mensaje1.text=@"Perdiste";
