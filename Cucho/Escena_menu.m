@@ -45,8 +45,8 @@
         bt_puntajes.name=@"bt_puntajes";//se le asigna un nombre para saber que fué seleccionado
         [self addChild:bt_puntajes];
         
-        SKSpriteNode *bt_jugar=[SKSpriteNode spriteNodeWithImageNamed:@"BTjugar"];//crear boton jugar, va en el centro inferior de la pantalla
-        bt_jugar.position=CGPointMake(CGRectGetMidX(self.frame), 50);
+        SKSpriteNode *bt_jugar=[SKSpriteNode spriteNodeWithImageNamed:@"bt_play"];//crear boton jugar, va en el centro inferior de la pantalla
+        bt_jugar.position=CGPointMake(CGRectGetMidX(self.frame), 90);
         bt_jugar.name=@"bt_jugar";//se le asigna un nombre para saber que fué seleccionado
         [self addChild:bt_jugar];
         

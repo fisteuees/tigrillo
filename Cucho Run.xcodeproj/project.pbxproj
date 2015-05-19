@@ -84,7 +84,6 @@
 		8538EFB21A30D56C00E0E701 /* Forest_level@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8538EFB01A30D56C00E0E701 /* Forest_level@2x.png */; };
 		855056AF19816B6F005EC6C2 /* mario_phone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 855056AD19816B6F005EC6C2 /* mario_phone.jpg */; };
 		855056B019816B6F005EC6C2 /* mario.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 855056AE19816B6F005EC6C2 /* mario.jpg */; };
-		8554795F199405C2008BBAF9 /* bt_recargar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8554795E199405C2008BBAF9 /* bt_recargar@2x.png */; };
 		85547962199405D7008BBAF9 /* bt_salir@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85547960199405D7008BBAF9 /* bt_salir@2x.png */; };
 		85547963199405D7008BBAF9 /* images.png in Resources */ = {isa = PBXBuildFile; fileRef = 85547961199405D7008BBAF9 /* images.png */; };
 		85547966199405EC008BBAF9 /* corazon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 85547964199405EC008BBAF9 /* corazon@2x.png */; };
@@ -117,7 +116,6 @@
 		8584B2B819D21D9500B851DC /* View_terminado.m in Sources */ = {isa = PBXBuildFile; fileRef = 8584B2B719D21D9500B851DC /* View_terminado.m */; };
 		858A01BE1A3A1DFB002ADF01 /* BTajustes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 858A01BD1A3A1DFB002ADF01 /* BTajustes@2x.png */; };
 		858A01C21A3A1E07002ADF01 /* BTjugar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 858A01BF1A3A1E07002ADF01 /* BTjugar@2x.png */; };
-		858A01C31A3A1E07002ADF01 /* BTpausa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 858A01C01A3A1E07002ADF01 /* BTpausa@2x.png */; };
 		858A01C41A3A1E07002ADF01 /* BTpuntajes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 858A01C11A3A1E07002ADF01 /* BTpuntajes@2x.png */; };
 		858A01C61A3A1E59002ADF01 /* corazon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 858A01C51A3A1E59002ADF01 /* corazon@2x.png */; };
 		858A01D31A3A1E75002ADF01 /* s_escudo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 858A01C71A3A1E75002ADF01 /* s_escudo.mp3 */; };
@@ -237,7 +235,6 @@
 		8538EFB01A30D56C00E0E701 /* Forest_level@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Forest_level@2x.png"; sourceTree = "<group>"; };
 		855056AD19816B6F005EC6C2 /* mario_phone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario_phone.jpg; sourceTree = "<group>"; };
 		855056AE19816B6F005EC6C2 /* mario.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario.jpg; sourceTree = "<group>"; };
-		8554795E199405C2008BBAF9 /* bt_recargar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_recargar@2x.png"; sourceTree = "<group>"; };
 		85547960199405D7008BBAF9 /* bt_salir@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bt_salir@2x.png"; sourceTree = "<group>"; };
 		85547961199405D7008BBAF9 /* images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = images.png; sourceTree = "<group>"; };
 		85547964199405EC008BBAF9 /* corazon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "corazon@2x.png"; sourceTree = "<group>"; };
@@ -286,7 +283,6 @@
 		8584B2B719D21D9500B851DC /* View_terminado.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View_terminado.m; sourceTree = "<group>"; };
 		858A01BD1A3A1DFB002ADF01 /* BTajustes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTajustes@2x.png"; sourceTree = "<group>"; };
 		858A01BF1A3A1E07002ADF01 /* BTjugar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTjugar@2x.png"; sourceTree = "<group>"; };
-		858A01C01A3A1E07002ADF01 /* BTpausa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTpausa@2x.png"; sourceTree = "<group>"; };
 		858A01C11A3A1E07002ADF01 /* BTpuntajes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BTpuntajes@2x.png"; sourceTree = "<group>"; };
 		858A01C51A3A1E59002ADF01 /* corazon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "corazon@2x.png"; sourceTree = "<group>"; };
 		858A01C71A3A1E75002ADF01 /* s_escudo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = s_escudo.mp3; sourceTree = "<group>"; };
@@ -487,7 +483,6 @@
 				85547965199405EC008BBAF9 /* orange-round-play-button.png */,
 				85547960199405D7008BBAF9 /* bt_salir@2x.png */,
 				85547961199405D7008BBAF9 /* images.png */,
-				8554795E199405C2008BBAF9 /* bt_recargar@2x.png */,
 			);
 			name = Botones_Juego;
 			sourceTree = "<group>";
@@ -679,7 +674,6 @@
 			children = (
 				858A01C51A3A1E59002ADF01 /* corazon@2x.png */,
 				858A01BF1A3A1E07002ADF01 /* BTjugar@2x.png */,
-				858A01C01A3A1E07002ADF01 /* BTpausa@2x.png */,
 				858A01C11A3A1E07002ADF01 /* BTpuntajes@2x.png */,
 				858A01BD1A3A1DFB002ADF01 /* BTajustes@2x.png */,
 			);
@@ -1051,7 +1045,6 @@
 				8577C0BA1A82878C00D413C8 /* bt_atras@2x.png in Resources */,
 				8538EF621A30D36500E0E701 /* w3_lvl5.tmx in Resources */,
 				8538EF6C1A30D3CA00E0E701 /* w2_lvl1.tmx in Resources */,
-				8554795F199405C2008BBAF9 /* bt_recargar@2x.png in Resources */,
 				858A01DE1A3A1E75002ADF01 /* s_volar.mp3 in Resources */,
 				2323129F1937AA4600B34F7A /* Main_iPhone.storyboard in Resources */,
 				232312961937AA4600B34F7A /* InfoPlist.strings in Resources */,
@@ -1060,7 +1053,6 @@
 				8538EF781A30D40900E0E701 /* Snowflakes.png in Resources */,
 				8538EF571A30D35200E0E701 /* particula-burbua.png in Resources */,
 				8538EF7C1A30D44D00E0E701 /* Particulas_5.sks in Resources */,
-				858A01C31A3A1E07002ADF01 /* BTpausa@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,7 +41,7 @@ const float CannonCollisionSpeed1 = 100.0f;
     SKSpriteNode *corazon2;
     SKSpriteNode *corazon3;
     SKSpriteNode *pausa;
-    SKSpriteNode *menu_pausa;
+    SKSpriteNode *menu_play,*menu_salir,*menu_recargar;
     SKAction *action;
     SKAction *accion_reanudar;
     int velocidad_actual;
@@ -216,22 +216,26 @@ const float CannonCollisionSpeed1 = 100.0f;
         con_monedas = [[SKLabelNode alloc] initWithFontNamed:@"Verdana"];
         [con_monedas setFontSize:20];
         con_monedas.position = CGPointMake(CGRectGetMaxX(self.frame)-50, CGRectGetMaxY(self.frame)-35);
+        con_monedas.zPosition = 120;
         [self addChild:con_monedas];
         
         //PARA VIDAS
         corazon1 = [[SKSpriteNode alloc] initWithImageNamed:@"corazon.png"];
         corazon1.position = CGPointMake(CGRectGetMinX(self.frame)+20, CGRectGetMaxY(self.frame)-35);
+        corazon1.zPosition = 120;
         [self addChild:corazon1];
         
         corazon2 = [[SKSpriteNode alloc] initWithImageNamed:@"corazon.png"];
         corazon2.position = CGPointMake(CGRectGetMinX(self.frame)+50, CGRectGetMaxY(self.frame)-35);
+        corazon2.zPosition = 120;
         [self addChild:corazon2];
         
         corazon3 = [[SKSpriteNode alloc] initWithImageNamed:@"corazon.png"];
         corazon3.position = CGPointMake(CGRectGetMinX(self.frame)+80, CGRectGetMaxY(self.frame)-35);
+        corazon3.zPosition = 120;
         [self addChild:corazon3];
         
-        pausa = [[SKSpriteNode alloc] initWithImageNamed:@"BTpausa.png"];
+        pausa = [[SKSpriteNode alloc] initWithImageNamed:@"bt_pausa"];
         pausa.position = CGPointMake(CGRectGetMinX(self.frame)+110, CGRectGetMaxY(self.frame)-35);
         pausa.name = @"pausa";
         pausa.zPosition = 120;
@@ -302,19 +306,31 @@ const float CannonCollisionSpeed1 = 100.0f;
         [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
 
         
-        //BOTON DE PAUSA
-        menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
-        menu_pausa.position = CGPointMake(100, 100);
-        menu_pausa.hidden = YES;
-        menu_pausa.zPosition = 500;
-        menu_pausa.name = @"reanuda";
-        [self addChild:menu_pausa];
+        //BOTON DE REANUDAR
+        menu_play = [[SKSpriteNode alloc] initWithImageNamed:@"bt_play"];
+        menu_play.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        menu_play.hidden = YES;
+        menu_play.zPosition = 500;
+        menu_play.name = @"reanuda";
+        [self addChild:menu_play];
         
-        action = [SKAction runBlock:^{
-            [menu_pausa setHidden:NO];
-            NSLog(@"salio la imagen");
-            
-        }];
+        //BOTON DE SALIR
+        menu_salir = [[SKSpriteNode alloc] initWithImageNamed:@"bt_atras2"];
+        menu_salir.position = CGPointMake(CGRectGetMidX(self.frame)-300, CGRectGetMidY(self.frame));
+        menu_salir.hidden = YES;
+        menu_salir.zPosition = 500;
+        menu_salir.name = @"atras";
+        [self addChild:menu_salir];
+        
+        //BOTON DE RECARGAR
+        menu_recargar = [[SKSpriteNode alloc] initWithImageNamed:@"bt_recargar"];
+        menu_recargar.position = CGPointMake(CGRectGetMidX(self.frame)+300, CGRectGetMidY(self.frame));
+        menu_recargar.hidden = YES;
+        menu_recargar.zPosition = 500;
+        menu_recargar.name = @"recargar";
+        [self addChild:menu_recargar];
+        
+        
         
         /*NSString *path = [[NSBundle mainBundle] pathForResource:@"MyParticle"
          ofType:@"sks"];
@@ -617,80 +633,7 @@ const float CannonCollisionSpeed1 = 100.0f;
     
 }
 
-#pragma mark metodoPausa
 
--(void)pausar{
-    
-    if (self.scene.view.paused) {
-        
-    }else{
-        //        oscuro = [[UIView alloc] initWithFrame:self.frame];
-        //        [oscuro setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.4]];
-        //        [self.scene.view addSubview:oscuro];
-        //        [self.scene.view sendSubviewToBack:oscuro];
-        pausado = YES;
-        NSLog(@"SE pausa");
-        [menu_pausa runAction:action completion:^{
-            [self.scene.view setPaused:YES];
-            NSLog(@"Se pausa 2");
-        }];
-    }
-}
-
--(void)pausar_prueba{
-    cont_tiempo = [NSNumber numberWithInt:3];
-    NSLog(@"de llegar llega");
-    if (self.scene.view.paused) {
-        
-    }else{
-        [menu_pausa setHidden:NO];
-        [self.scene.view setPaused:YES];
-        NSLog(@"se pausa");
-    }
-    
-    
-}
-
--(void)reanudar{
-    pausado = NO;
-    cont_tiempo = [NSNumber numberWithInt:3];
-    [tiempo_reanudar invalidate];
-    action = [SKAction runBlock:^{
-        [menu_pausa setHidden:NO];
-        NSLog(@"salio la imagen");
-        
-    }];
-    NSLog(@"%i",termino);
-    if(termino == 0){
-        NSLog(@"Entre en 0 : %i",termino);
-        [self.scene.view setPaused:NO];
-        NSLog(@"Se despausa");
-        [menu_pausa runAction:action completion:^{
-            [self.scene.view setPaused:YES];
-            NSLog(@"Se vuelve a pausar");
-        }];
-    }else if(termino==1){
-        NSLog(@"Entre a 1");
-        [self.scene.view setPaused:NO];
-    }
-}
-
--(void)disminuirTiempo{
-    if(cont_tiempo.intValue > 1){
-        cont_tiempo = [NSNumber numberWithInt:cont_tiempo.intValue-1];
-        strTiempo = [NSString stringWithFormat:@"%i",cont_tiempo.intValue];
-        [prueba_mensaje setText:strTiempo];
-        NSLog(@"%i",cont_tiempo.intValue);
-    }else{
-        self.jugador.puede_saltar = NO;
-        //salto_doble = YES;
-        //self.scene.view.paused = NO;
-        [self reanudarJuego];
-        //[vpausa setHidden:YES];
-        [prueba_mensaje setHidden:YES];
-        cont_tiempo = [NSNumber numberWithInt:3];
-    }
-}
 
 #pragma mark pausa2
 -(void)pausarJuego{
@@ -703,7 +646,9 @@ const float CannonCollisionSpeed1 = 100.0f;
         [self.jugador removeAllActions];
         //myParticle.paused=YES;
         espacio_movimiento = 0;
-        menu_pausa.hidden = NO;
+        menu_play.hidden = NO;
+        menu_salir.hidden = NO;
+        menu_recargar.hidden = NO;
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarPausa" object:self userInfo:nil];
         fondo_oscuro=[SKSpriteNode spriteNodeWithImageNamed:@"fondo_oscuro"];
         fondo_oscuro.alpha=0.5f;
@@ -720,7 +665,9 @@ const float CannonCollisionSpeed1 = 100.0f;
     self.jugador.puede_saltar=NO;
     myParticle.paused=NO;
     choque=NO;
-    menu_pausa.hidden = YES;
+    menu_play.hidden = YES;
+    menu_salir.hidden = YES;
+    menu_recargar.hidden = YES;
     espacio_movimiento = 5;
     //fondo_oscuro.alpha=0.0f;
     [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
@@ -1158,8 +1105,7 @@ const float CannonCollisionSpeed1 = 100.0f;
     slider.continuous = YES;
     slider.value = 0.0;
     slider.userInteractionEnabled=NO;
-    UIImage *cuchito=[UIImage imageNamed:@"cuchoThumb"];
-    
+    UIImage *cuchito=[UIImage imageNamed:@"cucho_thumb"];
     [slider setThumbImage:cuchito forState:UIControlStateNormal];
     [self.view addSubview:slider];
 }

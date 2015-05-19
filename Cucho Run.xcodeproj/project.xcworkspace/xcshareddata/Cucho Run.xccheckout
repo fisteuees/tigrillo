@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>C4F9B48E-610C-4049-9E27-AF5B90D73C6F</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Cucho Run</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>A5B74F8B597F215976D0008A35E492A80FAB51B3</key>
 		<string>https://github.com/fisteuees/tigrillo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Cucho Run.xcodeproj</string>
+	<string>Cucho Run.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A5B74F8B597F215976D0008A35E492A80FAB51B3</key>

@@ -14,7 +14,8 @@
 @interface Escena_mundos(){
     bool isPhone;
     gameCenterManager *gc1;
-} vcxsza<   
+    SKSpriteNode *bt_atras;
+}
 
 @end
 
@@ -24,18 +25,31 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         //[audio stop];
-        self.backgroundColor = [SKColor whiteColor];
+        self.backgroundColor = [SKColor clearColor];
         gc1=gc;
         self.ap1=audio;
-        
-        SKSpriteNode *bt_atras=[SKSpriteNode spriteNodeWithImageNamed:@"bt_atras"];
+        bt_atras=[SKSpriteNode spriteNodeWithImageNamed:@"bt_atras"];
         bt_atras.position=CGPointMake(CGRectGetMinX(self.frame)+60, CGRectGetMaxY(self.frame)-60);
         bt_atras.name=@"atras";
         bt_atras.zPosition=150;
+        bt_atras.alpha=0.0f;
         [self addChild:bt_atras];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(alphaAtras)
+                                                     name:@"anadirAtras"
+                                                   object:nil];
     }
     return self;
+}
+
+-(void)alphaAtras{
+    bt_atras.alpha=1.0f;
+    
+}
+
+-(void)willMoveFromView:(SKView *)view{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+     [[NSNotificationCenter defaultCenter] postNotificationName:@"eliminarAtras" object:nil];
 }
 
 
@@ -51,6 +65,7 @@
              postNotificationName:@"borrar" object:self];
             [self.ap1 stop];
              [[NSNotificationCenter defaultCenter] postNotificationName:@"borrarFondo" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"eliminarAtras" object:nil];
             SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.0];
             SKScene * gameOverScene = [[Escena_menu alloc] initWithSize:self.size conGameCenter:gc1];
             [self.view presentScene:gameOverScene transition:reveal];
@@ -58,6 +73,8 @@
         }
     }
 }
+
+
 
 
 

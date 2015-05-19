@@ -37,7 +37,7 @@
     Escena_menu *es;
     BOOL recargar;
     
-    UIImageView *background;
+    UIImageView *background,*btatras;
 }
 
 @end
@@ -94,13 +94,19 @@
                                              selector:@selector(borrarFondo)
                                                  name:@"borrarFondo"
                                                object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(eliminarAtras)
+                                                 name:@"eliminarAtras"
+                                               object:nil];
     //base de datos
     cb = [[conexionBase alloc]init];
     [cb abrirBD];
     [cb crearTabla:@"prueba" conCampo1:@"id" conCampo2:@"nombre" conCampo3:@"puntaje" conCampo4:@"tema"];
     
     background=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pre_fondo_bosque"]];
+    btatras=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bt_atras"]];
     
+    [btatras setFrame:CGRectMake(20, 20, btatras.frame.size.width, btatras.frame.size.height)];
     
 }
 
@@ -179,6 +185,8 @@
     [UIView commitAnimations];
 
     [self.carousel reloadData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"anadirAtras" object:self];
+        
     }
 }
 
@@ -219,6 +227,11 @@
             [self.view sendSubviewToBack:background];
             self.view.contentMode=UIViewContentModeScaleAspectFit;
             
+            btatras.image=[UIImage imageNamed:@"bt_atras"];
+            [self.view addSubview:btatras];
+            
+           
+            
             NSLog(@"mundo bosque");
             break;
         case 1:
@@ -255,6 +268,7 @@
         label.font = [label.font fontWithSize:50];
         label.tag = 1;
         [view addSubview:label];
+    
   //  }
 
     //set item label
@@ -287,10 +301,14 @@
         default:
             break;
     }
-    
     [self.view addSubview:background];
     [self.view sendSubviewToBack:background];
     self.view.contentMode=UIViewContentModeScaleAspectFit;
+    
+}
+
+-(void)eliminarAtras{
+    [btatras removeFromSuperview];
 }
 
 
@@ -298,12 +316,12 @@
 {
     if (option == iCarouselOptionSpacing)
     {
-        NSLog(@"espacio: %f",value * 3.3f);
+        //NSLog(@"espacio: %f",value * 3.3f);
         return value * 3.3f;
     }
     if (option == iCarouselOptionTilt)
     {
-        NSLog(@"tilt: %f",0.1f);
+        //NSLog(@"tilt: %f",0.1f);
         return 0.1f;
     }
     return value;
@@ -481,9 +499,9 @@
     desplegado_terminado=NO;
     [skView.scene setUserInteractionEnabled:YES];
     
-    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKTransition *reveal1 = [SKTransition doorsOpenHorizontalWithDuration:1.0];
     SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info conAudioPlayer:es.audioPlayer]; //withBase: cb
-    [skView presentScene:gameOverScene transition: reveal];
+    [skView presentScene:gameOverScene transition: reveal1];
     
     NSLog(@"jugar de nuevo");
     
@@ -496,9 +514,9 @@
     desplegado_terminado=NO;
     [skView.scene setUserInteractionEnabled:YES];
     
-    SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.0];
+    SKTransition *reveal1 = [SKTransition doorsCloseHorizontalWithDuration:1.0];
     SKScene * gameOverScene = [[Escena_menu alloc] initWithSize:skView.bounds.size conGameCenter:gc]; //withBase: cb
-    [skView presentScene:gameOverScene transition: reveal];
+    [skView presentScene:gameOverScene transition: reveal1];
     
     NSLog(@"mostrar menu");
     
@@ -532,5 +550,7 @@
 -(void)borrarFondo{
     [background removeFromSuperview];
 }
+
+
 
 @end

@@ -174,9 +174,9 @@
             atras=YES;
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"borrar" object:self];
-            SKTransition *reveal = [SKTransition doorsCloseHorizontalWithDuration:1.0];
+            SKTransition *reveal1 = [SKTransition doorsCloseHorizontalWithDuration:1.0];
             SKScene * gameOverScene = [[Escena_mundos alloc] initWithSize:self.size conGameCenter:gc1 conAudioPlayer:ap1];
-            [self.view presentScene:gameOverScene transition:reveal];
+            [self.view presentScene:gameOverScene transition:reveal1];
         }
     }
     

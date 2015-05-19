@@ -108,6 +108,10 @@ const float CannonCollisionSpeed = 100.0f;
     BOOL choque;
     BOOL choque_escudo;
     
+    
+    //gesture recognizer
+    UITapGestureRecognizer *doubleTap;
+    
 }
 @end
 
@@ -386,7 +390,8 @@ const float CannonCollisionSpeed = 100.0f;
 }
 
 -(void)didMoveToView:(SKView *)view{
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saltoDoble)];
+    doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saltoDoble)];
+    
     doubleTap.numberOfTapsRequired = 2;
     
     [self.view addGestureRecognizer:doubleTap];
@@ -399,9 +404,9 @@ const float CannonCollisionSpeed = 100.0f;
 }
 
 - (void)saltoDoble{
+    NSLog(@"salto doble");
     
-    
-    if (salto_doble) {
+    if (salto_doble && num_mensaje!=1) {
         self.jugador.enPiso=YES;
         self.jugador.puede_saltar=YES;
         [self.jugador update:delta];
@@ -937,6 +942,10 @@ const float CannonCollisionSpeed = 100.0f;
                     if (num_mensaje!=1|| num_mensaje!=2) {
                         salto_doble=YES;
                     }
+                    else{
+                        NSLog(@"no se permite salto doble");
+                        salto_doble=NO;
+                    }
                     
                 } else if (indice  == 1) {
                     //tile is directly above Koala
@@ -1069,13 +1078,8 @@ const float CannonCollisionSpeed = 100.0f;
     slider.continuous = YES;
     slider.value = 0.0;
     slider.userInteractionEnabled=NO;
-    UIImage *cuchito=[UIImage imageNamed:@"cucho04.png"];
-    UIImage *scaledImage =
-    [UIImage imageWithCGImage:[cuchito CGImage]
-                        scale:(cuchito.scale * 2.0)
-                  orientation:(cuchito.imageOrientation)];
-    
-    [slider setThumbImage:scaledImage forState:UIControlStateNormal];
+    UIImage *cuchito=[UIImage imageNamed:@"cucho_thumb"];
+    [slider setThumbImage:cuchito forState:UIControlStateNormal];
     [self.view addSubview:slider];
 }
 
@@ -1130,6 +1134,17 @@ const float CannonCollisionSpeed = 100.0f;
             bt_aceptar.name=@"aceptar1";
             bt_aceptar.zPosition = 200;
             //[self addChild:bt_aceptar];
+        {
+            NSArray *gestures = self.view.gestureRecognizers;
+       
+            for(UIGestureRecognizer *gesture in gestures)
+            {
+                if([gesture isKindOfClass: [UITapGestureRecognizer class]])
+                {
+                    gesture.enabled = NO;
+                }
+            }
+             }
             
             /*bt_mano=[SKSpriteNode spriteNodeWithImageNamed:@"mano"];
              bt_mano.position=CGPointMake(600, 200);
@@ -1159,7 +1174,7 @@ const float CannonCollisionSpeed = 100.0f;
             SKAction *sequence=[SKAction sequence:@[mover1,mover2]];
             [bt_mano runAction:[SKAction repeatActionForever:sequence]];
         }
-            
+            doubleTap.enabled=YES;
             
             break;
             
