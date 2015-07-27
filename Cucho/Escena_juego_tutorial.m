@@ -14,6 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "conexionBase.h"
 #import "Escena_menu.h"
+#import "Escena_nivel.h"
 
 const float maxVelocidad = 400.0f;
 const float maxAceleracion = 400.0f;
@@ -38,6 +39,7 @@ const float CannonCollisionSpeed = 100.0f;
     SKSpriteNode *corazon2;
     SKSpriteNode *corazon3;
     SKSpriteNode *pausa;
+    SKSpriteNode *menu_play,*menu_salir,*menu_recargar;
     SKSpriteNode *menu_pausa;
     SKAction *action;
     SKAction *accion_reanudar;
@@ -54,6 +56,7 @@ const float CannonCollisionSpeed = 100.0f;
     NSString *strTiempo;
     NSNumber *cont_tiempo;
     NSArray *cuchoCaminando;
+    NSArray *cuchoVolando;
     
     
     //datosAcelerometro
@@ -108,20 +111,35 @@ const float CannonCollisionSpeed = 100.0f;
     BOOL choque;
     BOOL choque_escudo;
     
+    //Audio Player
+    AVAudioPlayer *ap1;
+    NSUserDefaults *defaults;
+    
     
     //gesture recognizer
     UITapGestureRecognizer *doubleTap;
+    
+    //contador timer
+    int MainInt;
+    NSTimer *timer;
+    
+    //valores para base
+    NSMutableDictionary *informacion1;
+    gameCenterManager *gc1;
     
 }
 @end
 
 @implementation Escena_juego_tutorial
-@synthesize tiempo;
 
--(id)initWithSize:(CGSize)size{
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary *)informacion conAudioPlayer:(AVAudioPlayer *)ap{
     //con = cb; pendiente para base de datos
     if (self = [super initWithSize:size]) {
         //
+        [ap stop];
+        ap1=ap;
+        gc1=gc;
+        informacion1=informacion;
         espacio_movimiento = 5;
         contador_vidas = 2;
         velocidad_anterior = 0;
@@ -135,20 +153,26 @@ const float CannonCollisionSpeed = 100.0f;
         //nomMapa = mapa;
         vidas = 3;
         
+        NSURL *url= [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/s_fondo_bosque.mp3", [[NSBundle mainBundle] resourcePath]]];
         
+        NSError *error;
+        ap1 = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        ap1.numberOfLoops = -1;
+        
+        defaults=[NSUserDefaults standardUserDefaults];
+        
+        if ([defaults integerForKey:@"estadoSwitch1"]==1) {
+            [ap1 play];
+            
+        }
+        [defaults synchronize];
         
         //
         //NOTIFICACIONES PARA IR Y VOLVER DE PAUSA
         [[NSNotificationCenter defaultCenter]
          addObserver:self
-         selector:@selector(pausar_prueba)
+         selector:@selector(pausarJuegoNotification)
          name:UIApplicationWillResignActiveNotification
-         object:nil];
-        //
-        [[NSNotificationCenter defaultCenter]
-         addObserver:self
-         selector:@selector(reanudar)
-         name:UIApplicationDidBecomeActiveNotification
          object:nil];
         //FIN DE NOTIFICACIONES
         self.userInteractionEnabled = YES;
@@ -169,17 +193,23 @@ const float CannonCollisionSpeed = 100.0f;
         
         //PARA VIDAS
         corazon1 = [[SKSpriteNode alloc] initWithImageNamed:@"corazon.png"];
-        corazon1.position = CGPointMake(CGRectGetMinX(self.frame)+10, CGRectGetMaxY(self.frame)-35);
+        corazon1.position = CGPointMake(CGRectGetMinX(self.frame)+20, CGRectGetMaxY(self.frame)-35);
         [self addChild:corazon1];
         
         corazon2 = [[SKSpriteNode alloc] initWithImageNamed:@"corazon.png"];
-        corazon2.position = CGPointMake(CGRectGetMinX(self.frame)+30, CGRectGetMaxY(self.frame)-35);
+        corazon2.position = CGPointMake(CGRectGetMinX(self.frame)+50, CGRectGetMaxY(self.frame)-35);
         [self addChild:corazon2];
         
         corazon3 = [[SKSpriteNode alloc] initWithImageNamed:@"corazon.png"];
-        corazon3.position = CGPointMake(CGRectGetMinX(self.frame)+50, CGRectGetMaxY(self.frame)-35);
+        corazon3.position = CGPointMake(CGRectGetMinX(self.frame)+80, CGRectGetMaxY(self.frame)-35);
         [self addChild:corazon3];
         
+        
+        pausa = [[SKSpriteNode alloc] initWithImageNamed:@"bt_pausa"];
+        pausa.position = CGPointMake(CGRectGetMinX(self.frame)+110, CGRectGetMaxY(self.frame)-35);
+        pausa.name = @"pausa";
+        pausa.zPosition = 120;
+        [self addChild:pausa];
         /*pausa = [[SKSpriteNode alloc] initWithImageNamed:@"images.png"];
          pausa.position = CGPointMake(CGRectGetMinX(self.frame)+80, CGRectGetMaxY(self.frame)-35);
          pausa.name = @"pausa";
@@ -233,6 +263,11 @@ const float CannonCollisionSpeed = 100.0f;
         SKTexture *f7 = [atlas textureNamed:@"cucho07.png"];
         cuchoCaminando = @[f1,f2,f3,f4,f5,f6,f7];
         
+        SKTextureAtlas *atlas1 = [SKTextureAtlas atlasNamed:@"cuchoAnimacion"];
+        SKTexture *f8 = [atlas1 textureNamed:@"fly01.png"];
+        SKTexture *f9 = [atlas1 textureNamed:@"fly02.png"];
+        cuchoVolando = @[f8,f9];
+        
         self.jugador = [[Jugador alloc] initWithImageNamed:@"cucho01.png"];
         self.jugador.position = CGPointMake(140, 150);
         self.jugador.zPosition = 100;
@@ -245,28 +280,31 @@ const float CannonCollisionSpeed = 100.0f;
         [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
         
         
-        /* menu_pausa = [[SKSpriteNode alloc] initWithImageNamed:@"orange-round-play-button.png"];
-         menu_pausa.position = CGPointMake(100, 100);
-         menu_pausa.hidden = YES;
-         menu_pausa.zPosition = 120;
-         menu_pausa.name = @"reanuda";
-         [self addChild:menu_pausa];
-         
-         action = [SKAction runBlock:^{
-         [menu_pausa setHidden:NO];
-         NSLog(@"salio la imagen");
-         
-         }];*/
+        //BOTON DE REANUDAR
+        menu_play = [[SKSpriteNode alloc] initWithImageNamed:@"bt_play"];
+        menu_play.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        menu_play.hidden = YES;
+        menu_play.zPosition = 500;
+        menu_play.name = @"reanuda";
+        [self addChild:menu_play];
         
-        /*NSString *path = [[NSBundle mainBundle] pathForResource:@"MyParticle"
-         ofType:@"sks"];
-         SKEmitterNode *particula = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-         particula.position=CGPointMake(-20, 0);
-         [self.jugador addChild:particula];*/
+        //BOTON DE SALIR
+        menu_salir = [[SKSpriteNode alloc] initWithImageNamed:@"bt_atras2"];
+        menu_salir.position = CGPointMake(CGRectGetMidX(self.frame)-300, CGRectGetMidY(self.frame));
+        menu_salir.hidden = YES;
+        menu_salir.zPosition = 500;
+        menu_salir.name = @"atras";
+        [self addChild:menu_salir];
         
+        //BOTON DE RECARGAR
+        menu_recargar = [[SKSpriteNode alloc] initWithImageNamed:@"bt_recargar"];
+        menu_recargar.position = CGPointMake(CGRectGetMidX(self.frame)+300, CGRectGetMidY(self.frame));
+        menu_recargar.hidden = YES;
+        menu_recargar.zPosition = 500;
+        menu_recargar.name = @"recargar";
+        [self addChild:menu_recargar];
         
-        
-        
+    
         //iniciar datos de acelerometro
         volando=NO;
         tamanoPantalla=self.frame.size;
@@ -437,10 +475,6 @@ const float CannonCollisionSpeed = 100.0f;
         cara_triste.position=CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
         [self addChild:cara_triste];
         
-        /*SKSpriteNode *bt_aceptar1=[SKSpriteNode spriteNodeWithImageNamed:@"bt_aceptar"];
-         bt_aceptar1.position=CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame)-100);
-         bt_aceptar1.name=@"finalizar";
-         [self addChild:bt_aceptar1];*/
         num_mensaje=0;
         choque=NO;
         choque_escudo=NO;
@@ -497,65 +531,80 @@ const float CannonCollisionSpeed = 100.0f;
         SKNode *nodo=[self nodeAtPoint:location];
         
         NSLog(@"saltando %@",nodo.name);
-        if (pausado) {
+        if ([nodo.name isEqualToString:@"pausa"] && menu_play.isHidden){
+                [self pausarJuego:YES];
+        }
+        
+        //comprobar esto, hay una falla al momento de reiniciar, se confunde entre el reiniciar con el boton y el resumir con click en la pantalla
+        
+        else if (pausado && menu_play.isHidden) {
+            NSLog(@"pasa por aqui 1");
             num_mensaje++;
             [self reanudarJuego];
-            //[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mostrarMensaje) userInfo:nil repeats:NO];
             switch (num_mensaje) {
                 case 1:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:4.0];
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:4.0];
+                    MainInt=40;
+                    timer=[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(reducirTiempo) userInfo:Nil repeats:YES];
                     break;
                 case 2:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:1.0];
+                    MainInt=10;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:1.0];
                     break;
                 case 3:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:2.5];
+                    MainInt=25;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:2.5];
                     break;
                 case 4:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.7];
+                    MainInt=7;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.7];
                     break;
                 case 5:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
+                    MainInt=30;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
                     break;
                 case 6:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
+                    MainInt=30;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
                     break;
                 case 7:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.6];
+                    MainInt=10;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.6];
                     break;
                 case 8:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:6.2];
+                    MainInt=62;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:6.2];
                     break;
                 case 9:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:4.8];
+                    MainInt=48;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:4.8];
                     break;
                 case 10:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.4];
+                    MainInt=4;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:0.4];
                     break;
                 case 11:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:12.0];
+                    MainInt=120;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:12.0];
                     break;
                     
                 default:
-                    [self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
+                    MainInt=30;
+                    //[self performSelector:@selector(mostrarMensaje) withObject:nil afterDelay:3.0];
                     break;
             }
             
         }
+         else if (pausado && !menu_play.isHidden && [nodo.name isEqualToString:@"reanuda"]) {
+             NSLog(@"pasa por aqui 2");
+             [self reanudarJuego];
+         }
         
-        else if([nodo.name isEqualToString:@"salir"]){
-            SKTransition *reveal = [SKTransition doorsCloseVerticalWithDuration:1.0];
-            //Cambiar aquí para ir a la otra pantalla
-            //SKScene * gameOverScene = [[Menu alloc] initWithSize:self.size withBase:con];
-            //[self.view presentScene:gameOverScene transition: reveal];
-        }
-        else if([nodo.name isEqualToString:@"finalizar"]){
-            [self reiniciar];
+        else if([nodo.name isEqualToString:@"atras"]){
+            [self salir];
         }
         else if([nodo.name isEqualToString:@"recargar"]){
-            SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-            SKScene * gameOverScene = [[Escena_juego_tutorial alloc] initWithSize:self.size]; //withBase: cb
-            [self.view presentScene:gameOverScene transition: reveal];
+            [self reiniciar];
         }
         else if([nodo.name isEqualToString:@"aceptar1"]){
             
@@ -567,37 +616,6 @@ const float CannonCollisionSpeed = 100.0f;
          [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(mostrarMensaje) userInfo:nil repeats:NO];
          
          }*/
-        else if ([nodo.name isEqualToString:@"pausa"]){
-            
-            if(pausado){
-                [self reanudarJuego];
-                pausado=NO;
-            }else{
-                /*[tiempo_reanudar invalidate];
-                 pausado=YES;
-                 self.jugador.puede_saltar=NO;
-                 salto_doble = YES;
-                 cont_tiempo = [NSNumber numberWithInt:3];
-                 [self pausar];*/
-                [self pausarJuego];
-            }
-            
-            
-        }else if ([nodo.name isEqualToString:@"reanuda"]){
-            if(self.scene.view.paused && pausado){
-                pausado = NO;
-                menu_pausa.hidden = YES;
-                vpausa = [[UIView alloc] initWithFrame:self.frame];
-                [vpausa setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.0]];
-                [self.scene.view addSubview:vpausa];
-                //
-                prueba_mensaje = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 50, 50)];
-                [prueba_mensaje setText:@"3"];
-                [vpausa addSubview:prueba_mensaje];
-                [tiempo_reanudar invalidate];
-                tiempo_reanudar = [NSTimer scheduledTimerWithTimeInterval:0.67 target:self selector:@selector(disminuirTiempo) userInfo:nil repeats:YES];
-            }
-        }
         else if (num_mensaje==1){
             
         }
@@ -609,80 +627,7 @@ const float CannonCollisionSpeed = 100.0f;
     
 }
 
-#pragma mark metodoPausa
 
--(void)pausar{
-    
-    if (self.scene.view.paused) {
-        
-    }else{
-        //        oscuro = [[UIView alloc] initWithFrame:self.frame];
-        //        [oscuro setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.4]];
-        //        [self.scene.view addSubview:oscuro];
-        //        [self.scene.view sendSubviewToBack:oscuro];
-        pausado = YES;
-        NSLog(@"SE pausa");
-        [menu_pausa runAction:action completion:^{
-            [self.scene.view setPaused:YES];
-            NSLog(@"Se pausa 2");
-        }];
-    }
-}
-
--(void)pausar_prueba{
-    cont_tiempo = [NSNumber numberWithInt:3];
-    NSLog(@"de llegar llega");
-    if (self.scene.view.paused) {
-        
-    }else{
-        [menu_pausa setHidden:NO];
-        [self.scene.view setPaused:YES];
-        NSLog(@"se pausa");
-    }
-    
-    
-}
-
--(void)reanudar{
-    pausado = NO;
-    cont_tiempo = [NSNumber numberWithInt:3];
-    [tiempo_reanudar invalidate];
-    action = [SKAction runBlock:^{
-        [menu_pausa setHidden:NO];
-        NSLog(@"salio la imagen");
-        
-    }];
-    NSLog(@"%i",termino);
-    if(termino == 0){
-        NSLog(@"Entre en 0 : %i",termino);
-        [self.scene.view setPaused:NO];
-        NSLog(@"Se despausa");
-        [menu_pausa runAction:action completion:^{
-            [self.scene.view setPaused:YES];
-            NSLog(@"Se vuelve a pausar");
-        }];
-    }else if(termino==1){
-        NSLog(@"Entre a 1");
-        [self.scene.view setPaused:NO];
-    }
-}
-
--(void)disminuirTiempo{
-    if(cont_tiempo.intValue > 1){
-        cont_tiempo = [NSNumber numberWithInt:cont_tiempo.intValue-1];
-        strTiempo = [NSString stringWithFormat:@"%i",cont_tiempo.intValue];
-        [prueba_mensaje setText:strTiempo];
-        NSLog(@"%i",cont_tiempo.intValue);
-    }else{
-        self.jugador.puede_saltar = NO;
-        //salto_doble = YES;
-        self.scene.view.paused = NO;
-        
-        [vpausa setHidden:YES];
-        [prueba_mensaje setHidden:YES];
-        cont_tiempo = [NSNumber numberWithInt:3];
-    }
-}
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     for (UITouch *touch in touches) {
@@ -819,15 +764,28 @@ const float CannonCollisionSpeed = 100.0f;
                     [multi invalidate];
                     multi = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(mult) userInfo:nil repeats:YES];
                 }else if (capa == self.volar){
-                    timVolar = 0;
+                    [self.jugador removeActionForKey:@"volar"];
+                    walkAnimation = [SKAction animateWithTextures:cuchoVolando timePerFrame:0.5];
+                    [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
+                    self.jugador.size = CGSizeMake(80, 130);
                     NSLog(@"se llama");
+                    doubleTap.enabled = NO;
                     [self.rocas setHidden:YES];
                     [self.monedas setHidden:YES];
                     [self.correccion setHidden:YES];
                     [self.monedasVolar setHidden:NO];
                     [self.multiplicador setHidden:YES];
-                    [volar1 invalidate];
-                    volar1 = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(metVolar) userInfo:nil repeats:YES];
+                    
+                    [self.jugador runAction:[SKAction moveTo:CGPointMake(self.jugador.position.x+100, self.jugador.position.y+150) duration:0.5]];
+                    //[volar1 invalidate];
+                    //volar1 = [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(metVolar) userInfo:nil repeats:YES];
+                    if ([defaults integerForKey:@"estadoSwitch2"]==1) {
+                        [self runAction:[SKAction playSoundFileNamed:@"s_volar.mp3" waitForCompletion:NO]];
+                        
+                    }
+                    [defaults synchronize];
+                    
+                    [self performSelector:@selector(metVolar) withObject:self afterDelay:9.0];
                     volando = YES;
                     colisiones = NO;
                 }
@@ -1083,7 +1041,7 @@ const float CannonCollisionSpeed = 100.0f;
 #pragma mark Slider
 
 -(void)anadirSlider{
-    CGRect frame = CGRectMake(100.0, 30.0, 824.0, 10.0);
+    CGRect frame = CGRectMake(130.0, 30.0, 824.0, 10.0);
     slider = [[UISlider alloc] initWithFrame:frame];
     [slider setBackgroundColor:[UIColor clearColor]];
     slider.minimumValue = 0.0;
@@ -1098,35 +1056,103 @@ const float CannonCollisionSpeed = 100.0f;
 
 
 #pragma mark Pausar y reanudar juego
--(void)pausarJuego{
-    pausado=YES;
-    //self.jugador.puede_moverse=NO;
-    //self.jugador.puede_saltar=NO;
-    [self.jugador removeAllActions];
-    myParticle.paused=YES;
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarPausa" object:self userInfo:nil];
-    fondo_oscuro=[SKSpriteNode spriteNodeWithImageNamed:@"fondo_oscuro"];
-    fondo_oscuro.alpha=0.5f;
-    fondo_oscuro.position=CGPointMake(512, 384);
-    [self addChild:fondo_oscuro];
-    //[self.view sendSubviewToBack:mask_terminado];
+-(void)pausarJuego:(BOOL)mostrarBotones{
+    //NSNumber *monedas = [puntajes objectForKey:@"monedas"];
+    if (pausado) {
+        
+    }else{
+        pausado=YES;
+        //self.jugador.puede_moverse=NO;
+        self.jugador.puede_saltar=NO;
+        [self.jugador removeAllActions];
+        //myParticle.paused=YES;
+        espacio_movimiento = 0;
+    if(mostrarBotones){
+        menu_play.hidden = NO;
+        menu_salir.hidden = NO;
+        menu_recargar.hidden = NO;
+       
+    }else{
+        menu_play.hidden = YES;
+        menu_salir.hidden =YES;
+        menu_recargar.hidden = YES;
+    }
     
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarPausa" object:self userInfo:nil];
+        fondo_oscuro=[SKSpriteNode spriteNodeWithImageNamed:@"fondo_oscuro"];
+        fondo_oscuro.alpha=0.5f;
+        fondo_oscuro.position=CGPointMake(512, 384);
+        [self addChild:fondo_oscuro];
+        //[self.view sendSubviewToBack:mask_terminado];
+    }
+}
+
+-(void)pausarJuegoNotification{
+
+    if (pausado) {
+        
+    }else{
+        pausado=YES;
+        //self.jugador.puede_moverse=NO;
+        self.jugador.puede_saltar=NO;
+        [self.jugador removeAllActions];
+        //myParticle.paused=YES;
+        espacio_movimiento = 0;
+            menu_play.hidden = NO;
+            menu_salir.hidden = NO;
+            menu_recargar.hidden = NO;
+
+        //[[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarPausa" object:self userInfo:nil];
+        fondo_oscuro=[SKSpriteNode spriteNodeWithImageNamed:@"fondo_oscuro"];
+        fondo_oscuro.alpha=0.5f;
+        fondo_oscuro.position=CGPointMake(512, 384);
+        [self addChild:fondo_oscuro];
+        //[self.view sendSubviewToBack:mask_terminado];
+    }
 }
 
 -(void)reanudarJuego{
     pausado=NO;
+    self.jugador.puede_saltar=NO;
     myParticle.paused=NO;
     choque=NO;
+    menu_play.hidden = YES;
+    menu_salir.hidden = YES;
+    menu_recargar.hidden = YES;
+    espacio_movimiento = 5;
     //fondo_oscuro.alpha=0.0f;
     [self.jugador runAction:[SKAction repeatActionForever:walkAnimation]];
     [fondo_oscuro removeFromParent];
-    [mensaje removeFromParent];
-    [bt_aceptar removeFromParent];
     [bt_mano removeFromParent];
     [bt_mano2 removeFromParent];
+    [bt_aceptar removeFromParent];
+    [mensaje removeFromParent];
     //bt_aceptar.alpha=0.0f;
 }
 
+-(void)reducirTiempo{
+    if (pausado == NO) {
+        MainInt --;
+        //NSLog(@"maintint: %d",MainInt);
+        if (MainInt<=0) {
+            [self mostrarMensaje];
+        }
+    }else{
+        //NSLog(@"maintint: %d",MainInt);
+    }
+}
+
+-(void)reiniciar{
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_juego_tutorial alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion1 conAudioPlayer:ap1]; //withBase: cb
+    [self.view presentScene:gameOverScene transition: reveal];
+}
+
+-(void)salir{
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion1 conAudioPlayer:ap1]; //withBase: cb
+    [self.view presentScene:gameOverScene transition: reveal];
+}
 
 //metodos Tutorial
 
@@ -1134,7 +1160,7 @@ const float CannonCollisionSpeed = 100.0f;
 #pragma mark Metodos Tutorial
 
 -(void)mostrarMensaje{
-    [self pausarJuego];
+    [self pausarJuego:NO];
     
     switch (num_mensaje) {
         case 0:
@@ -1428,17 +1454,9 @@ const float CannonCollisionSpeed = 100.0f;
     
 }
 
--(void)reiniciar{
-    num_mensaje=0;
-    choque=NO;
-    choque_escudo=NO;
-    
-    
-    SKTransition *reveal = [SKTransition doorsOpenVerticalWithDuration:0.4];
-    //SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size];
-    SKScene * gameOverScene = [[Escena_juego_tutorial alloc] initWithSize:self.size];
-    [self.view presentScene:gameOverScene transition:reveal];
-}
+
+
+
 
 
 

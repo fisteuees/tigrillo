@@ -12,6 +12,7 @@
 #import "EfectoParallax.h"
 #import "conexionBase.h"
 #import <AVFoundation/AVFoundation.h>
+#import "gameCenterManager.h"
 
 @interface Escena_juego : SKScene
 
@@ -36,8 +37,7 @@
 //
 //-(id)initWithSize:(CGSize)size withBase:(conexionBase *)cb;
 //Nuevo para reconocer niveles
--(id)initWithSize:(CGSize)size conInformacion:(NSMutableDictionary *)informacion conAudioPlayer:(AVAudioPlayer*)ap;
--(void)pausar;
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary *)informacion conAudioPlayer:(AVAudioPlayer*)ap;
 
 //
 @property NSTimer *tiempo;

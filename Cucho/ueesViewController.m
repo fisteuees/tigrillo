@@ -475,7 +475,7 @@
     [info setObject:nomNivel forKey:@"nombreNivel"];
     
     /*SKTransition */reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info conAudioPlayer:es.audioPlayer]; //withBase: cb
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conGameCenter:gc conInformacion:info conAudioPlayer:es.audioPlayer]; //withBase: cb
     [skView presentScene:gameOverScene transition: reveal];
     
     NSLog(@"siguiente nivel");
@@ -500,7 +500,7 @@
     [skView.scene setUserInteractionEnabled:YES];
     
     SKTransition *reveal1 = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conInformacion:info conAudioPlayer:es.audioPlayer]; //withBase: cb
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:skView.bounds.size conGameCenter:gc conInformacion:info conAudioPlayer:es.audioPlayer]; //withBase: cb
     [skView presentScene:gameOverScene transition: reveal1];
     
     NSLog(@"jugar de nuevo");

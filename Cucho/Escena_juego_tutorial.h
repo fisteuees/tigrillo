@@ -11,6 +11,8 @@
 #import "JSTileMap.h"
 #import "EfectoParallax.h"
 #import "conexionBase.h"
+#import <AVFoundation/AVFoundation.h>
+#import "gameCenterManager.h"
 
 @interface Escena_juego_tutorial : SKScene
 
@@ -33,8 +35,9 @@
 @property (nonatomic, strong) EfectoParallax *fondo1;
 @property (nonatomic, assign) BOOL juegoTermino;
 //
-//-(id)initWithSize:(CGSize)size withBase:(conexionBase *)cb;
--(void)pausar;
+
+
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary *)informacion conAudioPlayer:(AVAudioPlayer *)ap;
 
 //
 @property NSTimer *tiempo;

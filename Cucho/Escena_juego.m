@@ -14,6 +14,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "conexionBase.h"
 #import "Escena_menu.h"
+#import "Escena_nivel.h"
+#import "gameCenterManager.h"
 
 #define IPAD UIUserInterfaceIdiomPad
 #define idiom UI_USER_INTERFACE_IDIOM()
@@ -95,6 +97,8 @@ const float CannonCollisionSpeed1 = 100.0f;
     NSString *mundo;
     NSString *nivel;
     NSString *fondo;
+    NSMutableDictionary *informacion1;
+    gameCenterManager *gc1;
     
     //Nuevo para escudo
     BOOL escudo;
@@ -107,18 +111,21 @@ const float CannonCollisionSpeed1 = 100.0f;
     SKSpriteNode *fondo_oscuro;
     SKEmitterNode *myParticle;
     BOOL choque;
+    
 }
 @end
 
 @implementation Escena_juego
 @synthesize tiempo;
 
--(id)initWithSize:(CGSize)size conInformacion:(NSMutableDictionary *)informacion conAudioPlayer:(AVAudioPlayer *)ap {
+-(id)initWithSize:(CGSize)size conGameCenter:(gameCenterManager*)gc conInformacion:(NSMutableDictionary *)informacion conAudioPlayer:(AVAudioPlayer *)ap {
     //con = cb; pendiente para base de datos
     if (self = [super initWithSize:size]) {
         //
+        informacion1=informacion;
         [ap stop];
         ap1=ap;
+        gc1=gc;
         espacio_movimiento = 5;
         contador_vidas = 2;
         velocidad_anterior = 0;
@@ -138,7 +145,6 @@ const float CannonCollisionSpeed1 = 100.0f;
         mundo = [informacion objectForKey:@"nroMundo"];
         nivel = [informacion objectForKey:@"nroNivel"];
         nomMapa = [informacion objectForKey:@"nombreNivel"];
-        SKAction *s_fondo;
         NSURL *url;
         
         switch (mundo.intValue) {
@@ -595,9 +601,11 @@ const float CannonCollisionSpeed1 = 100.0f;
             //[self.view presentScene:gameOverScene transition: reveal];
         }
         else if([nodo.name isEqualToString:@"recargar"]){
-            SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
-            SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size]; //withBase: cb
-            [self.view presentScene:gameOverScene transition: reveal];
+            [self reiniciar];
+        }
+        
+        else if([nodo.name isEqualToString:@"atras"]){
+            [self salir];
         }
         else if ([nodo.name isEqualToString:@"pausa"]){
 
@@ -635,7 +643,7 @@ const float CannonCollisionSpeed1 = 100.0f;
 
 
 
-#pragma mark pausa2
+#pragma mark Pausar y reanudar Juego
 -(void)pausarJuego{
     if (pausado) {
         
@@ -675,7 +683,21 @@ const float CannonCollisionSpeed1 = 100.0f;
     //bt_aceptar.alpha=0.0f;
 }
 
+-(void)reiniciar{
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_juego alloc] initWithSize:self.size conGameCenter:gc1  conInformacion:informacion1 conAudioPlayer:ap1]; //withBase: cb
+    [self.view presentScene:gameOverScene transition: reveal];
+}
 
+-(void)salir{
+    SKTransition *reveal = [SKTransition doorsOpenHorizontalWithDuration:1.0];
+    SKScene * gameOverScene = [[Escena_nivel alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion1 conAudioPlayer:ap1]; //withBase: cb
+    [self.view presentScene:gameOverScene transition: reveal];
+}
+
+
+
+#pragma mark Colisiones
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     for (UITouch *touch in touches) {
         CGPoint location = [touch  locationInNode:self];
@@ -695,7 +717,7 @@ const float CannonCollisionSpeed1 = 100.0f;
     return [layerInfo tileGidAtCoord:coord];
 }
 
-#pragma mark Colisiones
+
 
 - (void)comprobarColisionesMonedas:(Jugador *)jugador porCapas:(TMXLayer *)capa {
     NSInteger indices[8] = {7, 1, 3, 5, 0, 2, 6, 8};

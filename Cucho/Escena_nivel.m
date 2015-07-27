@@ -201,7 +201,7 @@
                 
                 if (nroMundo.intValue == 1) {
                     
-                    SKScene *juego = [[Escena_juego_tutorial alloc] initWithSize:self.size];
+                    SKScene *juego = [[Escena_juego_tutorial alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion conAudioPlayer:ap1];
                     [self.view presentScene:juego transition:reveal];
                     
                 }
@@ -209,7 +209,7 @@
                     [informacion setObject:[NSString stringWithFormat:@"1"] forKey:@"nroNivel"];
                     [informacion setObject:[NSString stringWithFormat:@"w%@_lvl1.tmx",nroMundo] forKey:@"nombreNivel"];
                     [informacion setObject:nroMundo forKey:@"nroMundo"];
-                    SKScene *juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
+                    SKScene *juego = [[Escena_juego alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion conAudioPlayer:ap1];
                     [self.view presentScene:juego transition:reveal];
                     NSLog(@"w%@_lvl1.tmx",nroMundo);
                 }
@@ -232,7 +232,7 @@
                 [informacion setObject:[NSString stringWithFormat:@"2"] forKey:@"nroNivel"];
                 [informacion setObject:[NSString stringWithFormat:@"w%@_lvl2.tmx",nroMundo] forKey:@"nombreNivel"];
                 [informacion setObject:nroMundo forKey:@"nroMundo"];
-                SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
+                SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion conAudioPlayer:ap1];
                 [self.view presentScene:juego transition:reveal];
                 NSLog(@"w%@_lvl2.tmx",nroMundo);
             }
@@ -245,7 +245,7 @@
                 [informacion setObject:[NSString stringWithFormat:@"3"] forKey:@"nroNivel"];
                 [informacion setObject:[NSString stringWithFormat:@"w%@_lvl3.tmx",nroMundo] forKey:@"nombreNivel"];
                 [informacion setObject:nroMundo forKey:@"nroMundo"];
-                SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
+                SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion conAudioPlayer:ap1];
                 [self.view presentScene:juego transition:reveal];
                 NSLog(@"w%@_lvl3.tmx",nroMundo);
             }
@@ -259,7 +259,7 @@
                 [informacion setObject:[NSString stringWithFormat:@"4"] forKey:@"nroNivel"];
                 [informacion setObject:[NSString stringWithFormat:@"w%@_lvl4.tmx",nroMundo] forKey:@"nombreNivel"];
                 [informacion setObject:nroMundo forKey:@"nroMundo"];
-                SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
+                SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion conAudioPlayer:ap1];
                 [self.view presentScene:juego transition:reveal];
                 NSLog(@"w%@_lvl4.tmx",nroMundo);
             }
@@ -273,7 +273,7 @@
                 [informacion setObject:[NSString stringWithFormat:@"5"] forKey:@"nroNivel"];
                 [informacion setObject:[NSString stringWithFormat:@"w%@_lvl5.tmx",nroMundo] forKey:@"nombreNivel"];
                 [informacion setObject:nroMundo forKey:@"nroMundo"];
-                SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conInformacion:informacion conAudioPlayer:ap1];
+                SKScene * juego = [[Escena_juego alloc] initWithSize:self.size conGameCenter:gc1 conInformacion:informacion conAudioPlayer:ap1];
                 [self.view presentScene:juego transition:reveal];
                 NSLog(@"w%@_lvl5.tmx",nroMundo);
             }
