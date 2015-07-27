@@ -1037,10 +1037,10 @@ const float CannonCollisionSpeed1 = 100.0f;
         //conexionBase *cb;// = [[conexionBase alloc] init];
         //[con insert:contar_monedas];
         ///-----------------------------Nuevo en base de datos
-        NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+        /*NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
         [userInfo setObject:[NSNumber numberWithInt:contar_monedas] forKey:@"total"];
         NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:@"insertBase" object:self userInfo:userInfo];
+        [nc postNotificationName:@"insertBase" object:self userInfo:userInfo];*/
         //------------------------
         //contar_monedas = 0;
         contador_vidas = 2;
@@ -1089,11 +1089,11 @@ const float CannonCollisionSpeed1 = 100.0f;
         }else if (nivel.intValue==5){
             //nivelInt=1;
         }
-        NSLog(@"%@",[contenido_nivel objectAtIndex:0]);
-        NSLog(@"%@",[contenido_nivel objectAtIndex:1]);
-        NSLog(@"%@",[contenido_nivel objectAtIndex:2]);
-        NSLog(@"%@",[contenido_nivel objectAtIndex:3]);
-        NSLog(@"%@",[contenido_nivel objectAtIndex:4]);
+        //NSLog(@"%@",[contenido_nivel objectAtIndex:0]);
+        //NSLog(@"%@",[contenido_nivel objectAtIndex:1]);
+        //NSLog(@"%@",[contenido_nivel objectAtIndex:2]);
+        //NSLog(@"%@",[contenido_nivel objectAtIndex:3]);
+        //NSLog(@"%@",[contenido_nivel objectAtIndex:4]);
         [contenido_plist setObject:contenido_niveles forKey:@"Niveles"];
         [contenido_plist writeToFile:dir_niveles atomically:YES];
     }else{
@@ -1122,7 +1122,10 @@ const float CannonCollisionSpeed1 = 100.0f;
     //para mostrar siguiente
     [puntajes setObject:ganar forKey:@"gano"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarTerminado" object:self userInfo:puntajes];
-
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    if(gano){
+    [nc postNotificationName:@"insertBase" object:self userInfo:puntajes];
+    }
 }
 
 - (void)setViewpointCenter:(CGPoint)position {

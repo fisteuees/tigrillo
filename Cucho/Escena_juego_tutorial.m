@@ -990,6 +990,8 @@ const float CannonCollisionSpeed = 100.0f;
 
 
 -(void)juegoTerminado:(BOOL)gano {
+    //Para siguiente nivel
+    NSString *ganar;
     //
     [self.tiempo invalidate];
     pausa.hidden = YES;
@@ -1014,14 +1016,16 @@ const float CannonCollisionSpeed = 100.0f;
     if(gano){
         NSLog(@"ganaste");
         mensaje1.text=@"Ganaste!";
+        //Para siguiente nivel
+        ganar = @"gano";
         //Para base
         //conexionBase *cb;// = [[conexionBase alloc] init];
         //[con insert:contar_monedas];
         ///-----------------------------Nuevo en base de datos
-        NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
-        [userInfo setObject:[NSNumber numberWithInt:contar_monedas] forKey:@"total"];
-        NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
-        [nc postNotificationName:@"insertBase" object:self userInfo:userInfo];
+        //NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+        //[userInfo setObject:[NSNumber numberWithInt:contar_monedas] forKey:@"total"];
+        //NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+        //[nc postNotificationName:@"insertBase" object:self userInfo:userInfo];
         //------------------------
         //contar_monedas = 0;
         contador_vidas = 2;
@@ -1043,6 +1047,7 @@ const float CannonCollisionSpeed = 100.0f;
         NSLog(@"perdiste");
         mensaje1.text=@"Perdiste";
         contador_vidas = 2;
+        ganar = @"perdio";
     }
     //[self addChild:mensaje];
     //[self addChild:bt_salir];
@@ -1055,8 +1060,15 @@ const float CannonCollisionSpeed = 100.0f;
     NSLog(@"%i",contar_monedas);
     [puntajes setObject:@"1" forKey:@"mundo"];
     [puntajes setObject:@"1" forKey:@"nivel"];
+    [puntajes setObject:ganar forKey:@"gano"];
     [puntajes setObject:puntuacion forKey:@"monedas"];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"mostrarTerminado" object:self userInfo:puntajes];
+    //Para base de datos
+    NSNotificationCenter* nc = [NSNotificationCenter defaultCenter];
+    if(gano){
+        [nc postNotificationName:@"insertBase" object:self userInfo:puntajes];
+    }
     
 }
 
