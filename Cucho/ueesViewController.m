@@ -101,8 +101,8 @@
     //base de datos
     cb = [[conexionBase alloc]init];
     [cb abrirBD];
-    [cb crearTabla:@"prueba" conCampo1:@"id" conCampo2:@"nombre" conCampo3:@"puntaje" conCampo4:@"tema"];
-    
+    //[cb crearTabla:@"prueba" conCampo1:@"id" conCampo2:@"nombre" conCampo3:@"puntaje" conCampo4:@"tema"];
+    [cb creartablas];
     background=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"pre_fondo_bosque"]];
     btatras=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bt_atras"]];
     
@@ -525,8 +525,24 @@
 -(void)insertBase:(NSNotification *)notification{
     //------------------Nuevo para base de datos
     NSDictionary* userInfo = notification.userInfo;
-    int puntaje = [[userInfo objectForKey:@"total"] intValue];
-    [cb insert:puntaje];
+    int puntaje = [[userInfo objectForKey:@"monedas"] intValue];
+    int mundo = [[userInfo objectForKey:@"mundo"] intValue];
+    int nivel = [[userInfo objectForKey:@"nivel"] intValue];
+    NSLog(@"Mundo: %i - Nivel: %i",mundo, nivel);
+    int puntaje_db_mundo =  [cb selectMaxMundo:mundo];
+    int puntaje_db_nivel = [cb selectNivel:mundo nivel:nivel];
+    if(puntaje_db_mundo==0){
+        [cb insertPuntajeMundo:puntaje mundo:mundo];
+    }
+    if(puntaje_db_nivel == 0){
+        [cb insertPuntajeNivel:puntaje mundo:mundo nivel:nivel];
+    }
+    if(puntaje > puntaje_db_nivel && puntaje_db_mundo!=0){
+        puntaje_db_mundo = puntaje_db_mundo - puntaje_db_nivel + puntaje;
+        [cb updateMundo:mundo puntaje:puntaje_db_mundo];
+        [cb updateNivel:mundo nivel:nivel puntaje:puntaje];
+    }
+    //[cb insert:puntaje];
     NSLog (@"Successfully received test notification! %i", puntaje);
     //----------------Nuevo para base de datos
 }
